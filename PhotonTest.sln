@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonTest", "PhotonTest.csproj", "{51F3C91E-E02C-6974-4EF2-F458319712ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonTest.Plugins", "PhotonTest.Plugins.csproj", "{2731E687-4E76-418E-C2E0-56CE5C7F1E8C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PhotonTest.Editor", "PhotonTest.Editor.csproj", "{7E9E516D-A7A3-F2B6-B428-9355CD534A6A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51F3C91E-E02C-6974-4EF2-F458319712ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F3C91E-E02C-6974-4EF2-F458319712ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F3C91E-E02C-6974-4EF2-F458319712ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F3C91E-E02C-6974-4EF2-F458319712ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2731E687-4E76-418E-C2E0-56CE5C7F1E8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2731E687-4E76-418E-C2E0-56CE5C7F1E8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2731E687-4E76-418E-C2E0-56CE5C7F1E8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2731E687-4E76-418E-C2E0-56CE5C7F1E8C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E9E516D-A7A3-F2B6-B428-9355CD534A6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E9E516D-A7A3-F2B6-B428-9355CD534A6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E9E516D-A7A3-F2B6-B428-9355CD534A6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E9E516D-A7A3-F2B6-B428-9355CD534A6A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
