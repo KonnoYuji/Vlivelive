@@ -118,7 +118,8 @@ public class PhotonManager : Photon.MonoBehaviour {
                 break;
         }
 
-        Camera.main.transform.parent.transform.position = initialPosition + myPlayer.GetComponent<TrackCamera>().currentOffset;
+        //Camera.main.transform.parent.transform.position = initialPosition + myPlayer.GetComponent<TrackCamera>().currentOffset;
+        Camera.main.transform.parent.transform.position = initialPosition + InitialPosManager.Instance.MyPlatformOffset();
         playerSelection.SetActive(false);
     }
     

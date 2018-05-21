@@ -8,6 +8,8 @@ public class TrackCamera : MonoBehaviour {
 
     public Vector3 offsetFromCameraForVR;
 
+    public Vector3 offsetfromCameraForOcuGo;
+
     public Vector3 currentOffset;
 
     private Transform mainCamera;
