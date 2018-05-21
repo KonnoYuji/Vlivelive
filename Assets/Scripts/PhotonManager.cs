@@ -21,7 +21,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     public enum PlayerStyle
     {
-        Main, Vip, Crowd
+        Main, Vip, Audience
     };
 
     // Use this for initialization
@@ -86,40 +86,43 @@ public class PhotonManager : Photon.MonoBehaviour {
     public void InstantiateMyChar(int charNum)
     {
         Vector3 initialPosition = new Vector3(0.0f, 0.0f, 0.0f);
+        PlayerStyle myPlayerStyle;
 
         switch (charNum)
         {
             case (int)PlayerStyle.Main:
 
+                myPlayerStyle = PlayerStyle.Main;
                 if(mainChar != null)
                 {
-                    myPlayer = PhotonNetwork.Instantiate(mainChar.name, mainChar.transform.position, mainChar.transform.rotation, 0);
+                    myPlayer = PhotonNetwork.Instantiate(mainChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), mainChar.transform.rotation, 0);
                     initialPosition = myPlayer.transform.position;
                 }               
                 break;
 
             case (int)PlayerStyle.Vip:
 
+                myPlayerStyle = PlayerStyle.Vip;
                 if(vipChar != null)
                 {
-                    myPlayer = PhotonNetwork.Instantiate(vipChar.name, vipChar.transform.position, vipChar.transform.rotation, 0);
+                    myPlayer = PhotonNetwork.Instantiate(vipChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), vipChar.transform.rotation, 0);
                     initialPosition = vipChar.transform.position;
                 }        
                 break;
 
-            case (int)PlayerStyle.Crowd:
+            case (int)PlayerStyle.Audience:
 
+                myPlayerStyle = PlayerStyle.Audience;
                 if(audienceChar != null)
                 {
-                    myPlayer = PhotonNetwork.Instantiate(audienceChar.name, audienceChar.transform.position, audienceChar.transform.rotation, 0);
+                    myPlayer = PhotonNetwork.Instantiate(audienceChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), audienceChar.transform.rotation, 0);
                     initialPosition = audienceChar.transform.position;
 
                 }
                 break;
         }
 
-        //Camera.main.transform.parent.transform.position = initialPosition + myPlayer.GetComponent<TrackCamera>().currentOffset;
-        Camera.main.transform.parent.transform.position = initialPosition + InitialPosManager.Instance.MyPlatformOffset();
+        Camera.main.transform.parent.transform.position = initialPosition;
         playerSelection.SetActive(false);
     }
     

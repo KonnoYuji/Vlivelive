@@ -71,8 +71,6 @@ public class PhotonManagerAutoLogin : MonoBehaviour {
 
         myPlayer = PhotonNetwork.Instantiate(vipChar.name, vipChar.transform.position, vipChar.transform.rotation, 0);
         initialPosition = vipChar.transform.position;
-
-        Camera.main.transform.parent.transform.position = initialPosition + myPlayer.GetComponent<TrackCamera>().currentOffset;
     }
 
     private void OnReceivedRoomListUpdate()

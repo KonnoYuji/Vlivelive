@@ -4,39 +4,40 @@ using UnityEngine;
 
 public class TrackCamera : MonoBehaviour {
 
-    public Vector3 offsetFromCamera;
-
-    public Vector3 offsetFromCameraForVR;
-
-    public Vector3 offsetfromCameraForOcuGo;
-
-    public Vector3 currentOffset;
-
     private Transform mainCamera;
 
     private Vector3 currentCameraPos;
 
     private float currentCameraRotationY;
 
+    public bool settedOffset = false;
+
     private PhotonView myView;
 
     private void Awake()
     {
         mainCamera = Camera.main.transform;
+        currentCameraPos = mainCamera.position;
         currentCameraRotationY = mainCamera.rotation.eulerAngles.y;
-
-#if VRMode
-        currentOffset = offsetFromCameraForVR;
-#else
-        currentOffset = offsetFromCamera;
-#endif
         myView = GetComponent<PhotonView>();
+
+        var offsetInput = FindObjectOfType<offSetInput>();
+
+        if(offsetInput != null)
+        {
+            offsetInput.trackCamera = this;
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
         if (!myView.isMine)
+        {
+            return;
+        }
+
+        if(!settedOffset)
         {
             return;
         }

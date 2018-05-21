@@ -19,27 +19,18 @@ public class InitialPosManager : MonoBehaviour {
 
     }
 
-    public enum Platform
-    {
-        StandAlone, Mobile, VR, OculusGo
-    };
-
-    [SerializeField]
-    private Platform myPlatform;
-
-    private Dictionary<Platform, Vector3> offsetDicWithCamera;
+    static private Dictionary<PhotonManager.PlayerStyle, Vector3> offsetDicWithCamera;
 
     private void Awake()
     {
-        offsetDicWithCamera = new Dictionary<Platform, Vector3>();
-        offsetDicWithCamera.Add(Platform.StandAlone, new Vector3(0, 0, 0));
-        offsetDicWithCamera.Add(Platform.Mobile, new Vector3(0, 0, 0));
-        offsetDicWithCamera.Add(Platform.VR, new Vector3(1.4f, 0, 2.0f));
-        offsetDicWithCamera.Add(Platform.OculusGo, new Vector3(0, 1.0f, 0));
+        offsetDicWithCamera = new Dictionary<PhotonManager.PlayerStyle, Vector3>();
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Main, new Vector3(0.35f, -2.38f, 24.014f));
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Vip, new Vector3(-1.67f, -2.22f, 21.81f));
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Audience, new Vector3(4.612f, -3.71f, 16.7f));
     }
 
-    public Vector3 MyPlatformOffset()
+    public Vector3 MyCharOffset(PhotonManager.PlayerStyle myChar)
     {
-        return offsetDicWithCamera[myPlatform];
+        return offsetDicWithCamera[myChar];
     }
 }
