@@ -16,6 +16,7 @@ public class UnityChanController : MonoBehaviour {
         myRb = GetComponent<Rigidbody>();
         myAnim = GetComponent<Animator>();
         currentPos = transform.position;
+        AudioManager.Instance.PlayCheerSound();
         //currentMagnitude = myRb.velocity.magnitude;
 	}
 	

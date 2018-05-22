@@ -52,7 +52,6 @@ public class CameraRotator : MonoBehaviour {
 
 #elif UNITY_ANDROID || UNITY_IOS
 
-#if !VRMode
         float RotateSpeed = 0.1f;
         float UpDownSpeed = 0.01f;
         int touchCount = Input.touches.Count(t => t.phase != TouchPhase.Ended || t.phase != TouchPhase.Canceled);
@@ -74,9 +73,7 @@ public class CameraRotator : MonoBehaviour {
 
                     break;
             }
-        }
-#endif
-        
+        }    
 #endif
     }
 }
