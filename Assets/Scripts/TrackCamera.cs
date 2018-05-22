@@ -20,13 +20,6 @@ public class TrackCamera : MonoBehaviour {
         currentCameraPos = mainCamera.position;
         currentCameraRotationY = mainCamera.rotation.eulerAngles.y;
         myView = GetComponent<PhotonView>();
-
-        var offsetInput = FindObjectOfType<offSetInput>();
-
-        if(offsetInput != null)
-        {
-            offsetInput.trackCamera = this;
-        }
     }
 
     // Update is called once per frame

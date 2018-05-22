@@ -10,6 +10,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     public Button JoinRoomButton;
     public Button LeaveButton;
     public GameObject playerSelection;
+    public GameObject offset;
 
     public Text status;
     public RoomInfo[] rooms;
@@ -124,6 +125,10 @@ public class PhotonManager : Photon.MonoBehaviour {
 
         Camera.main.transform.parent.transform.position = initialPosition;
         playerSelection.SetActive(false);
+
+#if VRMode
+        offset.SetActive(true);
+#endif
     }
     
     private void OnReceivedRoomListUpdate()

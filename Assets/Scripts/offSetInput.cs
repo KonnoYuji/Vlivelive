@@ -10,6 +10,15 @@ public class offSetInput : MonoBehaviour {
 
     private bool settedTrackCamera = false;
 
+    private void OnEnable()
+    {
+        var track = FindObjectOfType<TrackCamera>();
+
+        if (track != null)
+        {
+            trackCamera = track;
+        }
+    }
     public void UpCameraRig()
     {
         if(trackCamera == null)

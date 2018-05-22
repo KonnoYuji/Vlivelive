@@ -7,6 +7,9 @@ public class TrackCameraOnce : MonoBehaviour {
     [SerializeField]
     private Transform Controller;
 
+    [SerializeField]
+    private GameObject UI;
+
     private Vector3 diffVector;
 
     private void Awake()
@@ -16,12 +19,13 @@ public class TrackCameraOnce : MonoBehaviour {
 
     private void Update()
     {
-        //OVRInput.Update();
+        OVRInput.Update();
 
-        //if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
-        //{
-        //    transform.position = Camera.main.transform.forward;
-        //}
+        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
+        {
+            var active = UI.activeSelf;
+            UI.SetActive(!active);
+        }
 
         transform.position = Controller.position + diffVector;
     }
