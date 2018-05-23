@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackCameraOnce : MonoBehaviour {
+public class TrackCameraForOculus : MonoBehaviour {
 
     [SerializeField]
     private Transform Controller;
@@ -29,5 +29,4 @@ public class TrackCameraOnce : MonoBehaviour {
 
         transform.position = Controller.position + diffVector;
     }
-
 }
