@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class CameraRotator : MonoBehaviour {
+public class CameraMotion : MonoBehaviour {
 
     // カメラオブジェクトを格納する変数
     private Camera mainCamera;
@@ -15,6 +15,8 @@ public class CameraRotator : MonoBehaviour {
     // カメラの角度を格納する変数（初期値に0,0を代入）
     private Vector2 newAngle = new Vector2(0, 0);
 
+    public float perspectiveZoomSpeed = 0.3f;        // 透視投影モードでの有効視野の変化の速さ
+    public float orthoZoomSpeed = 0.3f;        // 平行投影モードでの平行投影サイズの変化の速さ
 
     private void Awake()
     {
@@ -73,7 +75,45 @@ public class CameraRotator : MonoBehaviour {
 
                     break;
             }
-        }    
+        }
+
+        // 端末に 2 つのタッチがあるならば...　
+        if (Input.touchCount == 2)
+        {
+            // 両方のタッチを格納します
+            Touch touchZero = Input.GetTouch(0);
+            Touch touchOne = Input.GetTouch(1);
+
+            // 各タッチの前フレームでの位置をもとめます
+            Vector2 touchZeroPrevPos = touchZero.position - touchZero.deltaPosition;
+            Vector2 touchOnePrevPos = touchOne.position - touchOne.deltaPosition;
+
+            // 各フレームのタッチ間のベクター (距離) の大きさをもとめます
+            float prevTouchDeltaMag = (touchZeroPrevPos - touchOnePrevPos).magnitude;
+            float touchDeltaMag = (touchZero.position - touchOne.position).magnitude;
+
+            // 各フレーム間の距離の差をもとめます
+            float deltaMagnitudeDiff = prevTouchDeltaMag - touchDeltaMag;
+
+            // カメラが平行投影ならば...　
+            if (mainCamera.orthographic)
+            {
+                // ... タッチ間の距離の変化に基づいて平行投影サイズを変更します
+                mainCamera.orthographicSize += deltaMagnitudeDiff * orthoZoomSpeed;
+
+                // 平行投影サイズが決して 0 未満にならないように気を付けてください
+                mainCamera.orthographicSize = Mathf.Max(mainCamera.orthographicSize, 0.1f);
+            }
+            else
+            {
+                // そうでない場合は、タッチ間の距離の変化に基づいて有効視野を変更します
+                mainCamera.fieldOfView += deltaMagnitudeDiff * perspectiveZoomSpeed;
+
+                // 有効視野を 0 から 180 の間に固定するように気を付けてください
+                mainCamera.fieldOfView = Mathf.Clamp(mainCamera.fieldOfView, 0.1f, 179.9f);
+            }
+        }
+
 #endif
     }
 }
