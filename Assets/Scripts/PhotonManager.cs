@@ -189,6 +189,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     private void OnConnectionFail(DisconnectCause cause)
     {
         Debug.LogErrorFormat("Connection failed ; error code {0}", cause);
+        Debug.LogErrorFormat("Recent command counter : {0}", PhotonNetwork.ResentReliableCommands.ToString());
         status.text = string.Format("Error code : {0}", cause);
     }
 

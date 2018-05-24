@@ -15,18 +15,15 @@ public class TrackCameraForOculus : MonoBehaviour {
     private void Awake()
     {
         diffVector = transform.position - Controller.position;
+        //var oculusController = FindObjectOfType<OculusGoController>();
+        //oculusController.TouchedPad += () => {
+        //    var active = UI.activeSelf;
+        //    UI.SetActive(!active);
+        //};
     }
 
     private void Update()
-    {
-        OVRInput.Update();
-
-        if (OVRInput.Get(OVRInput.Button.PrimaryTouchpad))
-        {
-            var active = UI.activeSelf;
-            UI.SetActive(!active);
-        }
-
+    {      
         transform.position = Controller.position + diffVector;
     }
 }

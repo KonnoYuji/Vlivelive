@@ -202,7 +202,6 @@ Camera:
   m_TargetEye: 2
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -238,7 +237,6 @@ Camera:
   m_TargetEye: 1
   m_HDR: 1
   m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -251,6 +249,21 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 462066, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
   m_PrefabInternal: {fileID: 8140299}
+--- !u!1 &8140306 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}
+  m_PrefabInternal: {fileID: 8140299}
+--- !u!114 &8140307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 8140306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e604e42473f5634f811013d51a7ace5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &88902557
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,7 +700,7 @@ GameObject:
   - component: {fileID: 1099422853}
   - component: {fileID: 1099422854}
   m_Layer: 0
-  m_Name: CanvasController
+  m_Name: TrackCameraForOculus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
