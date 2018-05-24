@@ -1247,6 +1247,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 699efd985ee85a0488e33964022a439b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myAnim: {fileID: 95142371663230998}
+  myView: {fileID: 114002674171308804}
+  offRenderingParts: []
 --- !u!114 &114646735409494838
 MonoBehaviour:
   m_ObjectHideFlags: 1

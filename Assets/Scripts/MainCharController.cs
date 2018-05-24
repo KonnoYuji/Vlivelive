@@ -1,16 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class MainCharController : Photon.MonoBehaviour {
 
-    private Rigidbody myRb;
-
+    [SerializeField]
     private Animator myAnim;
 
-    private Vector3 currentPos;
-
+    [SerializeField]
     private PhotonView myView;
+
+    private Vector3 currentPos;
 
     private ViveLeftHandController leftHand;
 
@@ -22,9 +23,16 @@ public class MainCharController : Photon.MonoBehaviour {
 
     private bool isHandUp = false;
 
+    [SerializeField]
+    private GameObject[] offRenderingParts;
+
     private void Awake()
     {
-        myView = GetComponent<PhotonView>();
+        if(myView == null)
+        {
+            myView = GetComponent<PhotonView>();
+        }
+        
         //VRmodeでのコントローラー入力
 #if VRMode
 
@@ -78,14 +86,24 @@ public class MainCharController : Photon.MonoBehaviour {
     }
 
     // Use this for initialization
-    void Start () {
+    void Start () {        
 
-        myRb = GetComponent<Rigidbody>();
-        myAnim = GetComponent<Animator>();
-        myView = GetComponent<PhotonView>();
+        if(myAnim == null)
+        {
+            myAnim = GetComponent<Animator>();
+        }
+        
         AudioManager.Instance.PlayCheerSound();
-        currentPos = transform.position;               
-	}
+        currentPos = transform.position;
+
+        if(myView.isMine)
+        {
+            for(int i=0; i<offRenderingParts.Length; i++)
+            {
+                offRenderingParts[i].SetActive(false);
+            }
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {
