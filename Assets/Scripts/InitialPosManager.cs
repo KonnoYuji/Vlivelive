@@ -25,7 +25,7 @@ public class InitialPosManager : MonoBehaviour {
     {
         offsetDicWithCamera = new Dictionary<PhotonManager.PlayerStyle, Vector3>();
         offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Main, new Vector3(0.35f, -2.38f, 24.014f));
-        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Vip, new Vector3(-1.67f, -2.22f, 20.81f));
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Vip, new Vector3(-1.67f, -3.531f, 21.81f));
         offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Audience, new Vector3(4.612f, -3.71f, 16.7f));
     }
 
