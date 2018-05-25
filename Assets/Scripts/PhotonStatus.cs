@@ -18,9 +18,11 @@ public class PhotonStatus : MonoBehaviour {
             status += "Player.Id: " + PhotonNetwork.player.ID + "\n";
             status += "IsMasterClient: " + PhotonNetwork.isMasterClient + "\n";
             status += "-------------------------------------------------------\n";
-            status += "ResentReliableCmdsCounter : " + PhotonNetwork.ResentReliableCommands.ToString();
+            status += "ResentReliableCmdsCounter : " + PhotonNetwork.ResentReliableCommands.ToString() + "\n";
+            status += "-------------------------------------------------------\n";
+            status += "PacketLossByCrcCheck : " + PhotonNetwork.PacketLossByCrcCheck.ToString();
         }
 
-        GUI.TextField(new Rect(10, 10, 220, 140), status);
+        GUI.TextField(new Rect(10, 10, 220, 180), status);
     }
 }

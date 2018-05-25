@@ -13,6 +13,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     public GameObject offset;
 
     public Text status;
+    public Text Error;
     public RoomInfo[] rooms;
 
     private GameObject myPlayer;
@@ -32,8 +33,9 @@ public class PhotonManager : Photon.MonoBehaviour {
         MakeRoomAndJoinButton.onClick.AddListener(CreateAndJoinRoom);
         LeaveButton.onClick.AddListener(LeaveRoom);
 
-        PhotonNetwork.networkingPeer.QuickResendAttempts = 6;
-        PhotonNetwork.networkingPeer.SentCountAllowance = 14;
+        PhotonNetwork.networkingPeer.QuickResendAttempts = 30;    
+        PhotonNetwork.CrcCheckEnabled = true;
+        PhotonNetwork.MaxResendsBeforeDisconnect = 30;
     }
 
     private void ConnectPhoton()
@@ -183,14 +185,15 @@ public class PhotonManager : Photon.MonoBehaviour {
     private void OnFailedToConnectToPhoton(DisconnectCause cause)
     {
         Debug.LogErrorFormat("Connection failed To Photon; error code {0}", cause);
-        status.text = string.Format("Error code : {0}", cause);
+        Error.text = string.Format("Err: {0}", cause);
     }
 
     private void OnConnectionFail(DisconnectCause cause)
     {
         Debug.LogErrorFormat("Connection failed ; error code {0}", cause);
         Debug.LogErrorFormat("Recent command counter : {0}", PhotonNetwork.ResentReliableCommands.ToString());
-        status.text = string.Format("Error code : {0}", cause);
+        Debug.LogErrorFormat("PacketLossCountByCrc : {0}", PhotonNetwork.PacketLossByCrcCheck.ToString());
+        Error.text = string.Format("Err: {0}", cause);
     }
 
     private void OnDisconnectedFromPhoton()

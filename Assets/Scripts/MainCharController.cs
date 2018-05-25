@@ -44,26 +44,37 @@ public class MainCharController : Photon.MonoBehaviour {
         {
             leftHand.TouchPadClicked += () => {
 
-                if (myView.isMine)isJumped = !isJumped;
-                Jump(isJumped);
+                if (myView.isMine)
+                {
+                    isJumped = !isJumped;
+                    Jump(isJumped);
+                }
             };
 
             rightHand.TouchPadClicked += () => {
 
-                if (myView.isMine) isHandUp = !isHandUp;
-                UpHand(isHandUp);    
+                if (myView.isMine)
+                {
+                    isHandUp = !isHandUp;
+                    UpHand(isHandUp);
+                }
             };
         }
 #elif UNITY_ANDROID
         oculusGoController = FindObjectOfType<OculusGoController>();
         oculusGoController.ClickedPad += () =>{
-
-                if (myView.isMine)isJumped = !isJumped;
-                Jump(isJumped);
+                if (myView.isMine)
+                {
+                    isJumped = !isJumped;
+                    Jump(isJumped);
+                }
             };
         oculusGoController.TouchedPad += () =>  {
-                if (myView.isMine) isHandUp = !isHandUp;
-                UpHand(isHandUp);              
+                if (myView.isMine) 
+                {
+                    isHandUp = !isHandUp;
+                    UpHand(isHandUp);
+                }
             };
 #endif
 
@@ -71,14 +82,20 @@ public class MainCharController : Photon.MonoBehaviour {
         var charUISetting = StandaloneCharUISetting.Instance;
         charUISetting.RegisterJumpMethod(() =>
         {
-            if (myView.isMine) isJumped = !isJumped;
-            Jump(isJumped);
+            if (myView.isMine) 
+            {
+                isJumped = !isJumped;
+                Jump(isJumped);
+            }
         });
 
         charUISetting.RegisterUpHandMethod(() =>
         {
-            if (myView.isMine) isHandUp = !isHandUp;
-            UpHand(isHandUp);
+            if (myView.isMine)
+            {
+                isHandUp = !isHandUp;
+                UpHand(isHandUp);
+            }
         }
         );
        
@@ -156,7 +173,7 @@ public class MainCharController : Photon.MonoBehaviour {
     private void UpHand(bool state)
     {
         bool? currentState = myAnim.GetBool("UpHand");
-        if (currentState == null ||  myAnim == state)
+        if (currentState == null ||  currentState == state)
         {
             return;
         }

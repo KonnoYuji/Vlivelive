@@ -1915,6 +1915,7 @@ GameObject:
   - component: {fileID: 114051520430105528}
   - component: {fileID: 114225673986860752}
   - component: {fileID: 136717819180652928}
+  - component: {fileID: 114961172207110184}
   m_Layer: 0
   m_Name: unitychan
   m_TagString: Untagged
@@ -3713,7 +3714,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1713911301300246}
-  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.060806748}
+  m_LocalRotation: {x: -0.09374654, y: 0.6978552, z: 0.70746905, w: 0.060806736}
   m_LocalPosition: {x: -0.05543403, y: 0.0017306843, z: 0.098653734}
   m_LocalScale: {x: 1.0000004, y: 1.0000006, z: 1.0000005}
   m_Children:
@@ -5186,6 +5187,22 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
+--- !u!114 &114961172207110184
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756867649543186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1001071831db324092150c8733ed54e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 95297758517524468}
+  rightHandObj: {fileID: 0}
+  lefthandObj: {fileID: 0}
+  leftFootObj: {fileID: 0}
+  rightFootObj: {fileID: 0}
 --- !u!136 &136717819180652928
 CapsuleCollider:
   m_ObjectHideFlags: 1
