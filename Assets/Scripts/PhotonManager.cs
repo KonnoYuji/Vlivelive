@@ -28,6 +28,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     public Text status;
     public Text Error;
+    public Text RcmdCnt;
+
     public RoomInfo[] rooms;
     public UnityAction leaveEvent;
 
@@ -35,6 +37,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     [SerializeField]
     private GameObject mainChar, vipChar, audienceChar;
+
+    [SerializeField]
+    private bool isDebuged = false;
 
     public enum PlayerStyle
     {
@@ -51,8 +56,21 @@ public class PhotonManager : Photon.MonoBehaviour {
         PhotonNetwork.networkingPeer.QuickResendAttempts = 4;    
         PhotonNetwork.CrcCheckEnabled = true;
         PhotonNetwork.MaxResendsBeforeDisconnect = 10;
+
+        if(!isDebuged)
+        {
+            RcmdCnt.text = "";
+        }
     }
 
+    private void Update()
+    {
+        if(isDebuged)
+        {
+            RcmdCnt.text = "RcmdCnt : " + PhotonNetwork.ResentReliableCommands.ToString() + "\n";
+        }
+        
+    }
     private void ConnectPhoton()
     {
         PhotonNetwork.ConnectUsingSettings("v1.0");
