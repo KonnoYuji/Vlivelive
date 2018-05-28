@@ -1339,6 +1339,7 @@ GameObject:
   - component: {fileID: 1016523852}
   - component: {fileID: 1016523851}
   - component: {fileID: 1016523853}
+  - component: {fileID: 1016523854}
   m_Layer: 0
   m_Name: PhotonManager
   m_TagString: Untagged
@@ -1393,6 +1394,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a21ed83ea6ec224891395c23945ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1016523854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016523850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c83e06d07b8f654981913996327bdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoConnect: 1
+  AutoDisconnect: 1
+  AutoTransmit: 1
+  SamplingRate: 24000
+  FrameDuration: 20000
+  Bitrate: 30000
+  VoiceDetection: 0
+  VoiceDetectionThreshold: 0.01
+  PlayDelayMs: 200
+  MicrophoneType: 0
+  DebugLostPercent: 0
+  DebugInfo: 0
 --- !u!1 &1195517833
 GameObject:
   m_ObjectHideFlags: 0
@@ -2675,6 +2699,16 @@ Prefab:
     - target: {fileID: 4677938791343654, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 82396797355742294, guid: 695fbf0120d87f940904e2de6065f8fb,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
+        type: 2}
+      propertyPath: isOnBGM
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}

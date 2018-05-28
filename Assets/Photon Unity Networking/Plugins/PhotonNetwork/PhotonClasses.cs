@@ -20,7 +20,7 @@
 /// \brief Useful GUI elements for PUN.
 #pragma warning restore 1587
 
-#if UNITY_5 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 || UNITY_5_4_OR_NEWER
+#if UNITY_5_3_OR_NEWER || UNITY_5 && !UNITY_5_0 && !UNITY_5_1 && !UNITY_5_2 
 #define UNITY_MIN_5_3
 #endif
 
@@ -1341,12 +1341,6 @@ namespace UnityEditor.SceneManagement
 
 namespace UnityEngine.SceneManagement
 {
-	public enum LoadSceneMode
-	{
-		Single,
-		Additive
-	}
-
     /// <summary>Minimal implementation of the SceneManager for older Unity, up to v5.2.</summary>
     public class SceneManager
     {
@@ -1359,25 +1353,6 @@ namespace UnityEngine.SceneManagement
         {
             Application.LoadLevel(buildIndex);
         }
-
-		public static AsyncOperation LoadSceneAsync(string name,LoadSceneMode mode =  LoadSceneMode.Single)
-		{
-			if (mode == UnityEngine.SceneManagement.LoadSceneMode.Single) {
-				return Application.LoadLevelAsync (name);
-			} else {
-				return Application.LoadLevelAdditiveAsync(name);
-			}
-		}
-
-		public static AsyncOperation LoadSceneAsync(int buildIndex,LoadSceneMode mode =  LoadSceneMode.Single)
-		{
-			if (mode == UnityEngine.SceneManagement.LoadSceneMode.Single) {
-				return Application.LoadLevelAsync (buildIndex);
-			} else {
-				return Application.LoadLevelAdditiveAsync(buildIndex);
-			}
-		}
-
     }
 }
 

@@ -21,6 +21,9 @@ public class AudioManager : MonoBehaviour {
     [SerializeField]
     private AudioClip defaultBGM, cheers;
 
+    [SerializeField]
+    private bool isOnBGM = false;
+
     private AudioSource[] audios;
 
     private void Awake()
@@ -31,7 +34,11 @@ public class AudioManager : MonoBehaviour {
         }
 
         audios = GetComponents<AudioSource>();
-        PlayDefaultBGM();
+
+        if(isOnBGM)
+        {
+            PlayDefaultBGM();
+        }        
     }
 
     public void PlaySound(AudioSource source)

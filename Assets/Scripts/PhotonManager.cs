@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class PhotonManager : Photon.MonoBehaviour {
+
+    static private PhotonManager _instance;
+    static public PhotonManager Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = FindObjectOfType<PhotonManager>();
+            }
+            return _instance;
+        }
+    }
 
     public Button ConPhotonButton;
     public Button MakeRoomAndJoinButton;
@@ -15,6 +29,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     public Text status;
     public Text Error;
     public RoomInfo[] rooms;
+    public UnityAction leaveEvent;
 
     private GameObject myPlayer;
 
@@ -33,9 +48,9 @@ public class PhotonManager : Photon.MonoBehaviour {
         MakeRoomAndJoinButton.onClick.AddListener(CreateAndJoinRoom);
         LeaveButton.onClick.AddListener(LeaveRoom);
 
-        PhotonNetwork.networkingPeer.QuickResendAttempts = 30;    
+        PhotonNetwork.networkingPeer.QuickResendAttempts = 4;    
         PhotonNetwork.CrcCheckEnabled = true;
-        PhotonNetwork.MaxResendsBeforeDisconnect = 30;
+        PhotonNetwork.MaxResendsBeforeDisconnect = 10;
     }
 
     private void ConnectPhoton()
@@ -163,6 +178,11 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void LeaveRoom()
     {
+        if(leaveEvent != null)
+        {
+            leaveEvent();
+        }
+
         PhotonNetwork.LeaveRoom();
     }
 
@@ -170,6 +190,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     {
         status.text = "Left Room";
         LeaveButton.interactable = false;
+        DeletePhotonObi();
     }
 
     private void OnPhotonJoinRoomFailed()
@@ -201,5 +222,16 @@ public class PhotonManager : Photon.MonoBehaviour {
         Debug.Log("Disconnected from Photon");
         status.text = "Disconnected from Photon";
         ConPhotonButton.interactable = true;
+        DeletePhotonObi();
+    }
+
+    private void DeletePhotonObi()
+    {
+        var objs = FindObjectsOfType<PhotonView>();
+
+        for(int i=0; i<objs.Length; i++)
+        {
+            Destroy(objs[i].gameObject);
+        }
     }
 }

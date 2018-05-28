@@ -17,11 +17,6 @@ using SupportClassPun = ExitGames.Client.Photon.SupportClass;
 using UnityEngine.Profiling;
 #endif
 
-
-#if UNITY_WEBGL
-#pragma warning disable 0649
-#endif
-
 /// <summary>
 /// Internal Monobehaviour that allows Photon to run an Update loop.
 /// </summary>
@@ -36,7 +31,7 @@ internal class PhotonHandler : MonoBehaviour
     private int nextSendTickCount = 0;
 
     private int nextSendTickCountOnSerialize = 0;
-	
+
     private static bool sendThreadShouldRun;
 
     private static Stopwatch timerToStopConnectionInBackground;

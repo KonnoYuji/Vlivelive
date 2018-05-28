@@ -98,8 +98,9 @@ public class MainCharController : Photon.MonoBehaviour {
             }
         }
         );
-       
+
 #endif
+        PhotonManager.Instance.leaveEvent += DestroyMyself;
     }
 
     // Use this for initialization
@@ -178,5 +179,13 @@ public class MainCharController : Photon.MonoBehaviour {
             return;
         }
         myAnim.SetBool("UpHand", state);
+    }
+
+    private void DestroyMyself()
+    {
+        if(myView.isMine)
+        {
+            PhotonNetwork.Destroy(this.gameObject);
+        }
     }
 }
