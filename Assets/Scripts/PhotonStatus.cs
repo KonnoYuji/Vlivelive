@@ -6,12 +6,11 @@ public class PhotonStatus : MonoBehaviour {
 
     void OnGUI()
     {
-        // Photonとの接続状況を表示する
-        string status = "Photon: " + PhotonNetwork.connectionStateDetailed.ToString() + "\n";
+        string status = "";
 
         if (PhotonNetwork.inRoom)
         {
-            status += "-------------------------------------------------------\n";
+
             status += "Room Name: " + PhotonNetwork.room.Name + "\n";
             status += "Player Num: " + PhotonNetwork.room.PlayerCount + "\n";
             status += "-------------------------------------------------------\n";
@@ -21,7 +20,6 @@ public class PhotonStatus : MonoBehaviour {
             status += "PacketLossByCrcCheck : " + PhotonNetwork.PacketLossByCrcCheck.ToString();
         }
 
-
-        GUI.TextField(new Rect(10, 10, 220, 150), status);
+        GUI.TextField(new Rect(10, 10, 220, 120), status);
     }
 }

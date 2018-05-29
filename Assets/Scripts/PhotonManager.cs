@@ -35,7 +35,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private GameObject myPlayer;
 
-    private int currentPlayerNum = 0;
+    private int playerNumOneFrameBefore = 0;
 
     [SerializeField]
     private GameObject mainChar, vipChar, audienceChar;
@@ -68,21 +68,29 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void Update()
     {
+        status.text = PhotonNetwork.connectionStateDetailed.ToString();
+
+        if (!PhotonNetwork.connected)
+        {
+            return;
+        }
+
         if(isDebuged)
         {
             RcmdCnt.text = "RcmdCnt : " + PhotonNetwork.ResentReliableCommands.ToString() + "\n";
         }
 
-        if(currentPlayerNum <1 && !PhotonNetwork.isMasterClient)
+        if(!PhotonNetwork.inRoom || playerNumOneFrameBefore == PhotonNetwork.room.PlayerCount)
         {
             return;
         }
 
-        if(currentPlayerNum > PhotonNetwork.room.PlayerCount)
-        {
-            currentPlayerNum = PhotonNetwork.room.PlayerCount;
+        if(playerNumOneFrameBefore > PhotonNetwork.room.PlayerCount && PhotonNetwork.isMasterClient)
+        {            
             RemoveConFailedClient();
         }
+
+        playerNumOneFrameBefore = PhotonNetwork.room.PlayerCount;
 
     }
     private void ConnectPhoton()
@@ -125,10 +133,7 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void OnJoinedRoom()
     {
-        currentPlayerNum = PhotonNetwork.room.PlayerCount;
-
-        Debug.Log("PhotonManager OnJoinedRoom!");
-        status.text = "Joined Room";
+        Debug.Log("PhotonManager OnJoinedRoom!");        
         MakeRoomAndJoinButton.interactable = false;
         JoinRoomButton.interactable = false;
         LeaveButton.interactable = true;
@@ -210,6 +215,11 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void JoinRoom()
     {
+        if(rooms.Length == 0)
+        {
+            return;
+        }
+
         PhotonNetwork.JoinRoom(rooms[0].Name);
     }
 
@@ -225,10 +235,9 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void OnLeftRoom()
     {
-        status.text = "Left Room";
         LeaveButton.interactable = false;
-        currentPlayerNum = 0;
         DeletePhotonObi();
+        playerNumOneFrameBefore = 0;
 
         if (playerSelection.activeSelf)
         {
@@ -265,8 +274,9 @@ public class PhotonManager : Photon.MonoBehaviour {
         Debug.LogErrorFormat("Recent command counter : {0}", PhotonNetwork.ResentReliableCommands.ToString());
         Debug.LogErrorFormat("PacketLossCountByCrc : {0}", PhotonNetwork.PacketLossByCrcCheck.ToString());
         Error.text = string.Format("Err: {0}", cause);
-        
-        if(leaveEvent != null)
+        playerNumOneFrameBefore = 0;
+
+        if (leaveEvent != null)
         {
             leaveEvent();
         }
@@ -287,7 +297,6 @@ public class PhotonManager : Photon.MonoBehaviour {
     private void OnDisconnectedFromPhoton()
     {
         Debug.Log("Disconnected from Photon");
-        status.text = "Disconnected from Photon";
         ConPhotonButton.interactable = true;
         DeletePhotonObi();
     }
