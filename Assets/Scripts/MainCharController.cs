@@ -17,8 +17,8 @@ public class MainCharController : Photon.MonoBehaviour {
     private ViveLeftHandController leftHand;
     private ViveRightHandController rightHand;
 
-#elif OCULUSGO
-    private OculusGoController oculusGoController;
+#elif OCULUSGO || OCULUSRIFT
+    private OculusController oculusController;
 #endif
 
     private bool isJumped = false;
@@ -49,13 +49,21 @@ public class MainCharController : Photon.MonoBehaviour {
             rightHand.TouchPadClicked += ChangeHandUpState;
         }
 #elif OCULUSGO
-        oculusGoController = FindObjectOfType<OculusGoController>();
+        oculusController = FindObjectOfType<OculusController>();
 
-        if(oculusGoController != null)
+        if(oculusController != null)
         {
-            oculusGoController.ClickedPad += ChangeJumpState;
-            oculusGoController.TouchedPad += ChangeHandUpState;
+            oculusController.ClickedPad += ChangeJumpState;
+            oculusController.TouchedPad += ChangeHandUpState;
         }        
+#elif OCULUSRIFT
+        oculusController = FindObjectOfType<OculusController>();
+
+        if (oculusController != null)
+        {
+            oculusController.LeftDpad += ChangeJumpState;
+            oculusController.RightDpad += ChangeHandUpState;
+        }
 #elif DISPLAY
         var charUISetting = StandaloneCharUISetting.Instance;
         charUISetting.ListenJumpMethod(ChangeJumpState, true);
@@ -188,9 +196,16 @@ public class MainCharController : Photon.MonoBehaviour {
         
         if(oculusGoController != null)
         {
-            oculusGoController.ClickedPad -= ChangeJumpState;
-            oculusGoController.TouchedPad -= ChangeHandUpState;
+            oculusController.Cli9ckedPad -= ChangeJumpState;
+            oculusController.TouchedPad -= ChangeHandUpState;
         }        
+#elif OCULUSRIFT
+
+        if (oculusController != null)
+        {
+            oculusController.LeftDpad -= ChangeJumpState;
+            oculusController.RightDpad -= ChangeHandUpState;
+        }
 
 #elif DISPLAY
         var charUISetting = StandaloneCharUISetting.Instance;
