@@ -13,11 +13,13 @@ public class MainCharController : Photon.MonoBehaviour {
 
     private Vector3 currentPos;
 
+#if VIVE
     private ViveLeftHandController leftHand;
-
     private ViveRightHandController rightHand;
 
+#elif OCULUSGO
     private OculusGoController oculusGoController;
+#endif
 
     private bool isJumped = false;
 
@@ -34,11 +36,10 @@ public class MainCharController : Photon.MonoBehaviour {
         {
             myView = GetComponent<PhotonView>();
         }
-        
-        //VRmodeでのコントローラー入力
-#if VRMode
 
-#if UNITY_STANDALONE
+        //VRmodeでのコントローラー入力
+
+#if VIVE
         leftHand = FindObjectOfType<ViveLeftHandController>();
         rightHand = FindObjectOfType<ViveRightHandController>();
 
@@ -47,8 +48,7 @@ public class MainCharController : Photon.MonoBehaviour {
             leftHand.TouchPadClicked += ChangeJumpState;
             rightHand.TouchPadClicked += ChangeHandUpState;
         }
-
-#elif UNITY_ANDROID
+#elif OCULUSGO
         oculusGoController = FindObjectOfType<OculusGoController>();
 
         if(oculusGoController != null)
@@ -56,13 +56,10 @@ public class MainCharController : Photon.MonoBehaviour {
             oculusGoController.ClickedPad += ChangeJumpState;
             oculusGoController.TouchedPad += ChangeHandUpState;
         }        
-#endif
-
-#else
+#elif DISPLAY
         var charUISetting = StandaloneCharUISetting.Instance;
         charUISetting.ListenJumpMethod(ChangeJumpState, true);
         charUISetting.ListenUpHandMethod(ChangeHandUpState, true);
-
 #endif
         PhotonManager.Instance.leaveEvent += DetachInputEvent;
         PhotonManager.Instance.leaveEvent += DestroyMyself;        
@@ -180,26 +177,22 @@ public class MainCharController : Photon.MonoBehaviour {
     private void DetachInputEvent()
     {
         //VRmodeでのコントローラー入力
-#if VRMode
-
-#if UNITY_STANDALONE
-        
+#if VIVE
         if (leftHand != null && rightHand != null)
         {       
             leftHand.TouchPadClicked -= ChangeJumpState;
             rightHand.TouchPadClicked -= ChangeHandUpState;
         }
 
-#elif UNITY_ANDROID
+#elif OCULUSGO
         
         if(oculusGoController != null)
         {
             oculusGoController.ClickedPad -= ChangeJumpState;
             oculusGoController.TouchedPad -= ChangeHandUpState;
         }        
-#endif
 
-#else
+#elif DISPLAY
         var charUISetting = StandaloneCharUISetting.Instance;
         charUISetting.ListenJumpMethod(ChangeJumpState, false);
         charUISetting.ListenUpHandMethod(ChangeHandUpState, false);
