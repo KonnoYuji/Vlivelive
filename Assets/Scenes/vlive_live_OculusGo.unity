@@ -590,6 +590,7 @@ GameObject:
   - component: {fileID: 1016523852}
   - component: {fileID: 1016523853}
   - component: {fileID: 1016523851}
+  - component: {fileID: 1016523854}
   m_Layer: 0
   m_Name: PhotonManager
   m_TagString: Untagged
@@ -621,7 +622,7 @@ MonoBehaviour:
   vipChar: {fileID: 1159078357094738, guid: a9ab8327b9b6bc9499107489bc323656, type: 2}
   audienceChar: {fileID: 1051388114280364, guid: d4b57d485751e594ca327ec919b6e061,
     type: 2}
-  isDebuged: 0
+  isDebuged: 1
 --- !u!4 &1016523852
 Transform:
   m_ObjectHideFlags: 0
@@ -646,6 +647,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a21ed83ea6ec224891395c23945ead8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1016523854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1016523850}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c83e06d07b8f654981913996327bdf4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AutoConnect: 1
+  AutoDisconnect: 1
+  AutoTransmit: 1
+  SamplingRate: 24000
+  FrameDuration: 20000
+  Bitrate: 30000
+  VoiceDetection: 0
+  VoiceDetectionThreshold: 0.01
+  PlayDelayMs: 200
+  MicrophoneType: 0
+  DebugLostPercent: 0
+  DebugInfo: 1
 --- !u!1001 &1064680752
 Prefab:
   m_ObjectHideFlags: 0

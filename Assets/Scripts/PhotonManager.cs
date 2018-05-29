@@ -35,6 +35,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private GameObject myPlayer;
 
+    private int currentPlayerNum = 0;
+
     [SerializeField]
     private GameObject mainChar, vipChar, audienceChar;
 
@@ -61,6 +63,7 @@ public class PhotonManager : Photon.MonoBehaviour {
         {
             RcmdCnt.text = "";
         }
+
     }
 
     private void Update()
@@ -69,7 +72,18 @@ public class PhotonManager : Photon.MonoBehaviour {
         {
             RcmdCnt.text = "RcmdCnt : " + PhotonNetwork.ResentReliableCommands.ToString() + "\n";
         }
-        
+
+        if(currentPlayerNum <1 && !PhotonNetwork.isMasterClient)
+        {
+            return;
+        }
+
+        if(currentPlayerNum > PhotonNetwork.room.PlayerCount)
+        {
+            currentPlayerNum = PhotonNetwork.room.PlayerCount;
+            RemoveConFailedClient();
+        }
+
     }
     private void ConnectPhoton()
     {
@@ -80,6 +94,7 @@ public class PhotonManager : Photon.MonoBehaviour {
     {
         Debug.Log("PhotonManager OnJoinedLobby");
         status.text = "Connected to Photon Cloud";
+        Error.text = "ErrorMsg";
         ConPhotonButton.interactable = false;
         MakeRoomAndJoinButton.interactable = true;
     }
@@ -110,6 +125,8 @@ public class PhotonManager : Photon.MonoBehaviour {
 
     private void OnJoinedRoom()
     {
+        currentPlayerNum = PhotonNetwork.room.PlayerCount;
+
         Debug.Log("PhotonManager OnJoinedRoom!");
         status.text = "Joined Room";
         MakeRoomAndJoinButton.interactable = false;
@@ -133,6 +150,7 @@ public class PhotonManager : Photon.MonoBehaviour {
                 {
                     myPlayer = PhotonNetwork.Instantiate(mainChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), mainChar.transform.rotation, 0);
                     initialPosition = myPlayer.transform.position;
+                    myPlayer.GetComponent<MainCharController>().isMyPlayer = true;
                 }               
                 break;
 
@@ -143,6 +161,7 @@ public class PhotonManager : Photon.MonoBehaviour {
                 {
                     myPlayer = PhotonNetwork.Instantiate(vipChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), vipChar.transform.rotation, 0);
                     initialPosition = vipChar.transform.position;
+                    myPlayer.GetComponent<MainCharController>().isMyPlayer = true;
                 }        
                 break;
 
@@ -208,7 +227,20 @@ public class PhotonManager : Photon.MonoBehaviour {
     {
         status.text = "Left Room";
         LeaveButton.interactable = false;
+        currentPlayerNum = 0;
         DeletePhotonObi();
+
+        if (playerSelection.activeSelf)
+        {
+            playerSelection.SetActive(false);
+        }
+
+#if VRMode        
+        if (offset.activeSelf)
+        {
+            offset.SetActive(false);
+        }
+#endif
     }
 
     private void OnPhotonJoinRoomFailed()
@@ -233,6 +265,23 @@ public class PhotonManager : Photon.MonoBehaviour {
         Debug.LogErrorFormat("Recent command counter : {0}", PhotonNetwork.ResentReliableCommands.ToString());
         Debug.LogErrorFormat("PacketLossCountByCrc : {0}", PhotonNetwork.PacketLossByCrcCheck.ToString());
         Error.text = string.Format("Err: {0}", cause);
+        
+        if(leaveEvent != null)
+        {
+            leaveEvent();
+        }
+
+        if (playerSelection.activeSelf)
+        {
+            playerSelection.SetActive(false);
+        }
+
+#if VRMode        
+        if(offset.activeSelf)
+        {
+            offset.SetActive(false);
+        }        
+#endif
     }
 
     private void OnDisconnectedFromPhoton()
@@ -250,6 +299,26 @@ public class PhotonManager : Photon.MonoBehaviour {
         for(int i=0; i<objs.Length; i++)
         {
             Destroy(objs[i].gameObject);
+        }
+    }
+
+    private void RemoveConFailedClient()
+    {
+        var charControllers = FindObjectsOfType<MainCharController>();
+
+        if(charControllers == null || charControllers.Length == 0)
+        {
+            Debug.Log("No CharController");
+            return;
+        }
+
+        for(int i = 0; i<charControllers.Length; i++)
+        {
+            var isMine = charControllers[i].GetComponent<PhotonView>().isMine;
+            if(!charControllers[i].isMyPlayer && isMine)
+            {
+                PhotonNetwork.Destroy(charControllers[i].gameObject);
+            }
         }
     }
 }

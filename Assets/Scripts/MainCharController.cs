@@ -26,6 +26,8 @@ public class MainCharController : Photon.MonoBehaviour {
     [SerializeField]
     private GameObject[] offRenderingParts;
 
+    public bool isMyPlayer = false;
+
     private void Awake()
     {
         if(myView == null)
@@ -42,65 +44,28 @@ public class MainCharController : Photon.MonoBehaviour {
 
         if (leftHand != null && rightHand != null)
         {
-            leftHand.TouchPadClicked += () => {
-
-                if (myView.isMine)
-                {
-                    isJumped = !isJumped;
-                    Jump(isJumped);
-                }
-            };
-
-            rightHand.TouchPadClicked += () => {
-
-                if (myView.isMine)
-                {
-                    isHandUp = !isHandUp;
-                    UpHand(isHandUp);
-                }
-            };
+            leftHand.TouchPadClicked += ChangeJumpState;
+            rightHand.TouchPadClicked += ChangeHandUpState;
         }
+
 #elif UNITY_ANDROID
         oculusGoController = FindObjectOfType<OculusGoController>();
-        oculusGoController.ClickedPad += () =>{
-                if (myView.isMine)
-                {
-                    isJumped = !isJumped;
-                    Jump(isJumped);
-                }
-            };
-        oculusGoController.TouchedPad += () =>  {
-                if (myView.isMine) 
-                {
-                    isHandUp = !isHandUp;
-                    UpHand(isHandUp);
-                }
-            };
+
+        if(oculusGoController != null)
+        {
+            oculusGoController.ClickedPad += ChangeJumpState;
+            oculusGoController.TouchedPad += ChangeHandUpState;
+        }        
 #endif
 
 #else
         var charUISetting = StandaloneCharUISetting.Instance;
-        charUISetting.RegisterJumpMethod(() =>
-        {
-            if (myView.isMine) 
-            {
-                isJumped = !isJumped;
-                Jump(isJumped);
-            }
-        });
-
-        charUISetting.RegisterUpHandMethod(() =>
-        {
-            if (myView.isMine)
-            {
-                isHandUp = !isHandUp;
-                UpHand(isHandUp);
-            }
-        }
-        );
+        charUISetting.ListenJumpMethod(ChangeJumpState, true);
+        charUISetting.ListenUpHandMethod(ChangeHandUpState, true);
 
 #endif
-        PhotonManager.Instance.leaveEvent += DestroyMyself;
+        PhotonManager.Instance.leaveEvent += DetachInputEvent;
+        PhotonManager.Instance.leaveEvent += DestroyMyself;        
     }
 
     // Use this for initialization
@@ -161,6 +126,24 @@ public class MainCharController : Photon.MonoBehaviour {
         }
     }
 
+    private void ChangeJumpState()
+    {
+        if (myView.isMine)
+        {
+            isJumped = !isJumped;
+            Jump(isJumped);
+        }
+    }
+
+    private void ChangeHandUpState()
+    {
+        if (myView.isMine)
+        {
+            isHandUp = !isHandUp;
+            UpHand(isHandUp);
+        }
+    }
+
     private void Jump(bool state)
     {
         bool? curentState = myAnim.GetBool("Jump");
@@ -183,9 +166,43 @@ public class MainCharController : Photon.MonoBehaviour {
 
     private void DestroyMyself()
     {
+        if(PhotonManager.Instance.leaveEvent != null)
+        {
+            PhotonManager.Instance.leaveEvent -= DestroyMyself;
+        }
+
         if(myView.isMine)
         {
             PhotonNetwork.Destroy(this.gameObject);
         }
+    }
+
+    private void DetachInputEvent()
+    {
+        //VRmodeでのコントローラー入力
+#if VRMode
+
+#if UNITY_STANDALONE
+        
+        if (leftHand != null && rightHand != null)
+        {       
+            leftHand.TouchPadClicked -= ChangeJumpState;
+            rightHand.TouchPadClicked -= ChangeHandUpState;
+        }
+
+#elif UNITY_ANDROID
+        
+        if(oculusGoController != null)
+        {
+            oculusGoController.ClickedPad -= ChangeJumpState;
+            oculusGoController.TouchedPad -= ChangeHandUpState;
+        }        
+#endif
+
+#else
+        var charUISetting = StandaloneCharUISetting.Instance;
+        charUISetting.ListenJumpMethod(ChangeJumpState, false);
+        charUISetting.ListenUpHandMethod(ChangeHandUpState, false);
+#endif
     }
 }

@@ -25,13 +25,27 @@ public class StandaloneCharUISetting : MonoBehaviour {
     [SerializeField]
     private Button UpHand;
 
-	public void RegisterJumpMethod(UnityAction action)
+	public void ListenJumpMethod(UnityAction action, bool isListened)
     {
-        jump.onClick.AddListener(action);
+        if(isListened)
+        {
+            jump.onClick.AddListener(action);
+        }
+        else
+        {
+            jump.onClick.RemoveListener(action);
+        }
     }
 
-    public void RegisterUpHandMethod(UnityAction action)
+    public void ListenUpHandMethod(UnityAction action, bool isListened)
     {
-        UpHand.onClick.AddListener(action);
+        if(isListened)
+        {
+            UpHand.onClick.AddListener(action);
+        }
+        else
+        {
+            UpHand.onClick.RemoveListener(action);
+        }
     }
 }
