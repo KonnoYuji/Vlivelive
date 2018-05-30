@@ -273,12 +273,23 @@ public class PhotonManager : Photon.MonoBehaviour {
         Debug.LogErrorFormat("Connection failed ; error code {0}", cause);
         Debug.LogErrorFormat("Recent command counter : {0}", PhotonNetwork.ResentReliableCommands.ToString());
         Debug.LogErrorFormat("PacketLossCountByCrc : {0}", PhotonNetwork.PacketLossByCrcCheck.ToString());
+        Debug.LogErrorFormat("Ping ; {0}", PhotonNetwork.GetPing().ToString());
         Error.text = string.Format("Err: {0}", cause);
         playerNumOneFrameBefore = 0;
 
         if (leaveEvent != null)
         {
             leaveEvent();
+        }
+
+        if(MakeRoomAndJoinButton.interactable)
+        {
+            MakeRoomAndJoinButton.interactable = false;
+        }
+
+        if(JoinRoomButton.interactable)
+        {
+            JoinRoomButton.interactable = false;
         }
 
         if (playerSelection.activeSelf)
