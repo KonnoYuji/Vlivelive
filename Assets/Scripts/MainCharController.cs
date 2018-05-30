@@ -17,7 +17,7 @@ public class MainCharController : Photon.MonoBehaviour {
     private ViveLeftHandController leftHand;
     private ViveRightHandController rightHand;
 
-#elif OCULUSGO || OCULUSRIFT
+#elif OCULUS_GO || OCULUS_RIFT || OCULUS_TOUCH
     private OculusController oculusController;
 #endif
 
@@ -48,7 +48,7 @@ public class MainCharController : Photon.MonoBehaviour {
             leftHand.TouchPadClicked += ChangeJumpState;
             rightHand.TouchPadClicked += ChangeHandUpState;
         }
-#elif OCULUSGO
+#elif OCULUS_GO
         oculusController = FindObjectOfType<OculusController>();
 
         if(oculusController != null)
@@ -56,13 +56,21 @@ public class MainCharController : Photon.MonoBehaviour {
             oculusController.ClickedPad += ChangeJumpState;
             oculusController.TouchedPad += ChangeHandUpState;
         }        
-#elif OCULUSRIFT
+#elif OCULUS_RIFT
         oculusController = FindObjectOfType<OculusController>();
 
         if (oculusController != null)
         {
             oculusController.LeftDpad += ChangeJumpState;
             oculusController.RightDpad += ChangeHandUpState;
+        }
+#elif OCULUS_TOUCH
+        oculusController = FindObjectOfType<OculusController>();
+
+        if (oculusController != null)
+        {
+            oculusController.ThreeClicked += ChangeJumpState;
+            oculusController.FourClicked += ChangeHandUpState;
         }
 #elif DISPLAY
         var charUISetting = StandaloneCharUISetting.Instance;
@@ -192,19 +200,25 @@ public class MainCharController : Photon.MonoBehaviour {
             rightHand.TouchPadClicked -= ChangeHandUpState;
         }
 
-#elif OCULUSGO
+#elif OCULUS_GO
         
         if(oculusGoController != null)
         {
             oculusController.Cli9ckedPad -= ChangeJumpState;
             oculusController.TouchedPad -= ChangeHandUpState;
         }        
-#elif OCULUSRIFT
+#elif OCULUS_RIFT
 
         if (oculusController != null)
         {
             oculusController.LeftDpad -= ChangeJumpState;
             oculusController.RightDpad -= ChangeHandUpState;
+        }
+#elif OCULUS_TOUCH
+        if (oculusController != null)
+        {
+            oculusController.ThreeClicked -= ChangeJumpState;
+            oculusController.FourClicked -= ChangeHandUpState;
         }
 
 #elif DISPLAY

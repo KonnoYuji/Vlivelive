@@ -5,13 +5,16 @@ using UnityEngine.Events;
 
 public class OculusController : MonoBehaviour {
 
-#if OCULUSGO
+#if OCULUS_GO
     public UnityAction TouchedPad;
     public UnityAction ClickedPad;
     public UnityAction ClickedTrigger;
-#elif OCULUSRIFT
+#elif OCULUS_RIFT
     public UnityAction LeftDpad;
     public UnityAction RightDpad;
+#elif OCULUS_TOUCH
+    public UnityAction ThreeClicked;
+    public UnityAction FourClicked;
 #endif
 
     private void Update()
@@ -20,7 +23,7 @@ public class OculusController : MonoBehaviour {
         //OVRInput.Update() is always running in OVRManager.
         //OVRInput.Update();
 
-#if OCULUSGO
+#if OCULUS_GO
         if (OVRInput.Get(OVRInput.Button.One))
         {
             if(ClickedPad != null)
@@ -45,7 +48,7 @@ public class OculusController : MonoBehaviour {
             }            
             return;
         }
-#elif OCULUSRIFT
+#elif OCULUS_RIFT
         if(OVRInput.Get(OVRInput.Button.DpadLeft))
         {
             if(LeftDpad != null)
@@ -60,6 +63,24 @@ public class OculusController : MonoBehaviour {
             if (RightDpad != null)
             {
                 RightDpad();
+            }
+            return;
+        }
+#elif OCULUS_TOUCH
+        if(OVRInput.Get(OVRInput.Button.Three))
+        {
+            if (ThreeClicked != null)
+            {
+                ThreeClicked();
+            }
+            return;
+        }
+
+        else if(OVRInput.Get(OVRInput.Button.Four))
+        {
+            if(FourClicked != null)
+            {
+                FourClicked();
             }
             return;
         }

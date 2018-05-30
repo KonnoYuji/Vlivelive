@@ -185,7 +185,7 @@ public class PhotonManager : Photon.MonoBehaviour {
         Camera.main.transform.parent.transform.position = initialPosition;
         playerSelection.SetActive(false);
 
-#if VRCOMMON
+#if VR_COMMON
         offset.SetActive(true);
 #endif
     }
@@ -244,7 +244,7 @@ public class PhotonManager : Photon.MonoBehaviour {
             playerSelection.SetActive(false);
         }
 
-#if VRCOMMON        
+#if VR_COMMON        
         if (offset.activeSelf)
         {
             offset.SetActive(false);
@@ -286,7 +286,7 @@ public class PhotonManager : Photon.MonoBehaviour {
             playerSelection.SetActive(false);
         }
 
-#if VRCOMMON        
+#if VR_COMMON        
         if(offset.activeSelf)
         {
             offset.SetActive(false);
