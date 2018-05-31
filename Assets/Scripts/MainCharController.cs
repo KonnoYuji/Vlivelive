@@ -202,9 +202,9 @@ public class MainCharController : Photon.MonoBehaviour {
 
 #elif OCULUS_GO
         
-        if(oculusGoController != null)
+        if(oculusController != null)
         {
-            oculusController.Cli9ckedPad -= ChangeJumpState;
+            oculusController.ClickedPad -= ChangeJumpState;
             oculusController.TouchedPad -= ChangeHandUpState;
         }        
 #elif OCULUS_RIFT

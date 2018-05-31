@@ -24,7 +24,41 @@ public class AudioManager : MonoBehaviour {
     [SerializeField]
     private bool isOnBGM = false;
 
-    private AudioSource[] audios;
+    [SerializeField]
+    private AudioSource[] bgmPlayers;
+
+    [SerializeField]
+    private AudioSource[] cheerPlayers;
+
+    private float bgmSoundVolume = 1.0f;
+
+    public float BgmSoundVolume
+    {
+        get
+        {
+            return bgmSoundVolume;
+        }
+        set
+        {
+            bgmSoundVolume = value;
+            ChangeBGMSoundVolume();
+        }
+    }
+   
+    private float cheerSoundVolume = 1.0f;
+
+    public float CheerSoundVolume
+    {
+        get
+        {
+            return cheerSoundVolume;
+        }
+        set
+        {
+            cheerSoundVolume = value;
+            ChangeCheerSoundVolume();
+        }        
+    }
 
     private void Awake()
     {
@@ -32,9 +66,7 @@ public class AudioManager : MonoBehaviour {
         {
             _instance = FindObjectOfType<AudioManager>();
         }
-
-        audios = GetComponents<AudioSource>();
-
+        
         if(isOnBGM)
         {
             PlayDefaultBGM();
@@ -53,35 +85,31 @@ public class AudioManager : MonoBehaviour {
         }
     }
 
-    public void PlaySoundAtLocation(AudioSource source)
-    {
-
-    }
-
     public void PlayCheerSound()
     {
-        for(int i=0; i<audios.Length; i++)
+        for(int i=0; i<cheerPlayers.Length; i++)
         {
-            if(!audios[i].isPlaying)
-            {
-                audios[i].clip = cheers;
-                audios[i].Play();
-                return;
-            }
+            cheerPlayers[i].clip = cheers;
+            cheerPlayers[i].Play();       
         }
     }
 
     private void PlayDefaultBGM()
     {
-        for (int i = 0; i < audios.Length; i++)
+        for(int i=0; i<bgmPlayers.Length; i++)
         {
-            if (!audios[i].isPlaying)
-            {
-                audios[i].loop = true;
-                audios[i].clip = defaultBGM;
-                audios[i].Play();
-                return;
-            }
+            bgmPlayers[i].clip = defaultBGM;
+            bgmPlayers[i].Play();
         }
+    }
+
+    private void ChangeCheerSoundVolume()
+    {
+
+    }
+
+    private void ChangeBGMSoundVolume()
+    {
+
     }
 }
