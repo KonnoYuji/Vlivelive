@@ -876,7 +876,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1159078357094738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.67, y: -3.531, z: 21.81}
+  m_LocalPosition: {x: -1.67, y: -2.625, z: 21.81}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children:
   - {fileID: 4628952918415476}
@@ -1360,6 +1360,7 @@ MonoBehaviour:
   myAnim: {fileID: 95142371663230998}
   myView: {fileID: 114002674171308804}
   offRenderingParts: []
+  isMyPlayer: 0
 --- !u!114 &114646735409494838
 MonoBehaviour:
   m_ObjectHideFlags: 1

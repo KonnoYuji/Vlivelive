@@ -19,14 +19,16 @@ public class InitialPosManager : MonoBehaviour {
 
     }
 
-    static private Dictionary<PhotonManager.PlayerStyle, Vector3> offsetDicWithCamera;
+    private Dictionary<PhotonManager.PlayerStyle, Vector3> offsetDicWithCamera;
+    
+    public Vector3 initialYAxisOffsetOfCamera = new Vector3(0, 0, 0);
 
     private void Awake()
     {
         offsetDicWithCamera = new Dictionary<PhotonManager.PlayerStyle, Vector3>();
         offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Main, new Vector3(0.35f, -2.38f, 24.014f));
-        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Vip, new Vector3(-1.67f, -3.531f, 21.81f));
-        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Audience, new Vector3(4.612f, -3.71f, 16.7f));
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Vip, new Vector3(-1.67f, -2.625f, 21.81f));
+        offsetDicWithCamera.Add(PhotonManager.PlayerStyle.Audience, new Vector3(1.87f, -0.6f, 12.21f));
     }
 
     public Vector3 MyCharOffset(PhotonManager.PlayerStyle myChar)

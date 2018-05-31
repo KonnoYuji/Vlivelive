@@ -294,5 +294,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad2d256c9b75be94f9b8fb1972314575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultBGM: {fileID: 8300000, guid: 7836666e672a40e4098d7278fcaa780e, type: 3}
+  defaultBGM: {fileID: 8300000, guid: 52021b8d615c74750b2df74afb897b09, type: 3}
   cheers: {fileID: 8300000, guid: ccffb6807d959b24f8d358d0e0f971b9, type: 3}
+  isOnBGM: 1

@@ -182,7 +182,11 @@ public class PhotonManager : Photon.MonoBehaviour {
                 break;
         }
 
+#if VR_COMMON
+        Camera.main.transform.parent.transform.position = initialPosition + InitialPosManager.Instance.initialYAxisOffsetOfCamera;
+#else
         Camera.main.transform.parent.transform.position = initialPosition;
+#endif          
         playerSelection.SetActive(false);
 
 #if VR_COMMON
