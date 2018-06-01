@@ -165,7 +165,7 @@ public class PhotonManager : Photon.MonoBehaviour {
                 if(vipChar != null)
                 {
                     myPlayer = PhotonNetwork.Instantiate(vipChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), vipChar.transform.rotation, 0);
-                    initialPosition = vipChar.transform.position;
+                    initialPosition = myPlayer.transform.position;
                     myPlayer.GetComponent<MainCharController>().isMyPlayer = true;
                 }        
                 break;
@@ -176,7 +176,7 @@ public class PhotonManager : Photon.MonoBehaviour {
                 if(audienceChar != null)
                 {
                     myPlayer = PhotonNetwork.Instantiate(audienceChar.name, InitialPosManager.Instance.MyCharOffset(myPlayerStyle), audienceChar.transform.rotation, 0);
-                    initialPosition = audienceChar.transform.position;
+                    initialPosition = myPlayer.transform.position;
 
                 }
                 break;
