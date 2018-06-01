@@ -264,62 +264,32 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114618379508553600, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: m_ReflectionTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 114618379508553600, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: m_ReflectionDepthTexture
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 82774870723101492, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.847
+      objectReference: {fileID: 0}
+    - target: {fileID: 82976748519455708, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.852
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7899d73c4806c64c93119301048a04c, type: 2}
   m_IsPrefabParent: 0
---- !u!82 &465207348 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82213478231343142, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207349 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82147677091971422, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207350 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82450674015691588, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207351 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82838099996984628, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207352 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82535502278036338, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207353 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82795110527244518, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207354 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82735891243201570, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!82 &465207355 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82976748519455708, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207356 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82935467540141090, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207357 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82831611922573754, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &465207358 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82288076721278428, guid: f7899d73c4806c64c93119301048a04c,
     type: 2}
   m_PrefabInternal: {fileID: 465207347}
 --- !u!82 &465207359 stripped
@@ -334,16 +304,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: bgmPlayers.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.size
-      value: 8
-      objectReference: {fileID: 0}
     - target: {fileID: 4677938791343654, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
       propertyPath: m_LocalPosition.x
       value: -0.34490037
@@ -383,63 +343,10 @@ Prefab:
       objectReference: {fileID: 465207359}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
-      propertyPath: bgmPlayers.Array.data[1]
-      value: 
-      objectReference: {fileID: 465207358}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: bgmPlayers.Array.data[2]
-      value: 
-      objectReference: {fileID: 465207357}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: bgmPlayers.Array.data[3]
-      value: 
-      objectReference: {fileID: 465207356}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
       propertyPath: cheerPlayers.Array.data[0]
       value: 
       objectReference: {fileID: 465207355}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[1]
-      value: 
-      objectReference: {fileID: 465207354}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[2]
-      value: 
-      objectReference: {fileID: 465207353}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[3]
-      value: 
-      objectReference: {fileID: 465207352}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[4]
-      value: 
-      objectReference: {fileID: 465207351}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[5]
-      value: 
-      objectReference: {fileID: 465207350}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[6]
-      value: 
-      objectReference: {fileID: 465207349}
-    - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
-        type: 2}
-      propertyPath: cheerPlayers.Array.data[7]
-      value: 
-      objectReference: {fileID: 465207348}
-    m_RemovedComponents:
-    - {fileID: 82396797355742294, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
-    - {fileID: 82856434176876538, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
-    - {fileID: 82379157396680506, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &806954732 stripped
@@ -738,7 +645,7 @@ MonoBehaviour:
   RcmdCnt: {fileID: 1540314541}
   mainChar: {fileID: 1756867649543186, guid: 6805794f0e833d3419de747963d95ad7, type: 2}
   vipChar: {fileID: 1159078357094738, guid: a9ab8327b9b6bc9499107489bc323656, type: 2}
-  audienceChar: {fileID: 1051388114280364, guid: d4b57d485751e594ca327ec919b6e061,
+  audienceChar: {fileID: 1922561229291506, guid: d16cd7e9f22bc514bab1b7a076bccce4,
     type: 2}
   isDebuged: 1
 --- !u!4 &1016523852

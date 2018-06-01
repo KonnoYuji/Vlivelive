@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.13179135, g: 0.18964523, b: 0.3888434, a: 1}
+  m_IndirectSpecularColor: {r: 0.015711047, g: 0.029993048, b: 0.12534086, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -113,11 +113,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!82 &64853221 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82935467540141090, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1 &88902557
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,11 +225,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!82 &146564305 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82450674015691588, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!82 &188574601 stripped
 AudioSource:
   m_PrefabParentObject: {fileID: 82774870723101492, guid: f7899d73c4806c64c93119301048a04c,
@@ -289,6 +279,16 @@ Prefab:
       propertyPath: m_ReflectionDepthTexture
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 82774870723101492, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.886
+      objectReference: {fileID: 0}
+    - target: {fileID: 82976748519455708, guid: f7899d73c4806c64c93119301048a04c,
+        type: 2}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0.881
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f7899d73c4806c64c93119301048a04c, type: 2}
   m_IsPrefabParent: 0
@@ -302,12 +302,12 @@ Prefab:
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: bgmPlayers.Array.size
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.size
-      value: 8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4677938791343654, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
       propertyPath: m_LocalPosition.x
@@ -370,17 +370,17 @@ Prefab:
         type: 2}
       propertyPath: bgmPlayers.Array.data[1]
       value: 
-      objectReference: {fileID: 1362359805}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: bgmPlayers.Array.data[2]
       value: 
-      objectReference: {fileID: 1043519868}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: bgmPlayers.Array.data[3]
       value: 
-      objectReference: {fileID: 64853221}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[0]
@@ -390,48 +390,43 @@ Prefab:
         type: 2}
       propertyPath: cheerPlayers.Array.data[1]
       value: 
-      objectReference: {fileID: 875631540}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[2]
       value: 
-      objectReference: {fileID: 1598066315}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[3]
       value: 
-      objectReference: {fileID: 1223071922}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[4]
       value: 
-      objectReference: {fileID: 1244685436}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[6]
       value: 
-      objectReference: {fileID: 478246413}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[5]
       value: 
-      objectReference: {fileID: 146564305}
+      objectReference: {fileID: 0}
     - target: {fileID: 114588254255867846, guid: 695fbf0120d87f940904e2de6065f8fb,
         type: 2}
       propertyPath: cheerPlayers.Array.data[7]
       value: 
-      objectReference: {fileID: 1218005423}
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 82396797355742294, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
     - {fileID: 82856434176876538, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
     - {fileID: 82379157396680506, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 695fbf0120d87f940904e2de6065f8fb, type: 2}
   m_IsPrefabParent: 0
---- !u!82 &478246413 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82147677091971422, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1 &806954732 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1247837396079196, guid: 352940a4ae4538244bf02313475cb2eb,
@@ -646,11 +641,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!82 &875631540 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82735891243201570, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1001 &992839280
 Prefab:
   m_ObjectHideFlags: 0
@@ -733,7 +723,7 @@ MonoBehaviour:
   RcmdCnt: {fileID: 1540314541}
   mainChar: {fileID: 1756867649543186, guid: 6805794f0e833d3419de747963d95ad7, type: 2}
   vipChar: {fileID: 1159078357094738, guid: a9ab8327b9b6bc9499107489bc323656, type: 2}
-  audienceChar: {fileID: 1799955693397440, guid: 23426d71dc267f24a835e75dbbf6c9f6,
+  audienceChar: {fileID: 1922561229291506, guid: d16cd7e9f22bc514bab1b7a076bccce4,
     type: 2}
   isDebuged: 1
 --- !u!4 &1016523852
@@ -795,11 +785,6 @@ MonoBehaviour:
   MicrophoneType: 0
   DebugLostPercent: 0
   DebugInfo: 1
---- !u!82 &1043519868 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82831611922573754, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1 &1099422852
 GameObject:
   m_ObjectHideFlags: 0
@@ -843,26 +828,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Controller: {fileID: 1657365488}
   UI: {fileID: 806954732}
---- !u!82 &1218005423 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82213478231343142, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &1223071922 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82535502278036338, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &1244685436 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82838099996984628, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
---- !u!82 &1362359805 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82288076721278428, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1001 &1390728458
 Prefab:
   m_ObjectHideFlags: 0
@@ -1139,11 +1104,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16e2aa8657a82be4eb42024f288d8710, type: 2}
   m_IsPrefabParent: 0
---- !u!82 &1598066315 stripped
-AudioSource:
-  m_PrefabParentObject: {fileID: 82795110527244518, guid: f7899d73c4806c64c93119301048a04c,
-    type: 2}
-  m_PrefabInternal: {fileID: 465207347}
 --- !u!1 &1657365487 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 134650, guid: ce816f2e6abb0504092c23ed9b970dfd, type: 2}

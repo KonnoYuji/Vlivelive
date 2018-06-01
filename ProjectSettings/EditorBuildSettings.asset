@@ -11,3 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/vlive_live_VR.unity
     guid: e56f20a0b6f7dfc429f1426a174564fe
+  - enabled: 0
+    path: Assets/Scenes/vlive_live_OculusRift.unity
+    guid: cbaa040e76c29e34b8d97a9883788637
+  - enabled: 0
+    path: Assets/Scenes/vlive_live_OculusTouch.unity
+    guid: a4c89c58c9f42f3448436e7a9814ae13
+  - enabled: 0
+    path: Assets/Scenes/vlive_live_OculusGo.unity
+    guid: 6545be36577db2847be4c478a4594e79
