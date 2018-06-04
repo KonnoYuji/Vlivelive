@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class PhotonManager : Photon.MonoBehaviour {
 
@@ -62,8 +63,7 @@ public class PhotonManager : Photon.MonoBehaviour {
         if(!isDebuged)
         {
             RcmdCnt.text = "";
-        }
-
+        }      
     }
 
     private void Update()
@@ -254,6 +254,7 @@ public class PhotonManager : Photon.MonoBehaviour {
             offset.SetActive(false);
         }
 #endif
+        SceneManager.LoadScene(GetLobbyScene());
     }
 
     private void OnPhotonJoinRoomFailed()
@@ -314,6 +315,7 @@ public class PhotonManager : Photon.MonoBehaviour {
         Debug.Log("Disconnected from Photon");
         ConPhotonButton.interactable = true;
         DeletePhotonObi();
+        SceneManager.LoadScene(GetLobbyScene());
     }
 
     private void DeletePhotonObi()
@@ -344,5 +346,13 @@ public class PhotonManager : Photon.MonoBehaviour {
                 PhotonNetwork.Destroy(charControllers[i].gameObject);
             }
         }
+    }
+
+    private string GetLobbyScene()
+    {
+        var activeSceneName = SceneManager.GetActiveScene().name;
+        var index = activeSceneName.IndexOf("_");
+        activeSceneName = activeSceneName.Substring(index, activeSceneName.Length - index);
+        return "VLobby" + activeSceneName;
     }
 }
