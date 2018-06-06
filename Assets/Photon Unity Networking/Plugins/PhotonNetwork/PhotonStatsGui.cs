@@ -22,6 +22,19 @@ using UnityEngine;
 /// \ingroup optionalGui
 public class PhotonStatsGui : MonoBehaviour
 {
+    private PhotonStatsGui _instance;
+
+    public PhotonStatsGui Instance
+    {
+        get
+        {
+            if(_instance == null)
+            {
+                _instance = FindObjectOfType<PhotonStatsGui>();
+            }
+            return _instance;
+        }
+    }
     /// <summary>Shows or hides GUI (does not affect if stats are collected).</summary>
     public bool statsWindowOn = true;
 
@@ -42,7 +55,6 @@ public class PhotonStatsGui : MonoBehaviour
 
     /// <summary>Unity GUI Window ID (must be unique or will cause issues).</summary>
     public int WindowId = 100;
-
 
     public void Start()
     {

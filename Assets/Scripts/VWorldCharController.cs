@@ -3,91 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class MainCharController : Photon.MonoBehaviour {
-
-    [SerializeField]
-    private Animator myAnim;
-
-    [SerializeField]
-    private PhotonView myView;
-
-    private Vector3 currentPos;
-
-#if VIVE
-    private ViveLeftHandController leftHand;
-    private ViveRightHandController rightHand;
-
-#elif OCULUS_GO || OCULUS_RIFT || OCULUS_TOUCH
-    private OculusController oculusController;
-#endif
-
+public class VWorldCharController : BaseVCharacter {
     private bool isJumped = false;
 
     private bool isHandUp = false;
 
-    [SerializeField]
-    private GameObject[] offRenderingParts;
-
-    public bool isMyPlayer = false;
-
     private void Awake()
     {
-        if(myView == null)
+        if(!myView.isMine)
         {
-            myView = GetComponent<PhotonView>();
-        }
+            return;
+        }   
 
-        //VRmodeでのコントローラー入力
+        AttachInputIvent += RegisterInputEvent;
+        //DetachInputEvent += RemoveInputEvent;
 
-#if VIVE
-        leftHand = FindObjectOfType<ViveLeftHandController>();
-        rightHand = FindObjectOfType<ViveRightHandController>();
-
-        if (leftHand != null && rightHand != null)
-        {
-            leftHand.TouchPadClicked += ChangeJumpState;
-            rightHand.TouchPadClicked += ChangeHandUpState;
-        }
-#elif OCULUS_GO
-        oculusController = FindObjectOfType<OculusController>();
-
-        if(oculusController != null)
-        {
-            oculusController.ClickedPad += ChangeJumpState;
-            oculusController.TouchedPad += ChangeHandUpState;
-        }        
-#elif OCULUS_RIFT
-        oculusController = FindObjectOfType<OculusController>();
-
-        if (oculusController != null)
-        {
-            oculusController.LeftDpad += ChangeJumpState;
-            oculusController.RightDpad += ChangeHandUpState;
-        }
-#elif OCULUS_TOUCH
-        oculusController = FindObjectOfType<OculusController>();
-
-        if (oculusController != null)
-        {
-            oculusController.ThreeClicked += ChangeJumpState;
-            oculusController.FourClicked += ChangeHandUpState;
-        }
-#elif DISPLAY
-        var charUISetting = StandaloneCharUISetting.Instance;
-        charUISetting.ListenJumpMethod(ChangeJumpState, true);
-        charUISetting.ListenUpHandMethod(ChangeHandUpState, true);
-#endif
-        PhotonManager.Instance.leaveEvent += DetachInputEvent;
-        PhotonManager.Instance.leaveEvent += DestroyMyself;        
+        base.Awake();
     }
 
     // Use this for initialization
     void Start () {        
-
-        if(myAnim == null)
-        {
-            myAnim = GetComponent<Animator>();
-        }
         
         AudioManager.Instance.PlayCheerSound();
         currentPos = transform.position;
@@ -177,22 +112,51 @@ public class MainCharController : Photon.MonoBehaviour {
         myAnim.SetBool("UpHand", state);
     }
 
-    private void DestroyMyself()
+    void RegisterInputEvent()
     {
-        if(PhotonManager.Instance.leaveEvent != null)
-        {
-            PhotonManager.Instance.leaveEvent -= DestroyMyself;
-        }
+#if VIVE
+        leftHand = FindObjectOfType<ViveLeftHandController>();
+        rightHand = FindObjectOfType<ViveRightHandController>();
 
-        if(myView.isMine)
+        if (leftHand != null && rightHand != null)
         {
-            PhotonNetwork.Destroy(this.gameObject);
+            leftHand.TouchPadClicked += ChangeJumpState;
+            rightHand.TouchPadClicked += ChangeHandUpState;
         }
+#elif OCULUS_GO
+        oculusController = FindObjectOfType<OculusController>();
+
+        if(oculusController != null)
+        {
+            oculusController.ClickedPad += ChangeJumpState;
+            oculusController.TouchedPad += ChangeHandUpState;
+        }        
+#elif OCULUS_RIFT
+        oculusController = FindObjectOfType<OculusController>();
+
+        if (oculusController != null)
+        {
+            oculusController.LeftDpad += ChangeJumpState;
+            oculusController.RightDpad += ChangeHandUpState;
+        }
+#elif OCULUS_TOUCH
+        oculusController = FindObjectOfType<OculusController>();
+
+        if (oculusController != null)
+        {
+            oculusController.ThreeClicked += ChangeJumpState;
+            oculusController.FourClicked += ChangeHandUpState;
+        }
+#elif DISPLAY
+        var charUISetting = StandaloneCharUISetting.Instance;
+        charUISetting.ListenJumpMethod(ChangeJumpState, true);
+        charUISetting.ListenUpHandMethod(ChangeHandUpState, true);
+#endif
     }
 
-    private void DetachInputEvent()
+    void RemoveInputEvent()
     {
-        //VRmodeでのコントローラー入力
+        //コントローラー入力
 #if VIVE
         if (leftHand != null && rightHand != null)
         {       

@@ -181,7 +181,7 @@ ENDCG
 CGPROGRAM
 #pragma vertex vert
 #pragma fragment frag
-#include "Unlit.cg"
+//#include "Unlit.cg"
 ENDCG
 		}
 
