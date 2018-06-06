@@ -18,7 +18,11 @@ public class VRoomUIManager : MonoBehaviour {
 
 	private void Awake()
 	{
-		LeaveButton.onClick.AddListener(PhotonManager.Instance.LeaveRoom);
+		LeaveButton.onClick.AddListener(()=>
+		{
+			myPos.OffOccupiedstate();
+			PhotonManager.Instance.LeaveRoom();
+		});
 		StartTalkButton.onClick.AddListener(()=>{
 			var tempPos = myPos.GetInitialPos();
 			PhotonManager.Instance.InstantiateMyChar("unitychan", tempPos, null);
