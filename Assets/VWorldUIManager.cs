@@ -23,7 +23,19 @@ public class VWorldUIManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject PlayerSelection;
 
-	private bool initialized = false; 
+	[SerializeField]
+	private Text Status;
+
+	[SerializeField]
+	private Text Error;
+
+	[SerializeField]
+	private Text RcmdCnt;
+
+	private bool initialized = false;
+
+	[SerializeField]
+	private bool isDebuged = false; 
 
 	private void Awake()
 	{					
@@ -45,6 +57,13 @@ public class VWorldUIManager : MonoBehaviour {
 			PlayerSelection.SetActive(false);
 		});
 
+		if(isDebuged)
+		{
+			Status.gameObject.SetActive(true);
+			Error.gameObject.SetActive(true);
+			RcmdCnt.gameObject.SetActive(true);
+			PhotonManager.Instance.foundError += GetNetworkError; 
+		}
 		LeaveRoom.onClick.AddListener(PhotonManager.Instance.LeaveRoom);
 	}
 
@@ -60,5 +79,25 @@ public class VWorldUIManager : MonoBehaviour {
 				initialized = true;
 			}
 		}
+
+		if(isDebuged)
+		{
+			var currentStats = PhotonNetwork.connectionStateDetailed.ToString(); 
+			if(currentStats != Status.text)
+			{
+				Status.text = currentStats;
+			}
+			RcmdCnt.text = "RCmdCnt : " + PhotonNetwork.ResentReliableCommands.ToString();
+		}
+	}
+
+	private void GetNetworkError(string error)
+	{
+		Error.text = error;
+	}
+
+	private void OnDestroy()
+	{
+		PhotonManager.Instance.foundError -= GetNetworkError;
 	}
 }

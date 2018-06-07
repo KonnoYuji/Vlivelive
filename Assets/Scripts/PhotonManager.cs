@@ -207,10 +207,10 @@ public class PhotonManager : Photon.MonoBehaviour {
     private void OnLeftRoom()
     {
 #if VR_COMMON        
-        if (offset.activeSelf)
-        {
-            offset.SetActive(false);
-        }
+        // if (offset.activeSelf)
+        // {
+        //     offset.SetActive(false);
+        // }
 #endif
         SceneManager.LoadScene(GetLobbyScene());
     }
@@ -257,10 +257,10 @@ public class PhotonManager : Photon.MonoBehaviour {
         }
 
 #if VR_COMMON        
-        if(offset.activeSelf)
-        {
-            offset.SetActive(false);
-        }        
+        // if(offset.activeSelf)
+        // {
+        //     offset.SetActive(false);
+        // }        
 #endif
     }
 
