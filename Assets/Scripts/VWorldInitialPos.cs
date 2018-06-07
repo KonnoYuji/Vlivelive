@@ -7,7 +7,7 @@ public class VWorldInitialPos : MonoBehaviour {
     private Dictionary<PlayerStyle, Vector3> offsetDicWithCamera;
     
     [SerializeField]
-    private Vector3 initialYAxisOffsetOfCamera = new Vector3(0, 0, 0);
+    private Vector3 initialOffsetOfCamera = new Vector3(0, 0, 0);
 
     public enum PlayerStyle{
         Main, Vip, Audience
@@ -23,6 +23,12 @@ public class VWorldInitialPos : MonoBehaviour {
 
     public Vector3 MyCharOffset(PlayerStyle myChar)
     {
-        return offsetDicWithCamera[myChar] + initialYAxisOffsetOfCamera;
+        return offsetDicWithCamera[myChar];
     }
+
+    public Vector3 GetCameraInitialOffset()
+	{
+		return initialOffsetOfCamera;
+	}
+
 }
