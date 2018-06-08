@@ -1275,7 +1275,6 @@ GameObject:
   - component: {fileID: 82537430581085950}
   - component: {fileID: 114162618933454548}
   - component: {fileID: 114443882105056598}
-  - component: {fileID: 114758891605622158}
   - component: {fileID: 114230924829519014}
   - component: {fileID: 114731198358928120}
   m_Layer: 0
@@ -2965,18 +2964,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &114758891605622158
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1922561229291506}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4931dee7442a979488d3d081badbc92a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  settedOffset: 0
 --- !u!137 &137218171245415200
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

@@ -10,10 +10,26 @@ public class VWorldCharController : BaseVCharacter {
 
     private void Awake()
     {
-        if(!myView.isMine)
+        if (myView == null)
+        {
+            myView = GetComponent<PhotonView>();
+        }
+
+        if (myAnim == null)
+        {
+            myAnim = GetComponent<Animator>();
+        }
+
+
+        if (!myView.isMine)
         {
             return;
         }   
+
+        if(GetComponent<TrackCamera>() == null)
+        {
+            this.gameObject.AddComponent<TrackCamera>();
+        }
 
         AttachInputIvent += RegisterInputEvent;
         //DetachInputEvent += RemoveInputEvent;

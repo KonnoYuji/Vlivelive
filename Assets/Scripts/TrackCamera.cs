@@ -10,7 +10,19 @@ public class TrackCamera : MonoBehaviour {
 
     private float currentCameraRotationY;
 
-    public bool settedOffset = false;
+    private bool settedOffset = false;
+
+    public bool SettedOffset
+    {
+        get
+        {
+            return settedOffset;
+        }
+        set
+        {
+            settedOffset = value;
+        }
+    }
 
     private PhotonView myView;
 

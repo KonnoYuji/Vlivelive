@@ -10,7 +10,7 @@ public class offSetInput : MonoBehaviour {
 
     private bool settedTrackCamera = false;
 
-    private void OnEnable()
+    private void Start()
     {
         var track = FindObjectOfType<TrackCamera>();
 
@@ -20,58 +20,32 @@ public class offSetInput : MonoBehaviour {
         }
     }
     public void UpCameraRig()
-    {
-        if(trackCamera == null)
-        {
-            return;
-        }
-
+    {        
         CameraRig.position += new Vector3(0, 0.1f, 0);
     }
 
     public void DownCameraRig()
     {
-        if (trackCamera == null)
-        {
-            return;
-        }
-
         CameraRig.position += new Vector3(0, -0.1f, 0);
     }
 
     public void LeftCameraRig()
     {
-        if (trackCamera == null)
-        {
-            return;
-        }
         CameraRig.position += new Vector3(-0.1f, 0, 0);
     }
 
     public void RightCameraRig()
-    {
-        if (trackCamera == null)
-        {
-            return;
-        }
+    {     
         CameraRig.position += new Vector3(0.1f, 0, 0);
     }
 
     public void ForwardCameraRig()
-    {
-        if (trackCamera == null)
-        {
-            return;
-        }
+    {        
         CameraRig.position += new Vector3(0, 0, 0.1f);
     }
 
     public void BackCameraRig()
     {
-        if (trackCamera == null)
-        {
-            return;
-        }
         CameraRig.position += new Vector3(0, 0, -0.1f);
     }
 
@@ -79,10 +53,11 @@ public class offSetInput : MonoBehaviour {
     {
         if (trackCamera == null)
         {
+            trackCamera = FindObjectOfType<TrackCamera>();
             return;
         }
 
-        trackCamera.settedOffset = true;
+        trackCamera.SettedOffset = true;
         this.gameObject.SetActive(false);
     }
 }

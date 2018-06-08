@@ -32,16 +32,6 @@ public class BaseVCharacter : Photon.MonoBehaviour {
 
 	protected void Awake()
     {
-        if(myView == null)
-        {
-            myView = GetComponent<PhotonView>();
-        }
-
-        if(myAnim == null)
-        {
-            myAnim = GetComponent<Animator>();
-        }
-
         //コントローラー入力イベントの登録
 
 		if(AttachInputIvent != null)
