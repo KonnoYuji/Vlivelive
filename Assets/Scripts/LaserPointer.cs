@@ -48,7 +48,7 @@ public class LaserPointer : MonoBehaviour {
 				}			
 
 				//今のフレームのObjectがフリックイベントを保つ場合にAttachする
-				var hitEventAttacher = hit.transform.GetComponent<EventAttacher>();
+				var hitEventAttacher = hit.transform.GetComponent(typeof(IEventAttacher)) as IEventAttacher;
 				if(hitEventAttacher != null)
 				{
 					//Debug.Log("Called AttachEvent");
@@ -87,7 +87,7 @@ public class LaserPointer : MonoBehaviour {
 			return;
 		}
 
-		var targetEventAttacher = target.GetComponent<EventAttacher>();
+		var targetEventAttacher = target.GetComponent<IEventAttacher>();
 		if(targetEventAttacher != null)
 		{					
 			//Debug.Log("Called DetachEvent");	

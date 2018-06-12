@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class EventAttacher : MonoBehaviour {
+public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
 
 	[SerializeField]
 	private Text output;
@@ -11,8 +11,23 @@ public class EventAttacher : MonoBehaviour {
 	[SerializeField]
 	private GameObject[] mojis;
 
+	[SerializeField]
+	private string[] arrangedInputMojis; // 0 : Clicked, 1 : leftFlicked, 2: UpFlicked, 3 : RightFlicked, 4 : DownFlicked 
+
 	private bool initialized = false;
-	// Use this for initialization
+	
+	[SerializeField]
+	private bool acceptableAroundMojis = false;
+
+	private void Awake()
+	{
+		if(mojis == null || mojis.Length < 4 || arrangedInputMojis == null || arrangedInputMojis.Length < 5)
+		{
+			Destroy(this);
+			Debug.Log("Not mmatched terms to use TextPad");
+		}
+	}
+
 	public void AttachEvents()
 	{
 		if(initialized)
@@ -47,6 +62,11 @@ public class EventAttacher : MonoBehaviour {
 
 	private void Gaze()
 	{
+		if(!acceptableAroundMojis)
+		{
+			return;
+		}
+		transform.SetAsLastSibling();
 		for(int i=0; i<mojis.Length; i++)
 		{
 			if(!mojis[i].activeSelf)
@@ -57,7 +77,11 @@ public class EventAttacher : MonoBehaviour {
 	}
 
 	private void UnGaze()
-	{
+	{		
+		if(!acceptableAroundMojis)
+		{
+			return;
+		}
 		for(int i=0; i<mojis.Length; i++)
 		{
 			if(mojis[i].activeSelf)
@@ -69,7 +93,7 @@ public class EventAttacher : MonoBehaviour {
 
 	private void ClickEvent()
 	{
-		output.text += "あ";
+		output.text += arrangedInputMojis[0];
 	}
 
 	private void TouchEvent()
@@ -77,23 +101,26 @@ public class EventAttacher : MonoBehaviour {
 
 	}
 
-	private void UpEvent()
-	{
-		output.text += "い";
-	}
-
-	private void DownEvent()
-	{
-		output.text += "え";
-	}
-
 	private void LeftEvent()
 	{
-		output.text += "お";
+		output.text += arrangedInputMojis[1];
+	}
+
+	private void UpEvent()
+	{
+		output.text +=  arrangedInputMojis[2];
 	}
 
 	private void RightEvent()
 	{
-		output.text += "う";
+		output.text += arrangedInputMojis[3];
 	}
+	
+	private void DownEvent()
+	{
+		output.text += arrangedInputMojis[4];
+	}
+
+
+
 }
