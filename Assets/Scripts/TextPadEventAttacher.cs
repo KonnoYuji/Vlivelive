@@ -19,12 +19,19 @@ public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
 	[SerializeField]
 	private bool acceptableAroundMojis = false;
 
+	[SerializeField]
+	private Image myImage;
 	private void Awake()
 	{
 		if(mojis == null || mojis.Length < 4 || arrangedInputMojis == null || arrangedInputMojis.Length < 5)
 		{
 			Destroy(this);
 			Debug.Log("Not mmatched terms to use TextPad");
+		}
+
+		if(myImage == null)
+		{
+			myImage = GetComponent<Image>();
 		}
 	}
 
@@ -62,6 +69,7 @@ public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
 
 	private void Gaze()
 	{
+		myImage.color = new Color(0.5f, 1.0f, 1.0f);
 		if(!acceptableAroundMojis)
 		{
 			return;
@@ -78,6 +86,7 @@ public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
 
 	private void UnGaze()
 	{		
+		myImage.color = new Color(1.0f, 1.0f, 1.0f);
 		if(!acceptableAroundMojis)
 		{
 			return;
