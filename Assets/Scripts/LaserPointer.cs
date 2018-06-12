@@ -87,7 +87,7 @@ public class LaserPointer : MonoBehaviour {
 			return;
 		}
 
-		var targetEventAttacher = target.GetComponent<IEventAttacher>();
+		var targetEventAttacher = target.GetComponent(typeof(IEventAttacher)) as IEventAttacher;
 		if(targetEventAttacher != null)
 		{					
 			//Debug.Log("Called DetachEvent");	
