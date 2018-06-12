@@ -512,7 +512,7 @@ MonoBehaviour:
   HmdRotatesY: 1
   GravityModifier: 1
   useProfileData: 1
-  EnableLinearMovement: 1
+  EnableLinearMovement: 0
   EnableRotation: 1
 --- !u!114 &114919918662763804
 MonoBehaviour:

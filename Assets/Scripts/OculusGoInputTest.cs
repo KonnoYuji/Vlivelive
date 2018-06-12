@@ -18,9 +18,6 @@ public class OculusGoInputTest : MonoBehaviour {
 		}
 	}
 
-	[SerializeField]
-	private Text inputText;
-
 	public delegate void InputEvent();
 
 	public event InputEvent TouchedPad;
