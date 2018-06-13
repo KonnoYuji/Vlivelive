@@ -2,6 +2,7 @@
 using UnityEngine.Events;
 using UnityEngine.Assertions;
 using System.Collections.Generic;
+using System;
 
 namespace VrGrabber
 {
@@ -44,6 +45,9 @@ public class VrgGrabber : MonoBehaviour
 
     public class TargetClickEvent : UnityEvent<VrgGrabber, RaycastHit> {}
     public TargetClickEvent onTargetClicked = new TargetClickEvent();
+
+    public Action<Transform> updateTouchHitEvent;
+    public Action updateTouchUnHitEvent;
 
     internal class AverageVelocity
     {
@@ -281,6 +285,15 @@ public class VrgGrabber : MonoBehaviour
 
         targetHit_ = new RaycastHit();
         bool hit = Physics.Raycast(ray, out targetHit_, maxGrabDistance, layerMask);
+
+        if(hit && updateTouchHitEvent != null)
+        {
+            updateTouchHitEvent(targetHit_.transform);
+        }
+        else if(updateTouchUnHitEvent != null) 
+        {
+            updateTouchUnHitEvent();
+        }
         preRayDirection_ = hit ? ray.direction : forward;
     }
 

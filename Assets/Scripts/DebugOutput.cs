@@ -19,6 +19,15 @@ public class DebugOutput : MonoBehaviour {
 
     private void HandleLog( string logText, string stackTrace, LogType type )
     {
-        message.text += logText + '\n';
+        if(type == LogType.Error || type == LogType.Exception)
+        {
+            message.text += "Error : " + logText + '\n';
+            message.text += "StackTrace : " + stackTrace + '\n';
+        }
+
+        else
+        {
+            message.text += logText + '\n';
+        }        
     }
 }
