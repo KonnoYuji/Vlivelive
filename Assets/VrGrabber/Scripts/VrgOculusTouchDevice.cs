@@ -17,6 +17,7 @@ public class VrgOculusTouchDevice : IDevice
             OVRInput.Controller.LTouch :
             OVRInput.Controller.RTouch;
 #endif            
+
     }
 
     public Vector3 GetLocalPosition(ControllerSide side) 
@@ -42,7 +43,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO     
         return OVRInput.Get(OVRInput.Touch.PrimaryTouchpad, GetOVRController(side));
-#elif OCULUS_TOUCH        
+#elif OCULUS_TOUCH
         return OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, GetOVRController(side));
 #endif        
     }
@@ -51,7 +52,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO
         return OVRInput.Get(OVRInput.Button.One, GetOVRController(side));
-#elif OCULUS_TOUCH                
+#elif OCULUS_TOUCH    
         return OVRInput.Get(OVRInput.Button.PrimaryThumbstick, GetOVRController(side));
 #endif        
     }
@@ -65,6 +66,5 @@ public class VrgOculusTouchDevice : IDevice
 #endif        
     }
 }
-
 }
 #endif

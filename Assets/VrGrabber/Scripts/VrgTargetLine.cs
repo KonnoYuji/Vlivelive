@@ -13,6 +13,15 @@ public class VrgTargetLine : MonoBehaviour
     public float maxAngle = 60f;
     public int jointNum = 32;
 
+    private Vector3 targetPos;
+
+    public Vector3 TargetPos
+    {
+        get
+        {
+            return targetPos;
+        }        
+    }
     void Awake()
     {
         grabber_ = GetComponent<VrgGrabber>();
@@ -62,6 +71,7 @@ public class VrgTargetLine : MonoBehaviour
             var x = dx * i;
             var y = a * Mathf.Pow(x - xc, 2f) + b;
             var pos = startPos + (x * xAxis) + (y * yAxis);
+            targetPos = pos;
             line_.SetPosition(i, pos);
         }
     }

@@ -20,11 +20,11 @@ public class UIPadEventController : MonoBehaviour {
 		hitObjGrabber.updateTouchUnHitEvent += DetachUIEventFromController;
 	}
 
-	public void AttachUIEventToController(Transform obj)
+	public void AttachUIEventToController(RaycastHit obj)
 	{
 		if(currentUITarget != null)
 		{	
-			if(currentUITarget != obj)
+			if(currentUITarget != obj.collider.transform)
 			{
 				DetachUIEventFromController();
 			}
@@ -34,7 +34,7 @@ public class UIPadEventController : MonoBehaviour {
 			}
 		}
 
-		currentUITarget = obj;
+		currentUITarget = obj.collider.transform;
 
 		//今のフレームのObjectがフリックイベントを保つ場合にAttachする
 		var hitEventAttacher = currentUITarget.transform.GetComponent(typeof(IEventAttacher)) as IEventAttacher;

@@ -2600,6 +2600,7 @@ MonoBehaviour:
   - "\u308C"
   - "\u308D"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114214473697682546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3365,6 +3366,7 @@ MonoBehaviour:
   - "\u3078"
   - "\u307B"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114469573071800700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3977,6 +3979,7 @@ MonoBehaviour:
   - "\u3048"
   - "\u304A"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114699263575449320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4193,6 +4196,7 @@ MonoBehaviour:
   - "\u3066"
   - "\u3068"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114744586404573718
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4217,6 +4221,7 @@ MonoBehaviour:
   - "\u30FC"
   - ' '
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114748849566576136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4361,6 +4366,7 @@ MonoBehaviour:
   - "\u3051"
   - "\u3053"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114779012469294040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4577,6 +4583,7 @@ MonoBehaviour:
   - "\u300D"
   - "\u3088"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114850780616224120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4868,6 +4875,7 @@ MonoBehaviour:
   - "\u306D"
   - "\u306E"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114910339263248356
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4892,6 +4900,7 @@ MonoBehaviour:
   - "\u3081"
   - "\u3082"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114922204245061186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4943,6 +4952,7 @@ MonoBehaviour:
   - "\u305B"
   - "\u305D"
   acceptableAroundMojis: 1
+  myImage: {fileID: 0}
 --- !u!114 &114946883918164074
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -46,7 +46,7 @@ public class VrgGrabber : MonoBehaviour
     public class TargetClickEvent : UnityEvent<VrgGrabber, RaycastHit> {}
     public TargetClickEvent onTargetClicked = new TargetClickEvent();
 
-    public Action<Transform> updateTouchHitEvent;
+    public Action<RaycastHit> updateTouchHitEvent;
     public Action updateTouchUnHitEvent;
 
     internal class AverageVelocity
@@ -288,7 +288,7 @@ public class VrgGrabber : MonoBehaviour
 
         if(hit && updateTouchHitEvent != null)
         {
-            updateTouchHitEvent(targetHit_.transform);
+            updateTouchHitEvent(targetHit_);
         }
         else if(updateTouchUnHitEvent != null) 
         {
