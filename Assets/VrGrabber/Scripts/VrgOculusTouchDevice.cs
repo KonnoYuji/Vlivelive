@@ -12,7 +12,7 @@ public class VrgOculusTouchDevice : IDevice
 #if OCULUS_GO        
         //Oculus Goは右手限定
         return OVRInput.Controller.RTrackedRemote;
-#elif OCULUS_TOUCH
+#else
         return (side == ControllerSide.Left) ?
             OVRInput.Controller.LTouch :
             OVRInput.Controller.RTouch;
@@ -34,7 +34,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO        
         return OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, GetOVRController(side));
-#elif OCULUS_TOUCH
+#else
         return OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, GetOVRController(side));
 #endif        
     }
@@ -43,7 +43,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO     
         return OVRInput.Get(OVRInput.Touch.PrimaryTouchpad, GetOVRController(side));
-#elif OCULUS_TOUCH
+#else
         return OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, GetOVRController(side));
 #endif        
     }
@@ -52,7 +52,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO
         return OVRInput.Get(OVRInput.Button.One, GetOVRController(side));
-#elif OCULUS_TOUCH    
+#else    
         return OVRInput.Get(OVRInput.Button.PrimaryThumbstick, GetOVRController(side));
 #endif        
     }
@@ -61,7 +61,7 @@ public class VrgOculusTouchDevice : IDevice
     {
 #if OCULUS_GO        
         return OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, GetOVRController(side));
-#elif OCULUS_TOUCH
+#else
         return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, GetOVRController(side));
 #endif        
     }
