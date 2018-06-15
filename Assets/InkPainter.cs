@@ -19,6 +19,8 @@ public class InkPainter : MonoBehaviour {
 
 	private VrgGrabber grabber;
 
+	private int numInk = 0;
+	
 	private void Awake()
 	{
 		grabber = FindObjectOfType<VrgGrabber>();
@@ -147,13 +149,15 @@ public class InkPainter : MonoBehaviour {
 
 		//Debug.LogFormat("inkObj_1; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
 		var renderer = inkObj.AddComponent<MeshRenderer>();
-		renderer.material = new Material(inkMat);
+		//renderer.material = new Material(inkMat);
+		renderer.material = inkMat;
 
 		var meshFilter = inkObj.AddComponent<MeshFilter>();
 		meshFilter.sharedMesh = ink;
 
 		inkObj.transform.parent = parent;
-
+		numInk++;
+		Debug.Log(numInk.ToString());
 		//2次元ポリゴンと3次元ポリゴンの回転軸を以下の式では合わせられない  生成する2次元ポリゴンの回転軸は3次元ポリゴンの回転軸と違うため.
 		//inkObj.transform.localRotation = parent.rotation;		
 		
