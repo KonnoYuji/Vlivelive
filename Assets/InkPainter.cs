@@ -61,16 +61,19 @@ public class InkPainter : MonoBehaviour {
 		/*
 			x1-------------x2
 			  ❘				❘
-			  ❘		 *		❘
+			  ❘		 *(0, 0)❘
 			  ❘				❘
 			x4-------------x3
 		 */
-		var x1 = centerPos + new Vector3(-(width/2.0f), (height/2.0f) , 0); 
-		var x2 = centerPos + new Vector3((width/2.0f), (height/2.0f) , 0);
-		var x3 = centerPos + new Vector3((width/2.0f), -(height/2.0f) , 0);
-		var x4 = centerPos + new Vector3(-(width/2.0f), -(height/2.0f) , 0);
-		//t = 0.4, 0.6としてベジェによる頂点を取得
 
+		//Meshの作成はモデル座標原点に対するxy平面を使って行う
+		//PositionやRotationの操作はモデル座標軸で行われてしまうので,原点基準でMeshを作成する
+		var x1 = new Vector3(-(width/2.0f), (height/2.0f) , 0); 
+		var x2 = new Vector3((width/2.0f), (height/2.0f) , 0);
+		var x3 = new Vector3((width/2.0f), -(height/2.0f) , 0);
+		var x4 = new Vector3(-(width/2.0f), -(height/2.0f) , 0);
+		
+		//t = 0.4, 0.6としてベジェによる頂点を取得
 		float t1 = 0.4f;
 		float t2 = 0.6f;
 
@@ -142,20 +145,23 @@ public class InkPainter : MonoBehaviour {
 		
 		//Debug.LogFormat("CenterPos; X : {0}, Y : {1}, Z : {2}", centerPos.x, centerPos.y, centerPos.z);
 
-		//このロジックはキャンバスの前方がz軸のときのみ使える.
-		var inkObj = Instantiate(emptyInk, new Vector3(centerPos.x, centerPos.y, 0), Quaternion.identity);
-
-		//Debug.LogFormat("inkObj_1; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
+		//Meshをレイのヒットポイントへ移動
+		var inkObj = Instantiate(emptyInk, new Vector3(centerPos.x, centerPos.y, centerPos.z), Quaternion.identity);
+		
 		var renderer = inkObj.AddComponent<MeshRenderer>();		
 		renderer.material = inkMat;
 
 		var meshFilter = inkObj.AddComponent<MeshFilter>();
 		meshFilter.sharedMesh = ink;
-
+		
+		//元のscaleを保持
+		var parentScale = parent.localScale;
+		var inkObjScale = inkObj.transform.localScale;
+		
 		inkObj.transform.parent = parent;
 
-		//2次元ポリゴンと3次元ポリゴンの回転軸を以下の式では合わせられない  生成する2次元ポリゴンの回転軸は3次元ポリゴンの回転軸と違うため.
-		//inkObj.transform.localRotation = parent.rotation;		
+		//parentを親にした際にinkのlocalPositionの計算が正しく行われない場合があるので
+		inkObj.transform.localScale = new Vector3(inkObjScale.x / parentScale.x, inkObjScale.y / parentScale.y, inkObjScale.z / parentScale.z);
 		
 		// Debug.LogFormat("inkObj_2; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
 		// Debug.LogFormat("Parent Z : {0}", parent.transform.position.z);

@@ -20,7 +20,7 @@ public class MouseController : MonoBehaviour {
 
 				if(Physics.Raycast(ray, out hitInfo))
 				{		
-					Debug.Log("Found Something");			
+					//Debug.Log("Found Something");			
 					var paintObject = hitInfo.transform;
 					
 					if(paintObject != null)
