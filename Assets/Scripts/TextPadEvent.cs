@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
+public class TextPadEvent : MonoBehaviour, IEventDefinition {
 
 	[SerializeField]
 	private Text output;
@@ -35,37 +35,39 @@ public class TextPadEventAttacher : MonoBehaviour, IEventAttacher {
 		}
 	}
 
-	public void AttachEvents()
+	public void AttachedEvents()
 	{
 		if(initialized)
 		{
 			return;
 		}
 		Gaze();
-		OculusGoInputTest.Instance.ClickedPad += ClickEvent;
-		OculusGoInputTest.Instance.TouchedPad += TouchEvent;
-		OculusGoInputTest.Instance.UpFlicked += UpEvent;
-		OculusGoInputTest.Instance.DownFlicked += DownEvent;
-		OculusGoInputTest.Instance.LeftFlicked += LeftEvent;
-		OculusGoInputTest.Instance.RightFlicked += RightEvent;
+		OculusGoInput.Instance.ClickedPad += ClickEvent;
+		OculusGoInput.Instance.TouchedPad += TouchEvent;
+		OculusGoInput.Instance.UpFlicked += UpEvent;
+		OculusGoInput.Instance.DownFlicked += DownEvent;
+		OculusGoInput.Instance.LeftFlicked += LeftEvent;
+		OculusGoInput.Instance.RightFlicked += RightEvent;
 		initialized = true;
 	}
 
-	public void DetachEvents()
+	public void DetachedEvents()
 	{
 		if(!initialized)
 		{
 			return;
 		}
 		UnGaze();
-		OculusGoInputTest.Instance.ClickedPad -= ClickEvent;
-		OculusGoInputTest.Instance.TouchedPad -= TouchEvent;
-		OculusGoInputTest.Instance.UpFlicked -= UpEvent;
-		OculusGoInputTest.Instance.DownFlicked -= DownEvent;
-		OculusGoInputTest.Instance.LeftFlicked -= LeftEvent;
-		OculusGoInputTest.Instance.RightFlicked -= RightEvent;
+		OculusGoInput.Instance.ClickedPad -= ClickEvent;
+		OculusGoInput.Instance.TouchedPad -= TouchEvent;
+		OculusGoInput.Instance.UpFlicked -= UpEvent;
+		OculusGoInput.Instance.DownFlicked -= DownEvent;
+		OculusGoInput.Instance.LeftFlicked -= LeftEvent;
+		OculusGoInput.Instance.RightFlicked -= RightEvent;
 		initialized = false;
 	}
+
+	public void CatchHittedInfo(RaycastHit info){}
 
 	private void Gaze()
 	{

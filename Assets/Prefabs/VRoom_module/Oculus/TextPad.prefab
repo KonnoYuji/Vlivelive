@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 222003904283801798}
   - component: {fileID: 114519448513900056}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 222360683221675894}
   - component: {fileID: 114307481459733632}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 222995797746626800}
   - component: {fileID: 114038077397600128}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 222451376956671250}
   - component: {fileID: 114193432321126384}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -226,7 +226,7 @@ GameObject:
   - component: {fileID: 222187571674773224}
   - component: {fileID: 114981250941130526}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,7 +294,7 @@ GameObject:
   - component: {fileID: 222063466874243716}
   - component: {fileID: 114138785627829974}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -310,8 +310,8 @@ GameObject:
   - component: {fileID: 224113186684244680}
   - component: {fileID: 222563880300223118}
   - component: {fileID: 114592432131579092}
-  - component: {fileID: 114693694412938184}
   - component: {fileID: 65262106309947652}
+  - component: {fileID: 114762251173877118}
   m_Layer: 5
   m_Name: A_level
   m_TagString: Untagged
@@ -330,7 +330,7 @@ GameObject:
   - component: {fileID: 222690318052803436}
   - component: {fileID: 114922204245061186}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -363,8 +363,8 @@ GameObject:
   - component: {fileID: 224096344440607176}
   - component: {fileID: 222947617387132292}
   - component: {fileID: 114493944525002980}
-  - component: {fileID: 114727034156515096}
   - component: {fileID: 65586357555912392}
+  - component: {fileID: 114659615727944690}
   m_Layer: 5
   m_Name: TA_level
   m_TagString: Untagged
@@ -400,7 +400,7 @@ GameObject:
   - component: {fileID: 222443846899933416}
   - component: {fileID: 114086566496929526}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -417,7 +417,7 @@ GameObject:
   - component: {fileID: 222484657996031292}
   - component: {fileID: 114973206719046342}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -434,7 +434,7 @@ GameObject:
   - component: {fileID: 222340230279259324}
   - component: {fileID: 114214473697682546}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -451,7 +451,7 @@ GameObject:
   - component: {fileID: 222905795167548970}
   - component: {fileID: 114257746041190272}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ GameObject:
   - component: {fileID: 222115926996233502}
   - component: {fileID: 114414409070978422}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -502,7 +502,7 @@ GameObject:
   - component: {fileID: 222764640692304064}
   - component: {fileID: 114346047610782482}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ GameObject:
   - component: {fileID: 222044286649256742}
   - component: {fileID: 114496942874420864}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -689,7 +689,7 @@ GameObject:
   - component: {fileID: 222990648221449456}
   - component: {fileID: 114214755239845824}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -739,8 +739,8 @@ GameObject:
   - component: {fileID: 224807081685212650}
   - component: {fileID: 222045355064401784}
   - component: {fileID: 114455126263761448}
-  - component: {fileID: 114778083895449716}
   - component: {fileID: 65614841145562996}
+  - component: {fileID: 114297379057620542}
   m_Layer: 5
   m_Name: KA_level
   m_TagString: Untagged
@@ -808,7 +808,7 @@ GameObject:
   - component: {fileID: 222675816647796846}
   - component: {fileID: 114713111440725636}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -841,8 +841,8 @@ GameObject:
   - component: {fileID: 224221241543245028}
   - component: {fileID: 222914363480045136}
   - component: {fileID: 114681683599766978}
-  - component: {fileID: 114906824299896908}
   - component: {fileID: 65439161345361356}
+  - component: {fileID: 114594282253972450}
   m_Layer: 5
   m_Name: NA_level
   m_TagString: Untagged
@@ -861,7 +861,7 @@ GameObject:
   - component: {fileID: 222198978819561590}
   - component: {fileID: 114873384190966790}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -878,7 +878,7 @@ GameObject:
   - component: {fileID: 222905226362931922}
   - component: {fileID: 114187481266156828}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -894,8 +894,8 @@ GameObject:
   - component: {fileID: 224090892924739488}
   - component: {fileID: 222183488416348840}
   - component: {fileID: 114074281244169126}
-  - component: {fileID: 114910339263248356}
   - component: {fileID: 65072657207590330}
+  - component: {fileID: 114871992082241530}
   m_Layer: 5
   m_Name: MA_level
   m_TagString: Untagged
@@ -948,7 +948,7 @@ GameObject:
   - component: {fileID: 222573576523350228}
   - component: {fileID: 114057143664375342}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -965,7 +965,7 @@ GameObject:
   - component: {fileID: 222482083517129704}
   - component: {fileID: 114765158602450766}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -982,7 +982,7 @@ GameObject:
   - component: {fileID: 222454077597738684}
   - component: {fileID: 114313529653890838}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -999,7 +999,7 @@ GameObject:
   - component: {fileID: 222255298436464792}
   - component: {fileID: 114779012469294040}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1016,7 +1016,7 @@ GameObject:
   - component: {fileID: 222409485929462294}
   - component: {fileID: 114622610082028296}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 222364227961966294}
   - component: {fileID: 114598338902210020}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1050,7 +1050,7 @@ GameObject:
   - component: {fileID: 222859811979541258}
   - component: {fileID: 114107387992937520}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1083,8 +1083,8 @@ GameObject:
   - component: {fileID: 224684970038311476}
   - component: {fileID: 222858205349315524}
   - component: {fileID: 114884107667804776}
-  - component: {fileID: 114847003144402576}
   - component: {fileID: 65711959642004194}
+  - component: {fileID: 114224511291992822}
   m_Layer: 5
   m_Name: YA_level
   m_TagString: Untagged
@@ -1120,7 +1120,7 @@ GameObject:
   - component: {fileID: 222308108043173154}
   - component: {fileID: 114077698846899868}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 222636176236836098}
   - component: {fileID: 114564649068818608}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1188,7 +1188,7 @@ GameObject:
   - component: {fileID: 222193448713832024}
   - component: {fileID: 114628881711731630}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1238,8 +1238,8 @@ GameObject:
   - component: {fileID: 224496060088317614}
   - component: {fileID: 222844067226728282}
   - component: {fileID: 114968506877666418}
-  - component: {fileID: 114464491269179510}
   - component: {fileID: 65286131001139298}
+  - component: {fileID: 114819359917512402}
   m_Layer: 5
   m_Name: HA_level
   m_TagString: Untagged
@@ -1291,8 +1291,8 @@ GameObject:
   - component: {fileID: 224708124777105646}
   - component: {fileID: 222950369709053154}
   - component: {fileID: 114437879593317490}
-  - component: {fileID: 114200832433369342}
   - component: {fileID: 65176277272114178}
+  - component: {fileID: 114938488551466930}
   m_Layer: 5
   m_Name: RA_level
   m_TagString: Untagged
@@ -1310,8 +1310,8 @@ GameObject:
   - component: {fileID: 224317923593694542}
   - component: {fileID: 222657421149561420}
   - component: {fileID: 114748849566576136}
-  - component: {fileID: 114744586404573718}
   - component: {fileID: 65648885725032734}
+  - component: {fileID: 114603745886468072}
   m_Layer: 5
   m_Name: WA_level
   m_TagString: Untagged
@@ -1432,7 +1432,7 @@ GameObject:
   - component: {fileID: 222286295074514348}
   - component: {fileID: 114379872350211362}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1449,7 +1449,7 @@ GameObject:
   - component: {fileID: 222107473581582836}
   - component: {fileID: 114046717211223692}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1466,7 +1466,7 @@ GameObject:
   - component: {fileID: 222823033792527934}
   - component: {fileID: 114452943449827282}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1483,7 +1483,7 @@ GameObject:
   - component: {fileID: 222597875655553968}
   - component: {fileID: 114628501277190666}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1500,7 +1500,7 @@ GameObject:
   - component: {fileID: 222596407655968660}
   - component: {fileID: 114543997064167708}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1517,7 +1517,7 @@ GameObject:
   - component: {fileID: 222498166316756518}
   - component: {fileID: 114886192580724166}
   m_Layer: 5
-  m_Name: Japanese (1)
+  m_Name: Japanese_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1551,7 +1551,7 @@ GameObject:
   - component: {fileID: 222739106782765048}
   - component: {fileID: 114573390119898722}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1602,7 +1602,7 @@ GameObject:
   - component: {fileID: 222208306431498190}
   - component: {fileID: 114870704602288120}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1619,7 +1619,7 @@ GameObject:
   - component: {fileID: 222704807374211086}
   - component: {fileID: 114871242564767916}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1670,7 +1670,7 @@ GameObject:
   - component: {fileID: 222858700608230238}
   - component: {fileID: 114455140706676484}
   m_Layer: 5
-  m_Name: Japanese (2)
+  m_Name: Japanese_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1686,8 +1686,8 @@ GameObject:
   - component: {fileID: 224441173863543046}
   - component: {fileID: 222220012419283922}
   - component: {fileID: 114242743495141444}
-  - component: {fileID: 114940893335060954}
   - component: {fileID: 65515459065780184}
+  - component: {fileID: 114852959263522972}
   m_Layer: 5
   m_Name: SA_level
   m_TagString: Untagged
@@ -1740,7 +1740,7 @@ GameObject:
   - component: {fileID: 222271814789324998}
   - component: {fileID: 114127115108402522}
   m_Layer: 5
-  m_Name: Japanese (4)
+  m_Name: Japanese_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1757,7 +1757,7 @@ GameObject:
   - component: {fileID: 222392591700722590}
   - component: {fileID: 114279485454538872}
   m_Layer: 5
-  m_Name: Japanese (3)
+  m_Name: Japanese_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1904,7 +1904,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 12
+    m_FontSize: 8
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -1915,7 +1915,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Input  : '
+  m_Text: "\u3066\u3059\u3068 : "
 --- !u!114 &114019676331866908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2576,31 +2576,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u306A"
---- !u!114 &114200832433369342
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827171961388830}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1876996821375568}
-  - {fileID: 1281561623797394}
-  - {fileID: 1298332507959010}
-  - {fileID: 1976995217165996}
-  arrangedInputMojis:
-  - "\u3089"
-  - "\u308A"
-  - "\u308B"
-  - "\u308C"
-  - "\u308D"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114214473697682546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2688,6 +2663,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3092"
+--- !u!114 &114224511291992822
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1637105395112386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114699263575449320}
+  mojis:
+  - {fileID: 1942166499688012}
+  - {fileID: 1480706391153828}
+  - {fileID: 1312586761248004}
+  - {fileID: 1957687042027026}
+  arrangedInputMojis:
+  - "\u3084"
+  - "\u300C"
+  - "\u3086"
+  - "\u300D"
+  - "\u3088"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114225705089964076
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2901,6 +2901,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114297379057620542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1417559954786588}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114958478364019042}
+  mojis:
+  - {fileID: 1665265043339344}
+  - {fileID: 1032155571710414}
+  - {fileID: 1890790205618452}
+  - {fileID: 1548046881115788}
+  arrangedInputMojis:
+  - "\u304B"
+  - "\u304D"
+  - "\u304F"
+  - "\u3051"
+  - "\u3053"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114298926951577182
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3342,31 +3367,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114464491269179510
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1785613866343592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1901385031922326}
-  - {fileID: 1585454987069684}
-  - {fileID: 1034729232689478}
-  - {fileID: 1397918601934578}
-  arrangedInputMojis:
-  - "\u306F"
-  - "\u3072"
-  - "\u3075"
-  - "\u3078"
-  - "\u307B"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114469573071800700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3721,6 +3721,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114594282253972450
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1475734668039910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114195607696154998}
+  mojis:
+  - {fileID: 1456774870996512}
+  - {fileID: 1932254187311172}
+  - {fileID: 1537695548351904}
+  - {fileID: 1054628601734670}
+  arrangedInputMojis:
+  - "\u306A"
+  - "\u306B"
+  - "\u306C"
+  - "\u306D"
+  - "\u306E"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114598338902210020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3748,6 +3773,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114603745886468072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1827192748291828}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114067607311817854}
+  mojis:
+  - {fileID: 1882193223674734}
+  - {fileID: 1267725785818228}
+  - {fileID: 1194383210861200}
+  - {fileID: 1057621348052778}
+  arrangedInputMojis:
+  - "\u308F"
+  - "\u3092"
+  - "\u3093"
+  - "\u30FC"
+  - ' '
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114622610082028296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3895,6 +3945,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u306F"
+--- !u!114 &114659615727944690
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1263705241212872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114870975736455486}
+  mojis:
+  - {fileID: 1379177022029564}
+  - {fileID: 1583753963296264}
+  - {fileID: 1571736384871234}
+  - {fileID: 1715294976678586}
+  arrangedInputMojis:
+  - "\u305F"
+  - "\u3061"
+  - "\u3064"
+  - "\u3066"
+  - "\u3068"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114681683599766978
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3955,31 +4030,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3059"
---- !u!114 &114693694412938184
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1199076918608220}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1897974139705820}
-  - {fileID: 1272578297705250}
-  - {fileID: 1912586021619274}
-  - {fileID: 1878838642968088}
-  arrangedInputMojis:
-  - "\u3042"
-  - "\u3044"
-  - "\u3046"
-  - "\u3048"
-  - "\u304A"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114699263575449320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4172,56 +4222,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u306D"
---- !u!114 &114727034156515096
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1263705241212872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1571736384871234}
-  - {fileID: 1715294976678586}
-  - {fileID: 1379177022029564}
-  - {fileID: 1583753963296264}
-  arrangedInputMojis:
-  - "\u305F"
-  - "\u3061"
-  - "\u3064"
-  - "\u3066"
-  - "\u3068"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
---- !u!114 &114744586404573718
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1827192748291828}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1194383210861200}
-  - {fileID: 1057621348052778}
-  - {fileID: 1882193223674734}
-  - {fileID: 1267725785818228}
-  arrangedInputMojis:
-  - "\u308F"
-  - "\u3092"
-  - "\u3093"
-  - "\u30FC"
-  - ' '
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114748849566576136
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4249,6 +4249,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114762251173877118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1199076918608220}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114443199260525684}
+  mojis:
+  - {fileID: 1912586021619274}
+  - {fileID: 1878838642968088}
+  - {fileID: 1897974139705820}
+  - {fileID: 1272578297705250}
+  arrangedInputMojis:
+  - "\u3042"
+  - "\u3044"
+  - "\u3046"
+  - "\u3048"
+  - "\u304A"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114765158602450766
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4342,31 +4367,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u304F"
---- !u!114 &114778083895449716
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1417559954786588}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1890790205618452}
-  - {fileID: 1548046881115788}
-  - {fileID: 1665265043339344}
-  - {fileID: 1032155571710414}
-  arrangedInputMojis:
-  - "\u304B"
-  - "\u304D"
-  - "\u304F"
-  - "\u3051"
-  - "\u3053"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114779012469294040
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4460,6 +4460,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3048"
+--- !u!114 &114819359917512402
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1785613866343592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114653542549824104}
+  mojis:
+  - {fileID: 1034729232689478}
+  - {fileID: 1397918601934578}
+  - {fileID: 1901385031922326}
+  - {fileID: 1585454987069684}
+  arrangedInputMojis:
+  - "\u306F"
+  - "\u3072"
+  - "\u3075"
+  - "\u3078"
+  - "\u307B"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114821785838933296
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4559,31 +4584,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u300C"
---- !u!114 &114847003144402576
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1637105395112386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1312586761248004}
-  - {fileID: 1957687042027026}
-  - {fileID: 1942166499688012}
-  - {fileID: 1480706391153828}
-  arrangedInputMojis:
-  - "\u3084"
-  - "\u300C"
-  - "\u3086"
-  - "\u300D"
-  - "\u3088"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114850780616224120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4617,6 +4617,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u30FC"
+--- !u!114 &114852959263522972
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1964194824053394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114298926951577182}
+  mojis:
+  - {fileID: 1543061333448678}
+  - {fileID: 1187511936377880}
+  - {fileID: 1305887859978924}
+  - {fileID: 1547820250933178}
+  arrangedInputMojis:
+  - "\u3055"
+  - "\u3057"
+  - "\u3059"
+  - "\u305B"
+  - "\u305D"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114870704602288120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4704,6 +4729,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114871992082241530
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1490359037115168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  output: {fileID: 114714782036971556}
+  mojis:
+  - {fileID: 1995433487979918}
+  - {fileID: 1477391493114690}
+  - {fileID: 1210277856600860}
+  - {fileID: 1656762987286230}
+  arrangedInputMojis:
+  - "\u307E"
+  - "\u307F"
+  - "\u3080"
+  - "\u3081"
+  - "\u3082"
+  acceptableAroundMojis: 0
+  myImage: {fileID: 0}
 --- !u!114 &114873384190966790
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4851,56 +4901,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3086"
---- !u!114 &114906824299896908
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1475734668039910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1537695548351904}
-  - {fileID: 1054628601734670}
-  - {fileID: 1456774870996512}
-  - {fileID: 1932254187311172}
-  arrangedInputMojis:
-  - "\u306A"
-  - "\u306B"
-  - "\u306C"
-  - "\u306D"
-  - "\u306E"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
---- !u!114 &114910339263248356
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1490359037115168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
-  mojis:
-  - {fileID: 1210277856600860}
-  - {fileID: 1656762987286230}
-  - {fileID: 1995433487979918}
-  - {fileID: 1477391493114690}
-  arrangedInputMojis:
-  - "\u307E"
-  - "\u307F"
-  - "\u3080"
-  - "\u3081"
-  - "\u3082"
-  acceptableAroundMojis: 1
-  myImage: {fileID: 0}
 --- !u!114 &114922204245061186
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4928,30 +4928,30 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114940893335060954
+--- !u!114 &114938488551466930
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1964194824053394}
+  m_GameObject: {fileID: 1827171961388830}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: {fileID: 114019342770224096}
+  output: {fileID: 114159322153430740}
   mojis:
-  - {fileID: 1305887859978924}
-  - {fileID: 1547820250933178}
-  - {fileID: 1543061333448678}
-  - {fileID: 1187511936377880}
+  - {fileID: 1298332507959010}
+  - {fileID: 1976995217165996}
+  - {fileID: 1876996821375568}
+  - {fileID: 1281561623797394}
   arrangedInputMojis:
-  - "\u3055"
-  - "\u3057"
-  - "\u3059"
-  - "\u305B"
-  - "\u305D"
-  acceptableAroundMojis: 1
+  - "\u3089"
+  - "\u308A"
+  - "\u308B"
+  - "\u308C"
+  - "\u308D"
+  acceptableAroundMojis: 0
   myImage: {fileID: 0}
 --- !u!114 &114946883918164074
 MonoBehaviour:
@@ -7632,8 +7632,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427607995136398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.54}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0.54}
+  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
   m_Children:
   - {fileID: 224953835376794088}
   - {fileID: 224113186684244680}
@@ -7651,7 +7651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.0000019073486, y: 12}
+  m_AnchoredPosition: {x: -10.5, y: 4.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224953835376794088

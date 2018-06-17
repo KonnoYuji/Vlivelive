@@ -162,6 +162,9 @@ class OVREngineConfigurationUpdater
 
 	static void EnforceVRSupport()
 	{
+		//自動オン機能をオフ
+		return;
+
 		if (PlayerSettings.virtualRealitySupported)
 			return;
 		

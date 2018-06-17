@@ -3,16 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class OculusGoInputTest : MonoBehaviour {
+public class OculusGoInput : MonoBehaviour {
 
-	static private OculusGoInputTest _instance;
-	static public OculusGoInputTest Instance
+	static private OculusGoInput _instance;
+	static public OculusGoInput Instance
 	{
 		get
 		{
 			if(_instance == null)
 			{
-				_instance = FindObjectOfType<OculusGoInputTest>();
+				_instance = FindObjectOfType<OculusGoInput>();
 			}
 			return _instance;
 		}
@@ -34,6 +34,8 @@ public class OculusGoInputTest : MonoBehaviour {
 
 	public event InputEvent TriggerEntered;
 
+	public event InputEvent GetUpTouchPad;
+
 	private bool isClickPad = false;
 
 	private bool isTouched = false;
@@ -45,26 +47,27 @@ public class OculusGoInputTest : MonoBehaviour {
 
 	private bool isTrigger = false;
 
+	private bool isGetUpTouchPad = false;
 	void Update () {
 
         if (OVRInput.Get(OVRInput.Button.One))
         {
 			if(!isClickPad)
-			{
+			{				
 				StartCoroutine(ClickedPadInternal());				
 			}
         }
         else if(OVRInput.Get(OVRInput.Touch.One))
         {
 			if(!isTouched)
-			{
+			{				
 				StartCoroutine(TouchedPadInternal());
 			}			
         }
         else if(OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger))
         {
             if(!isTrigger)
-			{
+			{				
 				StartCoroutine(TriggerEnteredInternal());
 			}                 
         }
@@ -78,7 +81,7 @@ public class OculusGoInputTest : MonoBehaviour {
 		else if(OVRInput.Get(OVRInput.Button.Down))
 		{
 			if(!isDownFlicked)
-			{
+			{				
 				StartCoroutine(DownFlickedInternal());
 			}
 		}
@@ -97,8 +100,14 @@ public class OculusGoInputTest : MonoBehaviour {
 				StartCoroutine(RightFlickedInternal());
 			}
 		}
+		else if(OVRInput.GetUp(OVRInput.Touch.One))
+		{
+			if(!isGetUpTouchPad)
+			{
+				StartCoroutine(GetUpTouchPadInteral());
+			}
+		}
 	}
-
 	private IEnumerator ClickedPadInternal()
 	{
 		if(ClickedPad == null)
@@ -185,6 +194,19 @@ public class OculusGoInputTest : MonoBehaviour {
 		isRightFlicked = false;	
 	}
 
+	private IEnumerator GetUpTouchPadInteral()
+	{
+		if(GetUpTouchPad == null)
+		{
+			yield break;
+		}
+		
+		isGetUpTouchPad = true;
+		GetUpTouchPad();
+		yield return new WaitForSeconds(0.25f);
+
+		isGetUpTouchPad = false; 
+	}
 	private IEnumerator TriggerEnteredInternal()
 	{
 		if(TriggerEntered == null)

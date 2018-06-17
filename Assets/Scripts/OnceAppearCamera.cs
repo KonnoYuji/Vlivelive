@@ -7,7 +7,7 @@ public class OnceAppearCamera : MonoBehaviour {
 	// Use this for initialization
 	private void Awake()
 	{
-		OculusGoInputTest.Instance.TouchedPad += RegisterOnceAppear;
+		OculusGoInput.Instance.TouchedPad += RegisterOnceAppear;
 	}
 
 	private void RegisterOnceAppear()

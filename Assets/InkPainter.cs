@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VrGrabber;
 
-public class InkPainter : MonoBehaviour {
+public class InkPainter : MonoBehaviour, IEventDefinition {
 
 	[SerializeField]
 	private float width = 1.0f;
@@ -19,30 +19,60 @@ public class InkPainter : MonoBehaviour {
 
 	private VrgGrabber grabber;
 
-	private void Awake()
+	private bool Initialized = false;
+
+	private bool isDrawing = false;
+	public void AttachedEvents()
 	{
-		grabber = FindObjectOfType<VrgGrabber>();
-		if(grabber != null)
-		{
-			grabber.updateTouchHitEvent += CatchRayCastInfo;
-		}	
-		else
-		{
-			//Destroy(this);
-		}	
+		OculusGoInput.Instance.TouchedPad += TouchEvent;
+		OculusGoInput.Instance.GetUpTouchPad += GetUpTouchPad;
 	}
 
-	public void CatchRayCastInfo(RaycastHit hit)
-	{
-		if(hit.collider.name == "WhiteBoard")
+	public void CatchHittedInfo(RaycastHit info)
+	{					
+		if(info.collider.transform != this.transform)
 		{
-			//Debug.Log("Hitted WhiteBoard");			
-			CreateInk(hit.point, hit.collider.transform);
-		}		
-		else
-		{
-			//Debug.Log("Hitted" + hit.collider.name);
+			return;
 		}
+
+		Draw(info);	
+	}
+
+	public void DetachedEvents()
+	{
+		OculusGoInput.Instance.TouchedPad -= TouchEvent;
+		OculusGoInput.Instance.GetUpTouchPad -= GetUpTouchPad;
+		
+		//タッチしたままボードからアウトしたとき用
+		isDrawing = false;
+	}
+
+	private void TouchEvent()
+	{
+		if(!isDrawing)
+		{
+			//Debug.Log("isDrawing changed True");
+			isDrawing = true;
+		}		
+	}
+
+	private void GetUpTouchPad()
+	{
+		if(isDrawing)
+		{
+			//Debug.Log("isDrawing changed false");
+			isDrawing = false;
+		}		
+	}
+
+	public void Draw(RaycastHit hit)
+	{
+		if(!isDrawing)
+		{
+			return;
+		}
+
+		CreateInk(hit.point, this.transform);		
 	}
 
 	//二次元ベジェでtで線形補間した頂点位置を取る
@@ -163,13 +193,8 @@ public class InkPainter : MonoBehaviour {
 		//parentを親にした際にinkのlocalPositionの計算が正しく行われない場合があるので
 		inkObj.transform.localScale = new Vector3(inkObjScale.x / parentScale.x, inkObjScale.y / parentScale.y, inkObjScale.z / parentScale.z);
 		
-		// Debug.LogFormat("inkObj_2; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
+		//Debug.LogFormat("inkObj_2; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
 		// Debug.LogFormat("Parent Z : {0}", parent.transform.position.z);
 		// Debug.LogFormat("Child Z : {0}", parent.transform.GetChild(0).transform.position.z);
-	}
-
-	private void OnDestroy()
-	{
-		grabber.updateTouchHitEvent -= CatchRayCastInfo;
 	}
 }

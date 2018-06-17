@@ -1,14 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public class MouseController : MonoBehaviour {
 
-	InkPainter Painter;
-	// Use this for initialization
-	void Start () {
-		Painter = FindObjectOfType<InkPainter>();
+	private static MouseController instance;
+	public static MouseController Instance{
+		
+		get
+		{
+			if(instance == null)
+			{
+				instance = FindObjectOfType<MouseController>();
+			}
+			return instance;
+		}
 	}
+	
+	public Action<RaycastHit> updateTouchHitEvent;
+    public Action updateTouchUnHitEvent;
 	
 	// Update is called once per frame
 	void Update () {
@@ -17,17 +27,21 @@ public class MouseController : MonoBehaviour {
 				var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
 				RaycastHit hitInfo;
-
-				if(Physics.Raycast(ray, out hitInfo))
+				bool hit = Physics.Raycast(ray, out hitInfo);
+				if(hit)
 				{		
-					//Debug.Log("Found Something");			
-					var paintObject = hitInfo.transform;
-					
-					if(paintObject != null)
-					{
-						Painter.CatchRayCastInfo(hitInfo);
-					}						
+					if(hit && updateTouchHitEvent != null)
+        			{
+				        updateTouchHitEvent(hitInfo);
+        			}										
 				}
-		}
+				else
+				{
+					if(updateTouchUnHitEvent != null)         		
+            		{
+						updateTouchUnHitEvent();
+					}
+        		}
+		}		
 	}
 }
