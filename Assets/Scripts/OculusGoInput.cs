@@ -48,6 +48,9 @@ public class OculusGoInput : MonoBehaviour {
 	private bool isTrigger = false;
 
 	private bool isGetUpTouchPad = false;
+
+	public float interval = 0.25f;
+
 	void Update () {
 
         if (OVRInput.Get(OVRInput.Button.One))
@@ -118,7 +121,7 @@ public class OculusGoInput : MonoBehaviour {
 		isClickPad = true;
 		ClickedPad();	
 		
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
         
 		isClickPad = false;
 	}
@@ -133,7 +136,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isTouched = true;
 		TouchedPad();	
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isTouched = false;
 	}
@@ -147,7 +150,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isUpFlicked = true;
 		UpFlicked();		
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isUpFlicked = false;
 	}
@@ -161,7 +164,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isDownFlicked = true;
 		DownFlicked();		
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isDownFlicked = false;
 	}
@@ -175,7 +178,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isLeftFlicked = true;
 		LeftFlicked();
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isLeftFlicked = false;
 	}
@@ -189,7 +192,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isRightFlicked = true;		
 		RightFlicked();		
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isRightFlicked = false;	
 	}
@@ -203,7 +206,7 @@ public class OculusGoInput : MonoBehaviour {
 		
 		isGetUpTouchPad = true;
 		GetUpTouchPad();
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isGetUpTouchPad = false; 
 	}
@@ -216,7 +219,7 @@ public class OculusGoInput : MonoBehaviour {
 
 		isTrigger = true;
 		TriggerEntered();
-		yield return new WaitForSeconds(0.25f);
+		yield return new WaitForSeconds(interval);
 
 		isTrigger = false;
 	}
