@@ -94,7 +94,7 @@ public class OculusEventController : MonoBehaviour {
 	{
 		if(hitObjGrabber != null)
 		{
-			hitObjGrabber.updateTouchHitEvent -= AttachEvent;
+			hitObjGrabber.updateTouchHitEvent -= CatchRayCastInfo;
 			hitObjGrabber.updateTouchUnHitEvent -= DetachEvent;
 		}
 	}
