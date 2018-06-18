@@ -85,7 +85,7 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 		return Vector3.Lerp(a, b, t); //ベジェでの頂点位置取得		
 	}
 
-	private void CreateInk(Vector3 centerPos, Transform parent)
+	public void CreateInk(Vector3 centerPos, Transform parent)
 	{
 		//Planeの各4点座標位置を計算. 左上:x1, 右上:x2, 右下:x3, 左下:x4
 		/*
@@ -192,7 +192,7 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 
 		//parentを親にした際にinkのlocalPositionの計算が正しく行われない場合があるので
 		inkObj.transform.localScale = new Vector3(inkObjScale.x / parentScale.x, inkObjScale.y / parentScale.y, inkObjScale.z / parentScale.z);
-		
+		inkObj.transform.localRotation = Quaternion.identity;
 		//Debug.LogFormat("inkObj_2; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
 		// Debug.LogFormat("Parent Z : {0}", parent.transform.position.z);
 		// Debug.LogFormat("Child Z : {0}", parent.transform.GetChild(0).transform.position.z);
