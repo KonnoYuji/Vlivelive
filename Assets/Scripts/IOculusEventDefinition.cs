@@ -4,23 +4,28 @@ using UnityEngine;
 using System;
  interface IOculusEventDefinition {	 
 
+	 float Interval
+	 {
+		 get;
+	 }
+
 	void CatchHittedInfo(RaycastHit info);
 
-	void  TouchedPad();
+	void TouchedPad();
 
-	 void  ClickedPad();
+	 void ClickedPad();
 
-	 void  UpFlicked();
+	 void UpFlicked();
 
-	 void  DownFlicked();
+	 void DownFlicked();
 
-	 void  LeftFlicked();
+	 void LeftFlicked();
 
-	 void  RightFlicked();
+	 void RightFlicked();
 
-	 void  TriggerEntered();
+	 void TriggerEntered();
 
-	 void  GetUpTouchPad();
+	 void GetUpTouchPad();
 
 	 void Gaze();
 

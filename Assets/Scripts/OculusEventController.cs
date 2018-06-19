@@ -14,6 +14,7 @@ public class OculusEventController : MonoBehaviour {
 
 	private void Start()
 	{
+#if !UNITY_EDITOR && UNITY_ANDROID		
 		if(hitObjGrabber == null)
 		{
 			hitObjGrabber = FindObjectOfType<VrgGrabber>();	
@@ -22,6 +23,10 @@ public class OculusEventController : MonoBehaviour {
 		//Raycastソース取得時のイベントフック
 		hitObjGrabber.updateTouchHitEvent += CatchRayCastInfo;
 		hitObjGrabber.updateTouchUnHitEvent += DetachEvent;
+#elif UNITY_EDITOR && UNITY_STANDALONE
+		MouseRaycastSimulator.Instance.updateTouchHitEvent += CatchRayCastInfo;
+		MouseRaycastSimulator.Instance.updateTouchUnHitEvent += DetachEvent;
+#endif		
 	}
 
 	public void CatchRayCastInfo(RaycastHit obj)
@@ -62,7 +67,8 @@ public class OculusEventController : MonoBehaviour {
 	   		OculusGoInput.Instance.LeftFlicked += eventDefinition.LeftFlicked;
 	   		OculusGoInput.Instance.RightFlicked += eventDefinition.RightFlicked;
 	   		OculusGoInput.Instance.TriggerEntered += eventDefinition.TriggerEntered;
-	   		OculusGoInput.Instance.GetUpTouchPad += eventDefinition.GetUpTouchPad;						
+	   		OculusGoInput.Instance.GetUpTouchPad += eventDefinition.GetUpTouchPad;
+			OculusGoInput.Instance.interval = eventDefinition.Interval;						
 		}
 	}
 
@@ -84,7 +90,8 @@ public class OculusEventController : MonoBehaviour {
 	   		OculusGoInput.Instance.LeftFlicked -= eventDefinition.LeftFlicked;
 	   		OculusGoInput.Instance.RightFlicked -= eventDefinition.RightFlicked;
 	   		OculusGoInput.Instance.TriggerEntered -= eventDefinition.TriggerEntered;
-	   		OculusGoInput.Instance.GetUpTouchPad -= eventDefinition.GetUpTouchPad;						
+	   		OculusGoInput.Instance.GetUpTouchPad -= eventDefinition.GetUpTouchPad;				
+			OculusGoInput.Instance.interval = 0;		
 		}
 
 		currentTarget = null;
@@ -92,10 +99,16 @@ public class OculusEventController : MonoBehaviour {
 
 	public void OnDestroy()
 	{
+#if !UNITY_EDITOR && UNITY_ANDROID		
 		if(hitObjGrabber != null)
 		{
 			hitObjGrabber.updateTouchHitEvent -= CatchRayCastInfo;
 			hitObjGrabber.updateTouchUnHitEvent -= DetachEvent;
 		}
+
+#elif UNITY_EDITOR && UNITY_STANDALONE
+		MouseRaycastSimulator.Instance.updateTouchHitEvent -= CatchRayCastInfo;
+		MouseRaycastSimulator.Instance.updateTouchUnHitEvent -= DetachEvent;
+#endif	
 	}
 }

@@ -12,13 +12,18 @@ public class EventAttacher : MonoBehaviour {
     private Transform currentTarget = null;                	
 
 	private void Start()
-	{				
+	{		
+#if !UNITY_EDITOR && UNITY_ANDROID				
 		if(hitObjGrabber == null)
 		{
 			hitObjGrabber = GetComponent<VrgGrabber>();			
 		}
 		hitObjGrabber.updateTouchHitEvent += AttachEvent;
 		hitObjGrabber.updateTouchUnHitEvent += DetachEvent;
+#elif UNITY_EDITOR && UNITY_STANDALONE
+		MouseRaycastSimulator.Instance.updateTouchHitEvent += AttachEvent;
+		MouseRaycastSimulator.Instance.updateTouchUnHitEvent += DetachEvent;
+#endif		
 	}
 
 	public void AttachEvent(RaycastHit obj)
@@ -67,10 +72,15 @@ public class EventAttacher : MonoBehaviour {
 
 	public void OnDestroy()
 	{
+#if !UNITY_EDITOR && UNITY_ANDROID		
 		if(hitObjGrabber != null)
 		{
 			hitObjGrabber.updateTouchHitEvent -= AttachEvent;
 			hitObjGrabber.updateTouchUnHitEvent -= DetachEvent;
 		}
+#elif UNITY_EDITOR && UNITY_STANDALONE
+		MouseRaycastSimulator.Instance.updateTouchHitEvent += AttachEvent;
+		MouseRaycastSimulator.Instance.updateTouchUnHitEvent += DetachEvent;
+#endif		
 	}
 }

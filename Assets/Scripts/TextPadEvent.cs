@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class TextPadEvent : MonoBehaviour, IEventDefinition {
+public class TextPadEvent : MonoBehaviour, IOculusEventDefinition {
 
 	[SerializeField]
 	private Text output;
@@ -21,6 +21,16 @@ public class TextPadEvent : MonoBehaviour, IEventDefinition {
 
 	[SerializeField]
 	private Image myImage;
+
+	private float interval = 0.25f;
+	public float Interval
+	{
+		get
+		{
+			return interval;
+		}		
+	}
+
 	private void Awake()
 	{
 		if(mojis == null || mojis.Length < 4 || arrangedInputMojis == null || arrangedInputMojis.Length < 5)
@@ -35,41 +45,9 @@ public class TextPadEvent : MonoBehaviour, IEventDefinition {
 		}
 	}
 
-	public void AttachedEvents()
-	{
-		if(initialized)
-		{
-			return;
-		}
-		Gaze();
-		OculusGoInput.Instance.ClickedPad += ClickEvent;
-		OculusGoInput.Instance.TouchedPad += TouchEvent;
-		OculusGoInput.Instance.UpFlicked += UpEvent;
-		OculusGoInput.Instance.DownFlicked += DownEvent;
-		OculusGoInput.Instance.LeftFlicked += LeftEvent;
-		OculusGoInput.Instance.RightFlicked += RightEvent;
-		initialized = true;
-	}
-
-	public void DetachedEvents()
-	{
-		if(!initialized)
-		{
-			return;
-		}
-		UnGaze();
-		OculusGoInput.Instance.ClickedPad -= ClickEvent;
-		OculusGoInput.Instance.TouchedPad -= TouchEvent;
-		OculusGoInput.Instance.UpFlicked -= UpEvent;
-		OculusGoInput.Instance.DownFlicked -= DownEvent;
-		OculusGoInput.Instance.LeftFlicked -= LeftEvent;
-		OculusGoInput.Instance.RightFlicked -= RightEvent;
-		initialized = false;
-	}
-
 	public void CatchHittedInfo(RaycastHit info){}
 
-	private void Gaze()
+	public void Gaze()
 	{
 		myImage.color = new Color(0.5f, 1.0f, 1.0f);
 		if(!acceptableAroundMojis)
@@ -86,7 +64,7 @@ public class TextPadEvent : MonoBehaviour, IEventDefinition {
 		}
 	}
 
-	private void UnGaze()
+	public void UnGaze()
 	{		
 		myImage.color = new Color(1.0f, 1.0f, 1.0f);
 		if(!acceptableAroundMojis)
@@ -102,36 +80,69 @@ public class TextPadEvent : MonoBehaviour, IEventDefinition {
 		}
 	}
 
-	private void ClickEvent()
+	public void ClickedPad()
 	{
 		output.text += arrangedInputMojis[0];
 	}
 
-	private void TouchEvent()
+	public void TouchedPad()
 	{
 
 	}
 
-	private void LeftEvent()
+	public void LeftFlicked()
 	{
 		output.text += arrangedInputMojis[1];
 	}
 
-	private void UpEvent()
+	public void UpFlicked()
 	{
 		output.text +=  arrangedInputMojis[2];
 	}
 
-	private void RightEvent()
+	public void RightFlicked()
 	{
 		output.text += arrangedInputMojis[3];
 	}
 	
-	private void DownEvent()
+	public void DownFlicked()
 	{
 		output.text += arrangedInputMojis[4];
 	}
 
+	public void TriggerEntered(){}
 
+	public void GetUpTouchPad(){}
 
+	
+	// public void AttachedEvents()
+	// {
+	// 	if(initialized)
+	// 	{
+	// 		return;
+	// 	}
+
+	// 	OculusGoInput.Instance.ClickedPad += ClickEvent;
+	// 	OculusGoInput.Instance.TouchedPad += TouchEvent;
+	// 	OculusGoInput.Instance.UpFlicked += UpEvent;
+	// 	OculusGoInput.Instance.DownFlicked += DownEvent;
+	// 	OculusGoInput.Instance.LeftFlicked += LeftEvent;
+	// 	OculusGoInput.Instance.RightFlicked += RightEvent;
+	// 	initialized = true;
+	// }
+
+	// public void DetachedEvents()
+	// {
+	// 	if(!initialized)
+	// 	{
+	// 		return;
+	// 	}
+	// 	OculusGoInput.Instance.ClickedPad -= ClickEvent;
+	// 	OculusGoInput.Instance.TouchedPad -= TouchEvent;
+	// 	OculusGoInput.Instance.UpFlicked -= UpEvent;
+	// 	OculusGoInput.Instance.DownFlicked -= DownEvent;
+	// 	OculusGoInput.Instance.LeftFlicked -= LeftEvent;
+	// 	OculusGoInput.Instance.RightFlicked -= RightEvent;
+	// 	initialized = false;
+	// }
 }

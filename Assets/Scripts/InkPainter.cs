@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VrGrabber;
 
-public class InkPainter : MonoBehaviour, IEventDefinition {
+public class InkPainter : MonoBehaviour, IOculusEventDefinition {
 
 	[SerializeField]
 	private float width = 1.0f;
@@ -12,8 +12,15 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 	private float height = 1.0f;
 
 	[SerializeField]
-	private Material inkMat;
+	private Material BlackMat;
 
+	[SerializeField]
+	private Material RedMat;
+	[SerializeField]
+	private Material BlueMat;
+	[SerializeField]
+	private Material GreenMat;
+	
 	[SerializeField]
 	private GameObject emptyInk;
 
@@ -22,10 +29,47 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 	private bool Initialized = false;
 
 	private bool isDrawing = false;
-	public void AttachedEvents()
+
+	public enum InkColor
 	{
-		OculusGoInput.Instance.TouchedPad += TouchEvent;
-		OculusGoInput.Instance.GetUpTouchPad += GetUpTouchPad;
+		Black, Red, Blue, Green
+	};
+
+	private InkColor currentInkColor = InkColor.Black;
+
+	[HideInInspector]
+	public InkColor CurrentInkColor{
+		get
+		{
+			return currentInkColor;
+		}
+		set
+		{
+			currentInkColor = value;
+		}
+	}
+
+	private bool isErasing = false;
+
+	public bool IsErasing 
+	{
+		get
+		{
+			return isErasing;
+		}
+		set
+		{
+			isErasing = value;
+		}
+	}
+
+	private float interval = 0.1f;
+	public float Interval
+	{
+		get
+		{
+			return interval;
+		}		
 	}
 
 	public void CatchHittedInfo(RaycastHit info)
@@ -38,34 +82,75 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 		Draw(info);	
 	}
 
-	public void DetachedEvents()
+	public void TouchedPad()
 	{
-		OculusGoInput.Instance.TouchedPad -= TouchEvent;
-		OculusGoInput.Instance.GetUpTouchPad -= GetUpTouchPad;
-		
-		//タッチしたままボードからアウトしたとき用
-		isDrawing = false;
-	}
-
-	private void TouchEvent()
-	{
-		if(!isDrawing)
+		if(!isDrawing && !isErasing)
 		{
 			//Debug.Log("isDrawing changed True");
 			isDrawing = true;
 		}		
 	}
 
-	private void GetUpTouchPad()
-	{
+	public void ClickedPad(){}
+
+	 public void UpFlicked(){}
+
+	 public void DownFlicked(){}
+
+	 public void LeftFlicked(){}
+
+	 public void RightFlicked(){}
+
+	 public void TriggerEntered(){}
+
+	public void GetUpTouchPad()
+	 {
 		if(isDrawing)
 		{
 			//Debug.Log("isDrawing changed false");
 			isDrawing = false;
 		}		
-	}
+	 }
 
-	public void Draw(RaycastHit hit)
+	 public void Gaze(){}
+
+	 public void UnGaze(){}
+
+	// public void AttachedEvents()
+	// {
+	// 	OculusGoInput.Instance.TouchedPad += TouchEvent;
+	// 	OculusGoInput.Instance.GetUpTouchPad += GetUpTouchPad;
+	// }
+
+
+	// public void DetachedEvents()
+	// {
+	// 	OculusGoInput.Instance.TouchedPad -= TouchEvent;
+	// 	OculusGoInput.Instance.GetUpTouchPad -= GetUpTouchPad;
+		
+	// 	//タッチしたままボードからアウトしたとき用
+	// 	isDrawing = false;
+	// }
+
+	// private void TouchEvent()
+	// {
+	// 	if(!isDrawing && !isErasing)
+	// 	{
+	// 		//Debug.Log("isDrawing changed True");
+	// 		isDrawing = true;
+	// 	}		
+	// }
+
+	// private void GetUpTouchPad()
+	// {
+	// 	if(isDrawing)
+	// 	{
+	// 		//Debug.Log("isDrawing changed false");
+	// 		isDrawing = false;
+	// 	}		
+	// }
+
+	private void Draw(RaycastHit hit)
 	{
 		if(!isDrawing)
 		{
@@ -179,10 +264,16 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 		var inkObj = Instantiate(emptyInk, new Vector3(centerPos.x, centerPos.y, centerPos.z), Quaternion.identity);
 		
 		var renderer = inkObj.AddComponent<MeshRenderer>();		
-		renderer.material = inkMat;
+		renderer.material = GetCurrentColor();
 
 		var meshFilter = inkObj.AddComponent<MeshFilter>();
 		meshFilter.sharedMesh = ink;
+		
+		var meshCollider = inkObj.AddComponent<MeshCollider>();
+		meshCollider.sharedMesh = ink;
+
+		var inkBehaviour = inkObj.AddComponent<InkBehaviour>();
+		inkBehaviour.myCenter = centerPos;
 		
 		//元のscaleを保持
 		var parentScale = parent.localScale;
@@ -196,5 +287,31 @@ public class InkPainter : MonoBehaviour, IEventDefinition {
 		//Debug.LogFormat("inkObj_2; X : {0}, Y : {1}, Z : {2}", inkObj.transform.position.x, inkObj.transform.position.y, inkObj.transform.position.z);
 		// Debug.LogFormat("Parent Z : {0}", parent.transform.position.z);
 		// Debug.LogFormat("Child Z : {0}", parent.transform.GetChild(0).transform.position.z);
+	}
+
+	private Material GetCurrentColor()
+	{
+		switch(currentInkColor)
+		{
+			case InkColor.Black :
+				return BlackMat;
+				break;
+			case InkColor.Red :
+				return RedMat;
+				break;
+			case InkColor.Blue :
+				return BlueMat;
+				break;
+			case InkColor.Green :
+				return GreenMat;
+				break;
+			default :
+				return BlackMat;
+		}
+	}
+
+	public void ChangeCurrentColor(InkPainter.InkColor nextColor)
+	{
+		currentInkColor = nextColor;
 	}
 }

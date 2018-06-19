@@ -52,7 +52,7 @@ public class OculusGoInput : MonoBehaviour {
 	public float interval = 0.25f;
 
 	void Update () {
-
+#if !UNITY_EDITOR && UNITY_ANDROID
         if (OVRInput.Get(OVRInput.Button.One))
         {
 			if(!isClickPad)
@@ -110,6 +110,66 @@ public class OculusGoInput : MonoBehaviour {
 				StartCoroutine(GetUpTouchPadInteral());
 			}
 		}
+#elif UNITY_EDITOR && UNITY_STANDALONE		
+		if (Input.GetKeyDown(KeyCode.Q))
+        {
+			if(!isClickPad)
+			{				
+				StartCoroutine(ClickedPadInternal());				
+			}
+        }
+        else if(Input.GetMouseButton(0))
+        {
+			Debug.Log("Touching is True");
+			if(!isTouched)
+			{				
+				StartCoroutine(TouchedPadInternal());
+			}			
+        }
+        else if(Input.GetMouseButtonDown(1))
+        {
+            if(!isTrigger)
+			{				
+				StartCoroutine(TriggerEnteredInternal());
+			}                 
+        }
+		else if(Input.GetKeyDown(KeyCode.W))
+		{
+			if(!isUpFlicked)
+			{
+				StartCoroutine(UpFlickedInternal());
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.S))
+		{
+			if(!isDownFlicked)
+			{				
+				StartCoroutine(DownFlickedInternal());
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.A))
+		{
+			if(!isLeftFlicked)
+			{
+				StartCoroutine(LeftFlickedInternal());
+			}
+
+		}
+		else if(Input.GetKeyDown(KeyCode.D))
+		{
+			if(!isRightFlicked)
+			{
+				StartCoroutine(RightFlickedInternal());
+			}
+		}
+		else if(Input.GetMouseButtonUp(0))
+		{
+			if(!isGetUpTouchPad)
+			{
+				StartCoroutine(GetUpTouchPadInteral());
+			}
+		}
+#endif	
 	}
 	private IEnumerator ClickedPadInternal()
 	{
@@ -130,6 +190,7 @@ public class OculusGoInput : MonoBehaviour {
 	{
 		if(TouchedPad == null)
 		{
+			//Debug.Log("TouchedPad is Null");
 			yield break;
 			
 		}
