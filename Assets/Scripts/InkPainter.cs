@@ -63,7 +63,7 @@ public class InkPainter : MonoBehaviour, IOculusEventDefinition {
 		}
 	}
 
-	private float interval = 0.1f;
+	private float interval = 0f;
 	public float Interval
 	{
 		get
@@ -114,7 +114,14 @@ public class InkPainter : MonoBehaviour, IOculusEventDefinition {
 
 	 public void Gaze(){}
 
-	 public void UnGaze(){}
+	 public void UnGaze()
+	 {
+		 if(isDrawing)
+		{
+			//Debug.Log("isDrawing changed false");
+			isDrawing = false;
+		}
+	 }
 
 	// public void AttachedEvents()
 	// {
@@ -313,5 +320,6 @@ public class InkPainter : MonoBehaviour, IOculusEventDefinition {
 	public void ChangeCurrentColor(InkPainter.InkColor nextColor)
 	{
 		currentInkColor = nextColor;
+		isErasing = false;
 	}
 }

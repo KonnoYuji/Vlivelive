@@ -53,7 +53,7 @@ public class OculusGoInput : MonoBehaviour {
 
 	void Update () {
 #if !UNITY_EDITOR && UNITY_ANDROID
-        if (OVRInput.Get(OVRInput.Button.One))
+        if (OVRInput.GetDown(OVRInput.Button.One))
         {
 			if(!isClickPad)
 			{				
@@ -180,9 +180,9 @@ public class OculusGoInput : MonoBehaviour {
         
 		isClickPad = true;
 		ClickedPad();	
-		
+		//Debug.Log("called ClickedPadInternal");
 		yield return new WaitForSeconds(interval);
-        
+        //Debug.Log("Waited interval");
 		isClickPad = false;
 	}
 	

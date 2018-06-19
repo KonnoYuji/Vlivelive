@@ -8,7 +8,7 @@ public class EraiserButton : MonoBehaviour, IOculusEventDefinition{
 	[SerializeField]
 	private InkPainter painter;
 
-	private float interval = 0.1f;
+	private float interval = 0f;
 	public float Interval
 	{
 		get
@@ -33,8 +33,7 @@ public class EraiserButton : MonoBehaviour, IOculusEventDefinition{
 
 	public void ClickedPad()
 	{
-		Debug.Log("IsErasing is Changed");
-		painter.IsErasing = !painter.IsErasing;
+		painter.IsErasing = true;			
 	}
 
 	public void UpFlicked(){}

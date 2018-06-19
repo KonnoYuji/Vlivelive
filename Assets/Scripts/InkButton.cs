@@ -10,7 +10,7 @@ public class InkButton : MonoBehaviour, IOculusEventDefinition {
 	[SerializeField]
 	private InkPainter painter;
 
-	private float interval = 0.25f;
+	private float interval = 0f;
 	public float Interval
 	{
 		get

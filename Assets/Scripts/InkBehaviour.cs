@@ -36,7 +36,11 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 		yield return null;
 		if(painter == null)
 		{
-			painter = FindObjectOfType<InkPainter>();
+			painter = GetComponentInParent<InkPainter>();
+			if(painter == null)
+			{
+				//Debug.Log("Painter null");
+			}
 		}
 	}
 
@@ -46,6 +50,7 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 		{
 			return;
 		}
+		//Debug.Log("enableEraised true");
 		DestroyMyself();
 	}
 
@@ -53,6 +58,7 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 	{
 		if(!painter.IsErasing)
 		{
+			//Debug.Log("IsErasing false");
 			return;
 		}
 
@@ -96,7 +102,6 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 			return;
 		}
 
-		//Debug.Log("DestroyMyself");	
 		if(inkDestroyEvent != null)
 		{
 			inkDestroyEvent(myCenter);
