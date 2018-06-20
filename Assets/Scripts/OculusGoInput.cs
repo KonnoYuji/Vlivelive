@@ -120,7 +120,7 @@ public class OculusGoInput : MonoBehaviour {
         }
         else if(Input.GetMouseButton(0))
         {
-			Debug.Log("Touching is True");
+			//Debug.Log("Touching is True");
 			if(!isTouched)
 			{				
 				StartCoroutine(TouchedPadInternal());

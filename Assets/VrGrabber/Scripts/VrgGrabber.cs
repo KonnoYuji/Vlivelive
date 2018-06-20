@@ -31,8 +31,6 @@ public class VrgGrabber : MonoBehaviour
     [SerializeField]
     Transform grip = null;
 
-    [SerializeField]
-    VrgTargetLine line;
 
     [SerializeField]
     float maxGrabDistance = 10f;
