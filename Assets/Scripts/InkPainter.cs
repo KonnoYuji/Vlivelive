@@ -276,10 +276,13 @@ public class InkPainter : MonoBehaviour, IOculusEventDefinition {
 		var meshFilter = inkObj.AddComponent<MeshFilter>();
 		meshFilter.sharedMesh = ink;
 		
-		var meshCollider = inkObj.AddComponent<MeshCollider>();
-		meshCollider.sharedMesh = ink;
+		// var meshCollider = inkObj.AddComponent<MeshCollider>();
+		// meshCollider.sharedMesh = ink;
+
+		var boxCollider = inkObj.AddComponent<BoxCollider>();
 
 		var inkBehaviour = inkObj.AddComponent<InkBehaviour>();
+
 		inkBehaviour.myCenter = centerPos;
 		
 		//元のscaleを保持

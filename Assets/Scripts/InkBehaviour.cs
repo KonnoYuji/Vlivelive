@@ -15,6 +15,8 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 
 	public Action<Vector3> inkDestroyEvent;
 
+	private bool initialied = false;
+
 	//1フレーム分程度 (1/60 = 0.016f)
 	private float interval = 0.016f;
 	public float Interval
@@ -41,7 +43,11 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 			{
 				//Debug.Log("Painter null");
 			}
-		}
+			else
+			{
+				initialied = true;
+			}
+		}		
 	}
 
 	public void CatchHittedInfo(RaycastHit info)
@@ -56,6 +62,11 @@ public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
 
 	public void TouchedPad()
 	{
+		if(!initialied)
+		{
+			return;
+		}
+
 		if(!painter.IsErasing)
 		{
 			//Debug.Log("IsErasing false");
