@@ -18,23 +18,19 @@ public class FlowerTextPadController : MonoBehaviour {
 
 	private int currentRangeKey = 0;
 
-	void Awake()
-	{
+	// Use this for initialization
+	void Start () {
+		
 		Vector2 rangeIncrement = new Vector2(0, 0);
 
 		rotationRanges = new Dictionary<int, Vector2>(items.Length);
 		
 		for(int i=0; i<items.Length; i++)
 		{			
-			rotationRanges.Add(i, rangeIncrement);
+			//Debug.Log("Search in rationRanges");			
 			rangeIncrement = new Vector2(360/items.Length * i, 360/items.Length * (i+1));
-			Debug.LogFormat("rotationRange : {0} - {1}", 360/items.Length * i, 360/items.Length * (i+1));
+			rotationRanges.Add(i, rangeIncrement);			
 		}
-	}
-
-
-	// Use this for initialization
-	void Start () {
 		if(touchPadAxisSource == null)
 		{
 			touchPadAxisSource = FindObjectOfType<OculusGoControllerInfo>();
@@ -116,7 +112,7 @@ public class FlowerTextPadController : MonoBehaviour {
 			// Debug.LogFormat("sita : {0}\n", sita);
 			if((range.Value.x < sita) && (sita < range.Value.y))
 			{			
-				//Debug.Log("Found");	
+				//Debug.LogFormat("Found Key {0}", range.Key);	
 				return range.Key;
 			}
 		}
