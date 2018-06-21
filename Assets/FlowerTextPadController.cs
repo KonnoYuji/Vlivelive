@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FlowerTextPadController : MonoBehaviour {
+public class FlowerTextPadController : MonoBehaviour{
  
 	[SerializeField]
 	private OculusGoControllerInfo touchPadAxisSource;
@@ -18,29 +18,123 @@ public class FlowerTextPadController : MonoBehaviour {
 
 	private int currentRangeKey = 0;
 
-	// Use this for initialization
-	void Start () {
+	private GameObject currentItem = null;
+
+	[SerializeField]
+	private Text outputText;
+
+	
+	[SerializeField]
+	private Vector2 offset = new Vector2(0, 0); //扇角のoffset. offsetは、円弧的に必ずyのほうが大きくなるように設定することを前提
+	
+	[HideInInspector]
+	public float sita1 = 0; //タッチ入力の検出範囲(最小値)
+
+	[HideInInspector]
+	public float sita2  = 360.0f; //タッチ入力の検出範囲(最大値)
+	
+	public bool isEnable = false;
+
+	public bool settedRotationRange = false;
+
+	[SerializeField]
+	private	 bool isDebugging = false;
+
+	public Vector2 CatchTouchAxis()
+	{
+		if(touchPadAxisSource == null)
+		{
+			touchPadAxisSource = FindObjectOfType<OculusGoControllerInfo>();
+		}	
+		return touchPadAxisSource.PrimaryTouchpad;
+	}
+
+	public void ClickedPad()
+	{
+		if(!isEnable || currentItem == null)
+		{
+			return;
+		}			
+
+		var flowerCtr = currentItem.GetComponentInChildren<FlowerTextPadController>(true);
+		if(flowerCtr != null)
+		{
+			if(!flowerCtr.settedRotationRange)
+			{
+				Vector2 range;
+				bool existed = false;
+				existed = rotationRanges.TryGetValue(currentRangeKey, out range);
+				if(existed)
+				{
+					flowerCtr.SetAttachableRange(range);
+				}				
+			}
+			flowerCtr.gameObject.SetActive(true);
+			ResetItemColor();
+			isEnable = false;
+			//Debug.LogFormat("isEnable is {0}", isEnable);			
+		}
+		else
+		{
+			outputText.text += currentItem.GetComponentInChildren<Text>().text;
+			this.gameObject.SetActive(false);
+			var parentFlowerCtr = GetComponentInParent<FlowerTextPadController>();
+			if(parentFlowerCtr != null)
+			{
+				parentFlowerCtr.isEnable = true;
+			}
+		}
+	}
+
+	private void OnEnable()
+	{
+		if(!isEnable)
+		{
+			isEnable = true;
+		}
 		
+		OculusGoInput.Instance.ClickedPad += ClickedPad;
+
+		if(!settedRotationRange)
+		{
+			SetAttachableRange(new Vector2(sita1, sita2));
+		}
+	}
+
+	private void OnDisable()
+	{
+		OculusGoInput.Instance.ClickedPad -= ClickedPad; 
+	}
+
+	public void SetAttachableRange (Vector2 range) {				
+
+		if(isDebugging) Debug.LogFormat("Range before : {0} ~ {1}", range.x, range.y);
+		Vector2 rangeWithOffset = new Vector2((range.x + offset.x), (range.y + offset.y));
+		if(isDebugging) Debug.LogFormat("Range After : {0} ~ {1}", rangeWithOffset.x, rangeWithOffset.y);
 		Vector2 rangeIncrement = new Vector2(0, 0);
 
 		rotationRanges = new Dictionary<int, Vector2>(items.Length);
 		
 		for(int i=0; i<items.Length; i++)
-		{			
-			//Debug.Log("Search in rationRanges");			
-			rangeIncrement = new Vector2(360/items.Length * i, 360/items.Length * (i+1));
+		{									
+			rangeIncrement = new Vector2(((rangeWithOffset.y - rangeWithOffset.x)/items.Length * i)+rangeWithOffset.x, ((rangeWithOffset.y - rangeWithOffset.x)/items.Length * (i+1))+rangeWithOffset.x);
+			if(isDebugging) Debug.LogFormat("Range {0} : {1} ~ {2}", i, rangeIncrement.x, rangeIncrement.y);
 			rotationRanges.Add(i, rangeIncrement);			
 		}
-		if(touchPadAxisSource == null)
-		{
-			touchPadAxisSource = FindObjectOfType<OculusGoControllerInfo>();
-		}	
+
+		settedRotationRange = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		
-		var currentAxis = touchPadAxisSource.PrimaryTouchpad;
+		if(!isEnable)
+		{
+			return;
+		}
+
+		var currentAxis = CatchTouchAxis();
+
 		if(!CheckExistenceInCircle(currentAxis))
 		{
 			//Debug.Log("Not existed");
@@ -48,6 +142,8 @@ public class FlowerTextPadController : MonoBehaviour {
 		}
 		if(currentAxis.x == 0 && currentAxis.y == 0)
 		{
+			currentItem = null;
+			ResetItemColor();
 			return;
 		}
 
@@ -66,8 +162,9 @@ public class FlowerTextPadController : MonoBehaviour {
 			//Debug.Log("NotFoundRange");
 			return;
 		}
-
+		
 		currentRangeKey = rangeKey;
+		currentItem = items[currentRangeKey];
 		ChangeItemColor(currentRangeKey);
 	}
 
@@ -107,16 +204,53 @@ public class FlowerTextPadController : MonoBehaviour {
 	private int GetExistedRangeKey(float sita)
 	{
 		foreach(var range in rotationRanges)
-		{				
-		 	//Debug.LogFormat("rotationRange : {0} - {1}", range.Value.x, range.Value.y);		
-			// Debug.LogFormat("sita : {0}\n", sita);
-			if((range.Value.x < sita) && (sita < range.Value.y))
-			{			
-				//Debug.LogFormat("Found Key {0}", range.Key);	
-				return range.Key;
+		{	
+			//if(isDebugging && range.Key == 0) Debug.LogFormat("rotationRange : {0} ~ {1}", range.Value.x, range.Value.y);		
+			// if(isDebugging && range.Key == 0) Debug.LogFormat("sita : {0}", sita);
+
+			//範囲が360度をまたぐときの処理(x<0 y>0)
+			if((range.Value.x < 0 && range.Value.y > 0))
+			{				
+				if((((360.0f + range.Value.x) < sita) && (sita < 360.0f)) || ((0 < sita) && (sita < range.Value.y)))
+				{
+					 return range.Key;
+				} 				
 			}
+			//範囲が360度をまたぐときの処理(x>0 y>360)
+			else if(range.Value.y > 360.0f)
+			{
+				if(((range.Value.x < sita) && (sita < 360.0f)) || ((0 < sita) && (sita < (range.Value.y - 360.0f))))
+				{
+					 return range.Key;
+				}		
+			}
+			//負の範囲 (x, y < 0)			
+			else if(range.Value.x < 0 && range.Value.y < 0)
+			{				
+				if((((360.0f + range.Value.x) < sita) && (sita < (360.0f + range.Value.y))))
+				{
+					 return range.Key;
+				}
+			}
+			//どちらも範囲外 (x, y > 360)
+			else if(range.Value.x > 360 && range.Value.y > 360)
+			{
+				if(((range.Value.x - 360.0f) < sita) && (sita < (range.Value.y - 360.0f)))
+				{
+					return range.Key;
+				}
+			}
+			//通常の範囲(0 < x, y < 360)
+			else
+			{
+				if((range.Value.x < sita) && (sita < range.Value.y))
+				{												
+					return range.Key;
+				}
+			}			
 		}
 
+		if(isDebugging) Debug.LogFormat("sita : {0}", sita);
 		//予期しないバグで領域内に角度が存在しなかったとき
 		return -1;
 	}
@@ -140,5 +274,15 @@ public class FlowerTextPadController : MonoBehaviour {
 			}			
 			image.color = new Color(1.0f, 1.0f, 1.0f);
 		}				
+	}
+
+	private void ResetItemColor()
+	{
+		for(int i=0; i<items.Length; i++)
+		{
+			Image image;
+			image = items[i].GetComponent<Image>();				
+			image.color = new Color(1.0f, 1.0f, 1.0f);
+		}
 	}
 }

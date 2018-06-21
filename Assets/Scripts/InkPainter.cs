@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using VrGrabber;
 
-public class InkPainter : MonoBehaviour, IOculusEventDefinition {
+public class InkPainter : MonoBehaviour, IOculusRaycastEventDefinition {
 
 	[SerializeField]
 	private float width = 1.0f;

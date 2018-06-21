@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class InkBehaviour : MonoBehaviour, IOculusEventDefinition {
+public class InkBehaviour : MonoBehaviour, IOculusRaycastEventDefinition {
 
 	// Use this for initialization	private InkPainter painter;
 	[HideInInspector]

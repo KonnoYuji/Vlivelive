@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
- interface IOculusEventDefinition {	 
+ interface IOculusRaycastEventDefinition {	 
 
 	 float Interval
 	 {

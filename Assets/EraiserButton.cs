@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EraiserButton : MonoBehaviour, IOculusEventDefinition{
+public class EraiserButton : MonoBehaviour, IOculusRaycastEventDefinition{
 
 	// Use this for initialization
 	[SerializeField]

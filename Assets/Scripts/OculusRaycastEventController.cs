@@ -4,7 +4,7 @@ using UnityEngine;
 using VrGrabber;
 
 //OculusGoInputとRaycastでヒットしたObj間で、OculusEventを操作するためのコントローラー
-public class OculusEventController : MonoBehaviour {
+public class OculusRaycastEventController : MonoBehaviour {
 
 	//RayCastソース
 	[SerializeField]
@@ -40,7 +40,7 @@ public class OculusEventController : MonoBehaviour {
 			else
 			{
 				//同じオブジェクトをキャストし続けてるときはキャスト情報を、オブジェクトに渡す
-				var tempEventDefinition = currentTarget.transform.GetComponent(typeof(IOculusEventDefinition)) as IOculusEventDefinition;
+				var tempEventDefinition = currentTarget.transform.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;
 				if(tempEventDefinition != null)
 				{					
 					tempEventDefinition.Gaze();
@@ -57,7 +57,7 @@ public class OculusEventController : MonoBehaviour {
 
 	public void AttachEvent()
 	{
-		var eventDefinition = currentTarget.transform.GetComponent(typeof(IOculusEventDefinition)) as IOculusEventDefinition;
+		var eventDefinition = currentTarget.transform.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;
 		if(eventDefinition != null)
 		{										
 			OculusGoInput.Instance.TouchedPad += eventDefinition.TouchedPad;
@@ -79,7 +79,7 @@ public class OculusEventController : MonoBehaviour {
 			return;
 		}
 		
-		var eventDefinition = currentTarget.GetComponent(typeof(IOculusEventDefinition)) as IOculusEventDefinition;
+		var eventDefinition = currentTarget.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;
 		if(eventDefinition != null)
 		{
 			eventDefinition.UnGaze();										

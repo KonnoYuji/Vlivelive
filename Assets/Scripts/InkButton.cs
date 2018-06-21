@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InkButton : MonoBehaviour, IOculusEventDefinition {
+public class InkButton : MonoBehaviour, IOculusRaycastEventDefinition {
 
 	[SerializeField]
 	private InkPainter.InkColor myInk;

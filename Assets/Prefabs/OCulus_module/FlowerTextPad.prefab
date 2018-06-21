@@ -123,7 +123,6 @@ GameObject:
   - component: {fileID: 224126396835630906}
   - component: {fileID: 222594001546642194}
   - component: {fileID: 114197735687645116}
-  - component: {fileID: 114513837193224622}
   m_Layer: 5
   m_Name: WA_level
   m_TagString: Untagged
@@ -226,7 +225,6 @@ GameObject:
   - component: {fileID: 224844323665445878}
   - component: {fileID: 222213304360572812}
   - component: {fileID: 114088474171775536}
-  - component: {fileID: 114743684919033602}
   m_Layer: 5
   m_Name: KA_level
   m_TagString: Untagged
@@ -312,7 +310,6 @@ GameObject:
   - component: {fileID: 224557860063636594}
   - component: {fileID: 222494769488930688}
   - component: {fileID: 114709282761511502}
-  - component: {fileID: 114725101760611082}
   m_Layer: 5
   m_Name: SA_level
   m_TagString: Untagged
@@ -430,6 +427,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224405285737558460}
+  - component: {fileID: 114109519984945396}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -600,7 +598,6 @@ GameObject:
   - component: {fileID: 224589404846653660}
   - component: {fileID: 222807306144979824}
   - component: {fileID: 114713233753935172}
-  - component: {fileID: 114220786147923078}
   m_Layer: 5
   m_Name: RA_level
   m_TagString: Untagged
@@ -973,6 +970,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224300203009354914}
+  - component: {fileID: 114317173879379054}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1160,7 +1158,6 @@ GameObject:
   - component: {fileID: 224838845194288918}
   - component: {fileID: 222304570704394476}
   - component: {fileID: 114311089997491174}
-  - component: {fileID: 114400540993588876}
   m_Layer: 5
   m_Name: TA_level
   m_TagString: Untagged
@@ -1210,6 +1207,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224324698081702010}
+  - component: {fileID: 114573137891783400}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1295,7 +1293,6 @@ GameObject:
   - component: {fileID: 224741171465947284}
   - component: {fileID: 222945382401959052}
   - component: {fileID: 114978101351200696}
-  - component: {fileID: 114491671767062570}
   m_Layer: 5
   m_Name: HA_level
   m_TagString: Untagged
@@ -1328,6 +1325,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224999841493745618}
+  - component: {fileID: 114285838295518310}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1379,7 +1377,6 @@ GameObject:
   - component: {fileID: 224775411601959124}
   - component: {fileID: 222973751539468568}
   - component: {fileID: 114384880598032020}
-  - component: {fileID: 114743021815404644}
   m_Layer: 5
   m_Name: YA_level
   m_TagString: Untagged
@@ -1499,7 +1496,6 @@ GameObject:
   - component: {fileID: 224222830626595462}
   - component: {fileID: 222628539184230350}
   - component: {fileID: 114387210796096472}
-  - component: {fileID: 114014404079205966}
   m_Layer: 5
   m_Name: A_level
   m_TagString: Untagged
@@ -1532,6 +1528,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224482350082020536}
+  - component: {fileID: 114640054989247608}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1649,6 +1646,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224676558384708102}
+  - component: {fileID: 114702447169845834}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1766,6 +1764,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224807379138125156}
+  - component: {fileID: 114736263784354890}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -1902,7 +1901,6 @@ GameObject:
   - component: {fileID: 224004866023219036}
   - component: {fileID: 222849658698246754}
   - component: {fileID: 114794967770794108}
-  - component: {fileID: 114799984571594568}
   m_Layer: 5
   m_Name: NA_level
   m_TagString: Untagged
@@ -1986,6 +1984,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224123499853323422}
+  - component: {fileID: 114683294254536684}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -2035,6 +2034,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224585662205414820}
+  - component: {fileID: 114645259038328376}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -2118,6 +2118,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 224265682499740990}
+  - component: {fileID: 114443274075239598}
   m_Layer: 5
   m_Name: InputPad
   m_TagString: Untagged
@@ -2237,7 +2238,6 @@ GameObject:
   - component: {fileID: 224649632711056504}
   - component: {fileID: 222267532188030290}
   - component: {fileID: 114323471340505072}
-  - component: {fileID: 114872773484508068}
   m_Layer: 5
   m_Name: MA_level
   m_TagString: Untagged
@@ -2350,31 +2350,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u307E"
---- !u!114 &114014404079205966
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1709881556959268}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1930856169511512}
-  - {fileID: 1023747670355294}
-  - {fileID: 1673799925105116}
-  - {fileID: 1863113637208182}
-  arrangedInputMojis:
-  - "\u3042"
-  - "\u3044"
-  - "\u3046"
-  - "\u3048"
-  - "\u304A"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114020969027503512
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2645,6 +2620,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114109519984945396
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1210200782357742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1832083388434446}
+  - {fileID: 1043800907820280}
+  - {fileID: 1812193018441258}
+  - {fileID: 1893313796026608}
+  - {fileID: 1725692218596440}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114125665502878406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3185,31 +3185,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114220786147923078
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1311598236687832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1947459718118294}
-  - {fileID: 1328137041220894}
-  - {fileID: 1010489655661564}
-  - {fileID: 1364518675303490}
-  arrangedInputMojis:
-  - "\u3089"
-  - "\u308A"
-  - "\u308B"
-  - "\u308C"
-  - "\u308D"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114241756182538564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3330,6 +3305,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u300C"
+--- !u!114 &114285838295518310
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1658403220312450}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1226978585675508}
+  - {fileID: 1609654890251792}
+  - {fileID: 1796364169823526}
+  - {fileID: 1352666802169492}
+  - {fileID: 1625630744649946}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114295764451888670
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3483,6 +3483,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114317173879379054
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1545675517413070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1225447222285446}
+  - {fileID: 1914521939520978}
+  - {fileID: 1996357376610072}
+  - {fileID: 1534230339573922}
+  - {fileID: 1592505073428230}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114323471340505072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3825,31 +3850,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114400540993588876
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1610701387156928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1893313796026608}
-  - {fileID: 1812193018441258}
-  - {fileID: 1043800907820280}
-  - {fileID: 1832083388434446}
-  arrangedInputMojis:
-  - "\u305F"
-  - "\u3061"
-  - "\u3064"
-  - "\u3066"
-  - "\u3068"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114425160833027616
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3910,6 +3910,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u306F"
+--- !u!114 &114443274075239598
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1958705380224202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1223703115592310}
+  - {fileID: 1996793384856030}
+  - {fileID: 1447944965449154}
+  - {fileID: 1795026686198336}
+  - {fileID: 1006780470907118}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114451228877167904
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4033,6 +4058,12 @@ MonoBehaviour:
   - {fileID: 1880028875056152}
   - {fileID: 1610701387156928}
   radius: 1
+  outputText: {fileID: 0}
+  offset: {x: 0, y: 0}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114471796318195312
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4093,31 +4124,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3088"
---- !u!114 &114491671767062570
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1629304031410278}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1925391213584116}
-  - {fileID: 1956855791450042}
-  - {fileID: 1939761367764080}
-  - {fileID: 1450207580850612}
-  arrangedInputMojis:
-  - "\u306F"
-  - "\u3072"
-  - "\u3075"
-  - "\u3078"
-  - "\u307B"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114512272533404322
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4151,31 +4157,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3086"
---- !u!114 &114513837193224622
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1043549653288140}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1352666802169492}
-  - {fileID: 1796364169823526}
-  - {fileID: 1609654890251792}
-  - {fileID: 1226978585675508}
-  arrangedInputMojis:
-  - "\u308F"
-  - "\u3092"
-  - "\u3093"
-  - "\u30FC"
-  - ' '
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114514755686482640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4416,6 +4397,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u304A"
+--- !u!114 &114573137891783400
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1622623732615764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1450207580850612}
+  - {fileID: 1939761367764080}
+  - {fileID: 1956855791450042}
+  - {fileID: 1925391213584116}
+  - {fileID: 1123233726254618}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114583958161326228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4683,6 +4689,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u305D"
+--- !u!114 &114640054989247608
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1716874296956458}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1718465032500564}
+  - {fileID: 1251838536578296}
+  - {fileID: 1992294844609620}
+  - {fileID: 1675075233730760}
+  - {fileID: 1684710178170784}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114642345087164466
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4710,6 +4741,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114645259038328376
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1939116645286702}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1863113637208182}
+  - {fileID: 1673799925105116}
+  - {fileID: 1023747670355294}
+  - {fileID: 1930856169511512}
+  - {fileID: 1838877236554902}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114648689400051672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4890,6 +4946,31 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114683294254536684
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926994745632230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1364518675303490}
+  - {fileID: 1010489655661564}
+  - {fileID: 1328137041220894}
+  - {fileID: 1947459718118294}
+  - {fileID: 1658464289999228}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114684868427417990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5022,6 +5103,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u306B"
+--- !u!114 &114702447169845834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1757109627477196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  touchPadAxisSource: {fileID: 0}
+  items:
+  - {fileID: 1412240798813458}
+  - {fileID: 1748436922806572}
+  - {fileID: 1165987300730118}
+  - {fileID: 1716317999756786}
+  - {fileID: 1725715490039522}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114709282761511502
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5175,81 +5281,31 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u3068"
---- !u!114 &114725101760611082
+--- !u!114 &114736263784354890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1156555131014628}
+  m_GameObject: {fileID: 1808664503197906}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
+  m_Script: {fileID: 11500000, guid: 7ca7dbdcc2edb034f8aa164aeba1d7f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1741573243000774}
-  - {fileID: 1959789067632412}
-  - {fileID: 1525179663961288}
+  touchPadAxisSource: {fileID: 0}
+  items:
   - {fileID: 1438937103348650}
-  arrangedInputMojis:
-  - "\u3055"
-  - "\u3057"
-  - "\u3059"
-  - "\u305B"
-  - "\u305D"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
---- !u!114 &114743021815404644
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668914951259254}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1675075233730760}
-  - {fileID: 1992294844609620}
-  - {fileID: 1251838536578296}
-  - {fileID: 1718465032500564}
-  arrangedInputMojis:
-  - "\u3084"
-  - "\u300C"
-  - "\u3086"
-  - "\u300D"
-  - "\u3088"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
---- !u!114 &114743684919033602
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1122113710649296}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1716317999756786}
-  - {fileID: 1165987300730118}
-  - {fileID: 1748436922806572}
-  - {fileID: 1412240798813458}
-  arrangedInputMojis:
-  - "\u304B"
-  - "\u304D"
-  - "\u304F"
-  - "\u3051"
-  - "\u3053"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
+  - {fileID: 1525179663961288}
+  - {fileID: 1959789067632412}
+  - {fileID: 1741573243000774}
+  - {fileID: 1589506951974598}
+  radius: 1
+  outputText: {fileID: 114330480114080016}
+  offset: {x: -30, y: 30}
+  sita1: 0
+  sita2: 360
+  isEnable: 0
+  settedRotationRange: 0
 --- !u!114 &114748043195555254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5430,31 +5486,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114799984571594568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1880028875056152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1795026686198336}
-  - {fileID: 1447944965449154}
-  - {fileID: 1996793384856030}
-  - {fileID: 1223703115592310}
-  arrangedInputMojis:
-  - "\u306A"
-  - "\u306B"
-  - "\u306C"
-  - "\u306D"
-  - "\u306E"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114806295063602662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5767,31 +5798,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114872773484508068
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1999832129076118}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6db73933be686240bd77fda99aac0d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  output: {fileID: 114330480114080016}
-  mojis:
-  - {fileID: 1534230339573922}
-  - {fileID: 1996357376610072}
-  - {fileID: 1914521939520978}
-  - {fileID: 1225447222285446}
-  arrangedInputMojis:
-  - "\u307E"
-  - "\u307F"
-  - "\u3080"
-  - "\u3081"
-  - "\u3082"
-  acceptableAroundMojis: 0
-  myImage: {fileID: 0}
 --- !u!114 &114889572394515506
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -7321,7 +7327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -53.21, y: 7.8999996}
+  m_AnchoredPosition: {x: 35.2, y: 7.8999996}
   m_SizeDelta: {x: 100, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224152865954333182

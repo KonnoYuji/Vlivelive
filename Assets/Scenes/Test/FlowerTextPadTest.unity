@@ -501,8 +501,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1348249786}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 3.904}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2.52}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 1630644544}
   - {fileID: 2079717806}
@@ -513,7 +513,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 5.51, y: 0.11}
+  m_AnchoredPosition: {x: 3.05, y: 0.11}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1348249789
@@ -590,7 +590,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.7, y: 30.1}
+  m_AnchoredPosition: {x: 5.1, y: 22.1}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630644545
@@ -891,11 +891,91 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114683294254536684, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114317173879379054, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114443274075239598, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114640054989247608, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
     - target: {fileID: 114471132331553646, guid: 8e1a255c566d8834b82d99bde420736c,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
+    - target: {fileID: 114573137891783400, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114645259038328376, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114285838295518310, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114109519984945396, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114702447169845834, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114736263784354890, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114736263784354890, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: isDebugging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114109519984945396, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: isDebugging
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736263784354890, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: offset.x
+      value: -30
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736263784354890, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: offset.y
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 224149519382791892, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: -40.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224149519382791892, guid: 8e1a255c566d8834b82d99bde420736c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: 25.7
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8e1a255c566d8834b82d99bde420736c, type: 2}
   m_IsPrefabParent: 0
