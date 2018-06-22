@@ -16,9 +16,13 @@ public class FlowerTextPadController : MonoBehaviour{
 	[SerializeField]
 	private float radius = 1.0f;
 
+	[SerializeField]
+	private float ignoredRadius = 0; //radius > ignoredRadius
 	private int currentRangeKey = 0;
 
 	private GameObject currentItem = null;
+	
+	public int myLevel = 0; //フラワーパネルの階層番号 0~2まで
 
 	[SerializeField]
 	private Text outputText;
@@ -33,12 +37,18 @@ public class FlowerTextPadController : MonoBehaviour{
 	[HideInInspector]
 	public float sita2  = 360.0f; //タッチ入力の検出範囲(最大値)
 	
+	[HideInInspector]
 	public bool isEnable = false;
 
+	[HideInInspector]
 	public bool settedRotationRange = false;
 
 	[SerializeField]
 	private	 bool isDebugging = false;
+
+	[SerializeField]
+	private bool isShowedNextPanelAuto = false;
+
 
 	public Vector2 CatchTouchAxis()
 	{
@@ -49,7 +59,7 @@ public class FlowerTextPadController : MonoBehaviour{
 		return touchPadAxisSource.PrimaryTouchpad;
 	}
 
-	public void ClickedPad()
+	public void ShowNextPanel()
 	{
 		if(!isEnable || currentItem == null)
 		{
@@ -66,12 +76,15 @@ public class FlowerTextPadController : MonoBehaviour{
 				existed = rotationRanges.TryGetValue(currentRangeKey, out range);
 				if(existed)
 				{
-					flowerCtr.SetAttachableRange(range);
+					flowerCtr.SetTouchableRange(range);
 				}				
 			}
 			flowerCtr.gameObject.SetActive(true);
-			ResetItemColor();
-			isEnable = false;
+			
+			if(!isShowedNextPanelAuto)
+			{
+				isEnable = false;
+			}			
 			//Debug.LogFormat("isEnable is {0}", isEnable);			
 		}
 		else
@@ -79,7 +92,7 @@ public class FlowerTextPadController : MonoBehaviour{
 			outputText.text += currentItem.GetComponentInChildren<Text>().text;
 			this.gameObject.SetActive(false);
 			var parentFlowerCtr = GetComponentInParent<FlowerTextPadController>();
-			if(parentFlowerCtr != null)
+			if(parentFlowerCtr != null && !isShowedNextPanelAuto)
 			{
 				parentFlowerCtr.isEnable = true;
 			}
@@ -93,20 +106,26 @@ public class FlowerTextPadController : MonoBehaviour{
 			isEnable = true;
 		}
 		
-		OculusGoInput.Instance.ClickedPad += ClickedPad;
+		if(!isShowedNextPanelAuto)
+		{
+			OculusGoInput.Instance.ClickedPad += ShowNextPanel;
+		}
 
 		if(!settedRotationRange)
 		{
-			SetAttachableRange(new Vector2(sita1, sita2));
+			SetTouchableRange(new Vector2(sita1, sita2));
 		}
 	}
 
 	private void OnDisable()
 	{
-		OculusGoInput.Instance.ClickedPad -= ClickedPad; 
+		if(!isShowedNextPanelAuto)
+		{
+			OculusGoInput.Instance.ClickedPad -= ShowNextPanel;
+		} 
 	}
 
-	public void SetAttachableRange (Vector2 range) {				
+	public void SetTouchableRange (Vector2 range) {				
 
 		if(isDebugging) Debug.LogFormat("Range before : {0} ~ {1}", range.x, range.y);
 		Vector2 rangeWithOffset = new Vector2((range.x + offset.x), (range.y + offset.y));
@@ -124,34 +143,30 @@ public class FlowerTextPadController : MonoBehaviour{
 
 		settedRotationRange = true;
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	private void Update () {
 		
 		if(!isEnable)
 		{
 			return;
 		}
 
-		var currentAxis = CatchTouchAxis();
+		var currentAxis = CatchTouchAxis();	
 
 		if(!CheckExistenceInCircle(currentAxis))
-		{
-			//Debug.Log("Not existed");
+		{			
+			//currentItem = null;			
+			ResetPanel();			
 			return;
 		}
-		if(currentAxis.x == 0 && currentAxis.y == 0)
-		{
-			currentItem = null;
-			ResetItemColor();
-			return;
-		}
-
+		
 		var sita = GetSita(currentAxis);
 		//Debug.LogFormat("sita : {0}", sita.ToString());
 		
+		
 		var rangeKey = GetExistedRangeKey(sita);
-		//Debug.LogFormat("rangeKey : {0}", rangeKey.ToString());
+		
 		if(currentRangeKey == rangeKey)
 		{
 			//Debug.Log("Key Same");
@@ -162,10 +177,19 @@ public class FlowerTextPadController : MonoBehaviour{
 			//Debug.Log("NotFoundRange");
 			return;
 		}
+				
+		if(currentItem != null && isShowedNextPanelAuto)
+		{
+			var beforeFlower = currentItem.GetComponentInChildren<FlowerTextPadController>();
+			if(beforeFlower != null)
+			{
+				beforeFlower.gameObject.SetActive(false);
+			}		
+		}
 		
 		currentRangeKey = rangeKey;
 		currentItem = items[currentRangeKey];
-		ChangeItemColor(currentRangeKey);
+		SelectCurrentItem(currentRangeKey);
 	}
 
 	private float GetSita(Vector2 axis)
@@ -190,13 +214,19 @@ public class FlowerTextPadController : MonoBehaviour{
 
 	private bool CheckExistenceInCircle(Vector2 axis)
 	{
-		var result = Mathf.Pow(axis.x, 2) + Mathf.Pow(axis.y, 2);
-		if(result <= radius)
+		if(ignoredRadius >= radius)
 		{
+			//Debug.Log("ignoredRadius is larger than radius, must keep smaller than radius");
+		}
+		var result = Mathf.Pow(axis.x, 2) + Mathf.Pow(axis.y, 2);
+		if(ignoredRadius< result && result < radius)
+		{
+			//Debug.Log("Existed");
 			return true;
 		}
 		else
 		{
+			//Debug.Log("Not Existed");
 			return false;
 		}
 	}
@@ -255,7 +285,7 @@ public class FlowerTextPadController : MonoBehaviour{
 		return -1;
 	}
 
-	private void ChangeItemColor(int key)
+	private void SelectCurrentItem(int key)
 	{		
 		if(key >= items.Length)
 		{
@@ -274,10 +304,16 @@ public class FlowerTextPadController : MonoBehaviour{
 			}			
 			image.color = new Color(1.0f, 1.0f, 1.0f);
 		}				
+
+		if(isShowedNextPanelAuto)
+		{
+			ShowNextPanel();
+		}		
 	}
 
-	private void ResetItemColor()
+	private void ResetPanel()
 	{
+		//Debug.Log("Call ResetCurrentItenm");
 		for(int i=0; i<items.Length; i++)
 		{
 			Image image;
