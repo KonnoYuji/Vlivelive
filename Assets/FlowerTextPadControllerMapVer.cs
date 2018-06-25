@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 
 public class FlowerTextPadControllerMapVer : MonoBehaviour{
  
@@ -33,6 +34,10 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 	private Text outputText;
 
 	private bool onetimeShow = false;
+
+	private Vector2 currentAxis;
+
+	public Action<Vector2, float> OnChangedCurrentAxis;
 
 	private void Awake()
 	{
@@ -194,17 +199,8 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 
 	// Update is called once per frame
 	private void Update () {
-
-		// if(!onetimeShow)
-		// {
-		// 	for(int i=0; i<ItemsPositionOnTouchPad.Length; i++)
-		// 	{
-		// 		Debug.LogFormat("ItemPositionOnTouchPad Number:{0}  X:{1} Y:{2}\n", i, ItemsPositionOnTouchPad[i].x, ItemsPositionOnTouchPad[i].y);
-		// 	}
-		// 	onetimeShow = true;
-		// }
 		
-		var currentAxis = CatchTouchAxis();			
+		currentAxis = CatchTouchAxis();			
 		if(currentAxis.x == 0 && currentAxis.y == 0)
 		{				
 			ResetPanelColor();
@@ -212,6 +208,11 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 			return;
 		}
 
+		if(OnChangedCurrentAxis != null)
+		{
+			OnChangedCurrentAxis(currentAxis, normalizedValue);
+		}
+		
 		var indexs = CheckExistenceInPanelTerritory(currentAxis);
 		int thisIndex = 0;
 
