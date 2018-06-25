@@ -32,16 +32,18 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 	[SerializeField]
 	private Text outputText;
 
+	private bool onetimeShow = false;
+
 	private void Awake()
 	{
 		if(normalizedObj != null)
-		{
-			normalizedValue = CalculateNormalizedValue();
+		{			
+			normalizedValue = CalculateNormalizedValue();			
 		}	
 
 		if(Items != null)
 		{
-			ItemsPositionOnTouchPad = new Vector2[Items.Length];
+			ItemsPositionOnTouchPad = new Vector2[Items.Length];			
 		}
 
 		if(!standardAxis)
@@ -58,7 +60,7 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 			for(int i=0; i<ItemsPositionOnTouchPad.Length; i++)
 			{
 				ItemsPositionOnTouchPad[i] = CalculatePositionOnTouchPad(Items[i]);
-			}
+			}			
 		}		
 	}
 
@@ -74,7 +76,8 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 	//規格化係数の計算
 	private float CalculateNormalizedValue()
 	{
-		Vector2 tempTwoAxis = new Vector2(normalizedObj.localPosition.x, normalizedObj.localPosition.y);
+		//Vector2 tempTwoAxis = new Vector2(normalizedObj.localPosition.x, normalizedObj.localPosition.y);
+		Vector2 tempTwoAxis = standardAxis.InverseTransformPoint(normalizedObj.position);
 		return tempTwoAxis.magnitude;
 	}
 
@@ -85,6 +88,8 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 		Vector2 tempTwoAxis = standardAxis.InverseTransformPoint(targetObj.position); //基準ローカル座標への変換
 		tempTwoAxis.x = tempTwoAxis.x / normalizedValue;
 		tempTwoAxis.y = tempTwoAxis.y / normalizedValue;		
+
+		//Debug.LogFormat("NormalizedAxis. X:{0}, Y:{1}", tempTwoAxis.x, tempTwoAxis.y);		
 		return tempTwoAxis;		
 	}	
 
@@ -190,6 +195,15 @@ public class FlowerTextPadControllerMapVer : MonoBehaviour{
 	// Update is called once per frame
 	private void Update () {
 
+		// if(!onetimeShow)
+		// {
+		// 	for(int i=0; i<ItemsPositionOnTouchPad.Length; i++)
+		// 	{
+		// 		Debug.LogFormat("ItemPositionOnTouchPad Number:{0}  X:{1} Y:{2}\n", i, ItemsPositionOnTouchPad[i].x, ItemsPositionOnTouchPad[i].y);
+		// 	}
+		// 	onetimeShow = true;
+		// }
+		
 		var currentAxis = CatchTouchAxis();			
 		if(currentAxis.x == 0 && currentAxis.y == 0)
 		{				

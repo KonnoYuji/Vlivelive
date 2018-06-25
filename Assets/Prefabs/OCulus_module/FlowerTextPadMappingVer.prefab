@@ -2935,7 +2935,7 @@ MonoBehaviour:
   - {fileID: 224384453146887502}
   isLastPanelLevel: 0
   normalizedObj: {fileID: 224461946557311420}
-  panelTouchableRadius: 0.1
+  panelTouchableRadius: 0.05
   standardAxis: {fileID: 0}
   outputText: {fileID: 114983866719503348}
 --- !u!114 &114146220709221590
@@ -9267,7 +9267,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 38.6, y: -1}
+  m_AnchoredPosition: {x: 32.5, y: -1}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224906548623682654

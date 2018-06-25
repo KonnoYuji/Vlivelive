@@ -1296,121 +1296,130 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114764612009534426, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114382173245862002, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114328594714471200, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114289546742033260, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114062967681248708, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114958104816921636, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114167174909129504, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114441384249397460, guid: 0a8c090e5750cb244844255f8de2f663,
+    - target: {fileID: 114054812709369536, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
     - target: {fileID: 114054812709369536, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
-      propertyPath: touchPadAxisSource
+      propertyPath: standardAxis
       value: 
-      objectReference: {fileID: 225218638}
+      objectReference: {fileID: 1348249787}
     - target: {fileID: 114797457876597840, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: touchPadAxisSource
-      value: 
-      objectReference: {fileID: 225218638}
-    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: DebugLog
-      value: 
-      objectReference: {fileID: 2079717808}
-    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
+    - target: {fileID: 114797457876597840, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
       propertyPath: standardAxis
       value: 
       objectReference: {fileID: 1348249787}
     - target: {fileID: 114382173245862002, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
-      propertyPath: standardAxis
+      propertyPath: touchPadAxisSource
       value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114167174909129504, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114328594714471200, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114958104816921636, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114797457876597840, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114289546742033260, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114054812709369536, guid: 0a8c090e5750cb244844255f8de2f663,
-        type: 2}
-      propertyPath: standardAxis
-      value: 
-      objectReference: {fileID: 1348249787}
-    - target: {fileID: 114062967681248708, guid: 0a8c090e5750cb244844255f8de2f663,
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114382173245862002, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
       propertyPath: standardAxis
       value: 
       objectReference: {fileID: 1348249787}
     - target: {fileID: 114764612009534426, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114764612009534426, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 114167174909129504, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114167174909129504, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 114958104816921636, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114958104816921636, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 114328594714471200, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114328594714471200, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 114289546742033260, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114289546742033260, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
       propertyPath: standardAxis
       value: 
       objectReference: {fileID: 1348249787}
     - target: {fileID: 114441384249397460, guid: 0a8c090e5750cb244844255f8de2f663,
         type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114441384249397460, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
       propertyPath: standardAxis
       value: 
       objectReference: {fileID: 1348249787}
+    - target: {fileID: 114062967681248708, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: touchPadAxisSource
+      value: 
+      objectReference: {fileID: 225218638}
+    - target: {fileID: 114062967681248708, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: standardAxis
+      value: 
+      objectReference: {fileID: 1348249787}
+    - target: {fileID: 1622441433169998, guid: 0a8c090e5750cb244844255f8de2f663, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224901895188962238, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: m_AnchoredPosition.x
+      value: 28.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114142423870500450, guid: 0a8c090e5750cb244844255f8de2f663,
+        type: 2}
+      propertyPath: panelTouchableRadius
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a8c090e5750cb244844255f8de2f663, type: 2}
   m_IsPrefabParent: 0
