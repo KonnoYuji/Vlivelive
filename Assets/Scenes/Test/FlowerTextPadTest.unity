@@ -600,237 +600,233 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 2.77
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 0.17
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 0.11
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224521221868980928, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 224790354307903276, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114341009096984088, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114220796661190716, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114529193499740670, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114809657473265700, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114318160407886884, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114142306628516138, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114246670274957242, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114532456956868574, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114514615700924826, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114572063182604302, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114676958351902906, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114078113215095386, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114722543745113240, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114332648060988626, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114122135442025218, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114057744735977292, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114568594417648866, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114557005632012822, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114414788556760084, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114449556413470906, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114652464724510958, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114339223121093156, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114800188652093860, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114683995224019548, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114331309804184420, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114489815208547730, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114887426826273916, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114945829963399656, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114800573081910114, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114463983770640578, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114304220710129428, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114288484423656084, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114246534477110232, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114488655858279320, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114590516770499054, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114117410349659834, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114588339589719356, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114552561015298098, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114066496518911464, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114926153326822384, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114494321551817534, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114705155439522734, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114464813027450342, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114953240737922016, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114529683640972766, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114864555336351258, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114703987893416142, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114319716667333914, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114064938501517028, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114845545717055568, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114012150145637274, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114234218578842544, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114738496752601872, guid: 9b7c3125e7a7ca144984819e3b252a58,
+    - target: {fileID: 114699781306626930, guid: d0822a6235fdc5645bb8fd0e6142ea52,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 1048071736759128, guid: 9b7c3125e7a7ca144984819e3b252a58, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9b7c3125e7a7ca144984819e3b252a58, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: d0822a6235fdc5645bb8fd0e6142ea52, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &998973192 stripped
 GameObject:
@@ -1348,7 +1344,7 @@ Prefab:
       objectReference: {fileID: 225218638}
     - target: {fileID: 1944845382704332, guid: d3af2bc7d2f1a8c4e94316bd30d45a43, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d3af2bc7d2f1a8c4e94316bd30d45a43, type: 2}
@@ -2333,155 +2329,151 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalPosition.z
       value: 0.18
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalRotation.y
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_LocalRotation.w
       value: 0.7071068
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchoredPosition.x
       value: 2.41
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchoredPosition.y
       value: 0.11
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_SizeDelta.y
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_Pivot.x
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 224317081803615418, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 224595829380905516, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
-    - target: {fileID: 114152303723360074, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114380145763063546, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114245132497271078, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114738530101062822, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114413800659355796, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114578071673701534, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114085517137924178, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114738691358528134, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114561300371643694, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114017246538754748, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114911195783114664, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114379485657552502, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114046292333282164, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114605385304433336, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114458588722052656, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114776833754769432, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114768468680330314, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114751331191046492, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114895785636377410, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114010992946038830, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 114831782046133794, guid: d0822a6235fdc5645bb8fd0e6142ea52,
+    - target: {fileID: 114497958607817770, guid: 9b7c3125e7a7ca144984819e3b252a58,
         type: 2}
       propertyPath: touchPadAxisSource
       value: 
       objectReference: {fileID: 225218638}
-    - target: {fileID: 1496136606145100, guid: d0822a6235fdc5645bb8fd0e6142ea52, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: d0822a6235fdc5645bb8fd0e6142ea52, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 9b7c3125e7a7ca144984819e3b252a58, type: 2}
   m_IsPrefabParent: 0

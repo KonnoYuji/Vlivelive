@@ -11,11 +11,11 @@ public class TouchTracer : MonoBehaviour {
 	private float Z_Offset = 0;
 
 	[SerializeField]
-	private FlowerTextPadControllerMapVer controller;
+	private TouchPadPanelManipulator manipulator;
 
 	private void Awake()
 	{
-		controller.OnChangedCurrentAxis += TraceTouch;		
+		manipulator.OnChangedCurrentAxis += TraceTouch;		
 	}
 	
 	private void TraceTouch(Vector2 axis, float normalizedValue)
