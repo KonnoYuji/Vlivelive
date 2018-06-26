@@ -290,6 +290,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myGrabber: {fileID: 225218633}
   pointer: {fileID: 998973192}
+  offset: 0.01
 --- !u!4 &225218637 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4554313434015654, guid: 0c07a8fef502e054d89b6a558257e736,

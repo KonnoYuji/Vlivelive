@@ -11,6 +11,7 @@ public class VrgTargetPointer : MonoBehaviour {
 	[SerializeField]
 	private GameObject pointer;
 
+	[SerializeField]
 	private float offset = 0.025f;
 
 	private void Awake() {

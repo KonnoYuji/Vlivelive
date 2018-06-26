@@ -322,6 +322,11 @@ Prefab:
       propertyPath: m_Color.b
       value: 0.6437745
       objectReference: {fileID: 0}
+    - target: {fileID: 114813391221157718, guid: 5646cf46596bc4846920983f6adc2d41,
+        type: 2}
+      propertyPath: Z_Offset
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114693999792714296, guid: 5646cf46596bc4846920983f6adc2d41, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 5646cf46596bc4846920983f6adc2d41, type: 2}
