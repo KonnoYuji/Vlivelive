@@ -15,6 +15,8 @@ public class KeyBoardManipulator : TouchPadPanelManipulator {
 	[SerializeField]
 	private Color SelectedColor = new Color(0.5f, 1.0f, 1.0f);
 
+	private bool isCapsLock = false;
+
 	private void Awake()
 	{	
 		base.Awake();
@@ -52,8 +54,30 @@ public class KeyBoardManipulator : TouchPadPanelManipulator {
 			return;
 		}
 
+		if(currentItem.name == "CapsLock")
+		{
+			//Debug.LogFormat("isCapsLock is {0}", isCapsLock);
+			isCapsLock = !isCapsLock;
+			return;
+		}
+		else if(currentItem.name == "Back")
+		{
+			var currentText = outputText.text;
+			if(currentText.Length > 0)
+			{
+				outputText.text = currentText.Substring(0, (currentText.Length -1));
+			}			
+			return;
+		}
+		else if(currentItem.name == "Clear")
+		{
+			outputText.text = "";
+			return;
+		}
+
 		var text = currentItem.GetComponentInChildren<Text>();
-		outputText.text += text.text;
+		if(isCapsLock) outputText.text += text.text.ToUpper();		
+		else outputText.text += text.text.ToLower();
 	} 
 
 	private void OnEnable()
