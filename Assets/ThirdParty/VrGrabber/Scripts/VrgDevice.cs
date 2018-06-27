@@ -7,12 +7,14 @@ namespace VrGrabber
         public static IDevice instance {
             get {
                 if (_instance == null) {
-#if !UNITY_WSA
+#if !UNITY_WSA && OCULUS_TOUCH
                     _instance = new VrgOculusTouchDevice();
+#elif !UNITY_WSA && OCULUS_GO
+                    _instance = new VrgOculusGoDevice();
 #elif UNITY_WSA
                     _instance = new VrgWinMRMotionControllerDevice();
 #else
-#error "Not implemented."
+//#error "Not implemented."
 #endif
                 }
                 return _instance;

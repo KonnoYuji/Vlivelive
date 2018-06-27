@@ -124,9 +124,16 @@ public class VrgGrabber : MonoBehaviour
     Dictionary<Collider, CandidateInfo> directGrabCandidates_ = new Dictionary<Collider, CandidateInfo>();
 
     RaycastHit targetHit_;
+
+#if OCULUS_TOUCH    
     float holdInput_ = 0f;
     bool isHoldStart_ = false;
     bool isHoleEnd_ = false;
+#elif OCULUS_GO || (UNITY_EDITOR && UNITY_STANDALONE)
+    bool isHolding = false;
+    bool isMovingForward = false;
+    bool isMovingDown = false;
+#endif    
     Vector3 preRayDirection_;
 
     public Transform gripTransform
@@ -248,20 +255,39 @@ public class VrgGrabber : MonoBehaviour
 
     void UpdateTransform()
     {
+#if UNITY_EDITOR && UNITY_STANDALONE
+
+#else        
         transform.localPosition = Device.instance.GetLocalPosition(side);
         transform.localRotation = Device.instance.GetLocalRotation(side);
+#endif        
     }
 
     void UpdateInput()
-    {                 
+    {
+#if OCULUS_TOUCH                         
         var preHoldInput = holdInput_;
         holdInput_ = Device.instance.GetHold(side);
         isHoldStart_ = (holdInput_ >= grabBeginThreshold) && (preHoldInput < grabBeginThreshold);
         isHoleEnd_ = (holdInput_ <= grabEndThreshold) && (preHoldInput > grabEndThreshold);        
+#elif OCULUS_GO
+        var triggerClicked = Device.instance.GetTriggerClicked(side);
+        if(triggerClicked)
+        {
+            isHolding = !isHolding;
+        }        
+#elif UNITY_EDITOR && UNITY_STANDALONE
+        var triggerClicked = Input.GetMouseButton(0);
+        if(triggerClicked)
+        {
+            isHolding = !isHolding;
+        }
+#endif                
     }
 
     void UpdateGrab()
     {
+#if OCULUS_TOUCH        
         if (isHoldStart_)
         {
             //DirectGrab();
@@ -271,10 +297,27 @@ public class VrgGrabber : MonoBehaviour
         {
             Release();
         }
+#elif OCULUS_GO || (UNITY_EDITOR && UNITY_STANDALONE)
+        if(isHolding)
+        {
+            RemoteGrab();
+        }
+        else
+        {
+            Release();
+        }
+#endif       
     }
 
     void UpdateTouch()
-    {
+    {        
+#if UNITY_EDITOR && UNITY_STANDALONE
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+		RaycastHit hitinfo;
+		bool hit = Physics.Raycast(ray, out hitinfo);
+        var forward = this.transform.forward;        
+#else
         var forward = gripTransform.forward;
         
         var ray = new Ray();
@@ -292,6 +335,7 @@ public class VrgGrabber : MonoBehaviour
         {
             updateTouchUnHitEvent();
         }
+#endif        
         preRayDirection_ = hit ? ray.direction : forward;
     }
 
@@ -349,16 +393,26 @@ public class VrgGrabber : MonoBehaviour
     {
         if (isGrabbing) return;
 
+#if UNITY_EDITOR && UNITY_STANDALONE
+		var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+		RaycastHit hit;
+		bool hitted = Physics.Raycast(ray, out hit);
+        if(!hitted)
+        {
+            return;
+        }
+#else
         var ray = new Ray();
         ray.origin = gripTransform.position;
-        ray.direction = gripTransform.forward;
+        ray.direction = gripTransform.forward;        
         RaycastHit hit;
 
         if (!Physics.Raycast(ray, out hit, maxGrabDistance, layerMask))
         {
             return;
         }
-
+#endif
         var grabbable =
             hit.collider.GetComponent<VrgGrabbable>() ??
             hit.collider.GetComponentInParent<VrgGrabbable>();
@@ -424,45 +478,139 @@ public class VrgGrabber : MonoBehaviour
 
     void FixedUpdateGrabbingObject()
     {
+        //Grabbableに登録されているイベントを、grabbingしているときにタッチパネルがクリックされたらコールする
+#if UNITY_EDITOR && UNITY_STANDALONE
+        if(Input.GetMouseButtonDown(1))
+        {
+            grabInfo_.grabbable.OnGrabClicked(this);
+        }        
+#else        
         if (Device.instance.GetClick(side))
         {
             grabInfo_.grabbable.OnGrabClicked(this);
         }
-
         if (grabInfo_.grabbable.isMultiGrabbed)
         {
             FixedUpdateGrabbingObjectByDualHand();
         }
+#endif
         else
         {
-            FixedUpdateGrabbingObjectBySingleHand();
+            FixedUpdateGrabbingObjectBySingleHand();        
+            MoveWithFlickInput();       
         }
     }
 
-    void FixedUpdateGrabbingObjectBySingleHand()
+    void MoveForwardGrabbable(Vector3 pos, Quaternion rot)
     {
+
+    }
+
+    void MoveBackGrabbable(Vector3 pos, Quaternion rot)
+    {
+
+    }
+
+    //タッチパネル上下押下中にものが移動
+    void FixedUpdateGrabbingObjectBySingleHand()
+    {        
+#if OCULUS_GO 
+        //掴んだObjectの参照
+        var grabbable = grabInfo_.grabbable;
+        
+        var dist = Mathf.Clamp(grabInfo_.distance, 0f, maxGrabDistance);
+        
+        //コントローラーとGrabオブジェクト間の距離
+        var actualDist = (targetPos - gripTransform.position).magnitude;
+        
+        //移動させる距離の比が明らかに大きい場合
+        var deltaDist = dist - actualDist;
+        var threshDist = Mathf.Max(dist * 0.1f, 0.1f);
+        if (Mathf.Abs(deltaDist) > threshDist)
+        {            
+            dist = Mathf.Lerp(grabInfo_.distance, actualDist, 0.05f);
+        }
+
+        grabInfo_.distance = dist;
+
+        //Grabしているオブジェクトに座標変換するようの行列
+        var mat = grabInfo_.gripToGrabbableMat;
+
+        var pos = mat.GetPosition();
+        var rot = mat.GetRotation();
+       
+        FixedUpdateGrabbingObjectTransform(pos, rot, grabbable.transform.localScale);
+
+#elif UNITY_EDITOR && UNITY_STANDALONE
+
+        //掴んだObjectの参照
+        var grabbable = grabInfo_.grabbable;
+        
+        var dist = Mathf.Clamp(grabInfo_.distance, 0f, maxGrabDistance);
+        
+        //コントローラーとGrabオブジェクト間の距離
+        var actualDist = (targetPos - Camera.main.transform.position).magnitude;
+        
+        //移動させる距離の比が明らかに大きい場合
+        var deltaDist = dist - actualDist;
+        var threshDist = Mathf.Max(dist * 0.1f, 0.1f);
+        if (Mathf.Abs(deltaDist) > threshDist)
+        {            
+            dist = Mathf.Lerp(grabInfo_.distance, actualDist, 0.05f);
+        }
+
+        grabInfo_.distance = dist;
+
+        //Grabしているオブジェクトに座標変換するようの行列
+        var mat = grabInfo_.gripToGrabbableMat;
+
+        var pos = mat.GetPosition();
+        var rot = mat.GetRotation();
+       
+        FixedUpdateGrabbingObjectTransform(pos, rot, grabbable.transform.localScale);
+
+#elif OCULUS_TOUCH  
+        
+        //掴んだObjectの参照
         var grabbable = grabInfo_.grabbable;
 
+        //TouchPadのY方向の座標の大きさをもとに移動率を決定  stickY = -1 ~ 1の間
         var stickY = Device.instance.GetCoord(side).y;
+
+        //StickMoveSpeedは0.1がデフォルト, ここで正負の移動を決める
         var stickMove = stickY * stickMoveSpeed;
+        
+        //Y軸ギリギリにタッチしたときでも動くようにする
         var stickMoveFilter = stickY > Mathf.Epsilon ? 0.1f : 0.3f;
+
+        //Yの入力位置に対して、移動方向を変更し続ける
         grabInfo_.stickMove += (stickMove - grabInfo_.stickMove) * stickMoveFilter;
 
+        //移動距離の算出 ここで、grabしたobjectを前に進ませる、後ろに進ませる距離を算出
         var dist = Mathf.Clamp(grabInfo_.distance + grabInfo_.stickMove, 0f, maxGrabDistance);
+        
+        //コントローラーとGrabオブジェクト間の距離
         var actualDist = (targetPos - gripTransform.position).magnitude;
+        
+        //移動させる距離の比が明らかに大きい場合
         var deltaDist = dist - actualDist;
         var threshDist = Mathf.Max(dist * 0.1f, 0.1f);
         if (Mathf.Abs(deltaDist) > threshDist)
         {
             dist = Mathf.Lerp(grabInfo_.distance, actualDist, 0.05f);
         }
+
+
         grabInfo_.distance = dist;
 
+        //Grabしているオブジェクトに座標変換するようの行列
         var mat = grabInfo_.gripToGrabbableMat;
+
         var pos = mat.GetPosition();
         var rot = mat.GetRotation();
-
+       
         FixedUpdateGrabbingObjectTransform(pos, rot, grabbable.transform.localScale);
+#endif
     }
 
     void FixedUpdateGrabbingObjectByDualHand()
@@ -521,7 +669,74 @@ public class VrgGrabber : MonoBehaviour
 
         grabbable.scale = scale;
         grabbable.position = pos;
-        grabbable.rotation = rot;
+        grabbable.rotation = rot;        
+    }
+
+    void MoveWithFlickInput()
+    {
+#if UNITY_EDITOR && UNITY_STANDALONE
+		if(Input.GetKeyDown(KeyCode.W))
+		{
+            Debug.Log("W pressed");
+			isMovingForward = true;
+		}
+		else if(Input.GetKeyDown(KeyCode.S))
+		{
+            Debug.Log("S pressed");
+            isMovingDown = true;
+        }
+#else        
+        if(Device.instance.GetUpFlicked())
+        {
+            isMovingForward = true;
+        }        
+
+        else if(Device.instance.GetDownFlicked())
+        {
+            isMovingDown = true;
+        }
+#endif        
+        var grabbable = grabInfo_.grabbable;
+
+        var mat = grabInfo_.gripToGrabbableMat;
+
+        var pos = mat.GetPosition();
+        var rot = mat.GetRotation();
+
+        if(isMovingForward)
+        {
+            //Debug.LogFormat("Move Forward. Prev Pos X : {0}, Y : {1}, Z : {2}", pos.x, pos.y, pos.z);
+            pos = pos + Vector3.Lerp(grabbable.position, pos, 0.001f);
+
+            grabInfo_.distance = pos.magnitude;
+            var v = (pos - grabbable.position) / Time.fixedDeltaTime;
+            grabInfo_.velocity.Add(v);
+            
+            Debug.LogFormat("MovingForward Amount : {0}", pos.magnitude);
+            grabbable.position = pos;
+            grabbable.rotation = rot;      
+            
+            //Debug.LogFormat("Move Forward. After Pos X : {0}, Y : {1}, Z : {2}", pos.x, pos.y, pos.z);
+                                    
+            isMovingForward = false;        
+        }
+        else if(isMovingDown)
+        {
+            //Debug.LogFormat("Move Down. Prev Pos X : {0}, Y : {1}, Z : {2}", pos.x, pos.y, pos.z);            
+            pos = pos - Vector3.Lerp(pos, grabbable.position, 0.001f);
+            
+            grabInfo_.distance = pos.magnitude;
+            var v = (pos - grabbable.position) / Time.fixedDeltaTime;
+            grabInfo_.velocity.Add(v);
+            
+            Debug.LogFormat("MovingDown Amount : {0}", pos.magnitude);
+            grabbable.position = pos;
+            grabbable.rotation = rot;      
+            
+            //Debug.LogFormat("Move Forward. After Pos X : {0}, Y : {1}, Z : {2}", pos.x, pos.y, pos.z);
+                        
+            isMovingDown = false;        
+        }      
     }
 }
 

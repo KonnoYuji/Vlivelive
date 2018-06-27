@@ -8,16 +8,9 @@ public class VrgOculusTouchDevice : IDevice
 {
     private OVRInput.Controller GetOVRController(ControllerSide side) 
     {
-
-#if OCULUS_GO        
-        //Oculus Goは右手限定
-        return OVRInput.Controller.RTrackedRemote;
-#else
         return (side == ControllerSide.Left) ?
             OVRInput.Controller.LTouch :
-            OVRInput.Controller.RTouch;
-#endif            
-
+            OVRInput.Controller.RTouch;        
     }
 
     public Vector3 GetLocalPosition(ControllerSide side) 
@@ -32,38 +25,45 @@ public class VrgOculusTouchDevice : IDevice
 
     public float GetHold(ControllerSide side) 
     {
-#if OCULUS_GO        
-        return OVRInput.Get(OVRInput.Axis1D.PrimaryIndexTrigger, GetOVRController(side));
-#else
-        return OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, GetOVRController(side));
-#endif        
+        return OVRInput.Get(OVRInput.Axis1D.PrimaryHandTrigger, GetOVRController(side));        
     }
 
     public bool GetHover(ControllerSide side) 
     {
-#if OCULUS_GO     
-        return OVRInput.Get(OVRInput.Touch.PrimaryTouchpad, GetOVRController(side));
-#else
-        return OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, GetOVRController(side));
-#endif        
+        return OVRInput.Get(OVRInput.Touch.PrimaryThumbstick, GetOVRController(side));        
     }
 
     public bool GetClick(ControllerSide side) 
     {
-#if OCULUS_GO
-        return OVRInput.Get(OVRInput.Button.One, GetOVRController(side));
-#else    
-        return OVRInput.Get(OVRInput.Button.PrimaryThumbstick, GetOVRController(side));
-#endif        
+        return OVRInput.Get(OVRInput.Button.PrimaryThumbstick, GetOVRController(side));        
     }
 
     public Vector2 GetCoord(ControllerSide side) 
     {
-#if OCULUS_GO        
-        return OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad, GetOVRController(side));
-#else
-        return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, GetOVRController(side));
-#endif        
+        return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, GetOVRController(side));        
+    }
+    public bool GetTriggerClicked(ControllerSide side)
+    {
+        return false;
+    }
+
+    public bool GetUpFlicked()
+    {
+        return true;
+    }
+    public bool GetDownFlicked()
+    {
+        return true;
+    }
+
+    public bool GetLeftFlicked()
+    {
+        return true;
+    }
+
+    public bool GetRightFlicked()
+    {
+        return true;
     }
 }
 }
