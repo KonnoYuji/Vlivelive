@@ -368,10 +368,10 @@ public class VrgGrabber : MonoBehaviour
             grabbable.rigidbody.isKinematic = true;
         }
 
-        if (grabbable.isGrabbed)
-        {
-            SecondGrab(grabbable);
-        }
+        // if (grabbable.isGrabbed)
+        // {
+        //     SecondGrab(grabbable);
+        // }
 
         grabInfo_.id = grabbable.OnGrabbed(this);
     }
@@ -438,26 +438,6 @@ public class VrgGrabber : MonoBehaviour
         }
     }
 
-    void SecondGrab(VrgGrabbable grabbable)
-    {
-        var primary = opposite;
-        var secondary = this;
-
-        var primaryMat = primary.grabInfo_.gripToGrabbableMat;
-        var secondaryMat = secondary.grabInfo_.gripToGrabbableMat;
-        var primaryPos = primaryMat.GetPosition();
-        var secondaryPos = secondaryMat.GetPosition();
-        var primaryGripPos = primary.gripTransform.position;
-        var secondaryGripPos = secondary.gripTransform.position;
-
-        primary.dualGrabInfo_.primaryToSecondary = primaryGripPos - secondaryGripPos;
-        primary.dualGrabInfo_.pos = grabbable.transform.position;
-        primary.dualGrabInfo_.center = (primaryPos + secondaryPos) / 2;
-        primary.dualGrabInfo_.rot = grabbable.transform.rotation;
-        primary.dualGrabInfo_.scale = grabbable.transform.localScale;
-
-        grabInfo_.isKinematic = primary.grabInfo_.isKinematic;
-    }
 
     //grabInfo_をここで初期化する
     void Release()
@@ -581,7 +561,7 @@ public class VrgGrabber : MonoBehaviour
 
         grabInfo_.distance = dist;
 
-        //Grabしているオブジェクトに座標変換するようの行列
+        //Grabしているオブジェクトに座標変換するようの行列(Grabbableのモデル変換行列)      
         var mat = grabInfo_.gripToGrabbableMat;
 
         var pos = mat.GetPosition();
@@ -636,20 +616,6 @@ public class VrgGrabber : MonoBehaviour
             stickY = 0.0f;
         }
 
-        //Grabしているオブジェクトに座標変換するようの行列
-        var mat = grabInfo_.gripToGrabbableMat;
-        Quaternion rot = mat.GetRotation();
-
-        if(Input.GetKeyDown(KeyCode.A))
-		{
-            rot = Quaternion.Euler(new Vector3(0, -30.0f, 0) + mat.GetRotation().eulerAngles);            
-		}
-
-        if(Input.GetKeyDown(KeyCode.D))
-		{
-            rot = Quaternion.Euler(new Vector3(0, 30.0f, 0) + mat.GetRotation().eulerAngles);            
-		}
-
         //StickMoveSpeedは0.1がデフォルト, ここで正負の移動を決める
         var stickMove = stickY * stickMoveSpeed;
         
@@ -675,6 +641,20 @@ public class VrgGrabber : MonoBehaviour
 
         grabInfo_.distance = dist;
 
+        //Grabしているオブジェクトに座標変換するようの行列
+        var mat = grabInfo_.gripToGrabbableMat;
+        Quaternion rot = mat.GetRotation();
+
+        if(Input.GetKeyDown(KeyCode.A))
+		{
+            rot = Quaternion.Euler(new Vector3(0, -30.0f, 0) + mat.GetRotation().eulerAngles);            
+		}
+
+        if(Input.GetKeyDown(KeyCode.D))
+		{
+            rot = Quaternion.Euler(new Vector3(0, 30.0f, 0) + mat.GetRotation().eulerAngles);            
+		}
+        
         var pos = mat.GetPosition();
         //var rot = mat.GetRotation();
        
@@ -750,15 +730,17 @@ public class VrgGrabber : MonoBehaviour
 
         if(rot != matRot)
         {
-            // Debug.LogWarningFormat("input rot X : {0}, Y : {1}, Z : {0}", rot.x, rot.y, rot.z);
-            // Debug.LogWarningFormat("input grabbableRot X : {0}, Y : {1}, Z : {0}", grabbable.rotation.x, grabbable.rotation.y, grabbable.rotation.z);
+            //grabbable.rotationの更新は次のFixedUpdateで反映されるため、回転後のgrabInfo_の更新をここでできない
+            grabbable.transform.rotation = rot;
+            //grabbable.rotation = rot;
+            grabInfo_.initGripToGrabbableMat = grabInfo_.grabMat.inverse * grabbable.transform.localToWorldMatrix;
+            grabInfo_.initGrabbableToGrabMat = grabbable.transform.worldToLocalMatrix * grabInfo_.grabMat;                                
         }
         else
         {
-            // Debug.LogFormat("input rot X : {0}, Y : {1}, Z : {0}", rot.x, rot.y, rot.z);
-            // Debug.LogFormat("input grabbableRot X : {0}, Y : {1}, Z : {0}", grabbable.rotation.x, grabbable.rotation.y, grabbable.rotation.z);
+            grabbable.rotation = rot;
         }
-        grabbable.rotation = rot;              
+                      
     }
 
     private IEnumerator MoveFoward()
@@ -930,6 +912,28 @@ public class VrgGrabber : MonoBehaviour
 
     //     var grabMat = grabInfo_.grabMat;
     //     grabInfo_.initGripToGrabbableMat = grabMat.inverse * grabbable.transform.localToWorldMatrix;
+    // }
+
+    
+    // void SecondGrab(VrgGrabbable grabbable)
+    // {
+    //     var primary = opposite;
+    //     var secondary = this;
+
+    //     var primaryMat = primary.grabInfo_.gripToGrabbableMat;
+    //     var secondaryMat = secondary.grabInfo_.gripToGrabbableMat;
+    //     var primaryPos = primaryMat.GetPosition();
+    //     var secondaryPos = secondaryMat.GetPosition();
+    //     var primaryGripPos = primary.gripTransform.position;
+    //     var secondaryGripPos = secondary.gripTransform.position;
+
+    //     primary.dualGrabInfo_.primaryToSecondary = primaryGripPos - secondaryGripPos;
+    //     primary.dualGrabInfo_.pos = grabbable.transform.position;
+    //     primary.dualGrabInfo_.center = (primaryPos + secondaryPos) / 2;
+    //     primary.dualGrabInfo_.rot = grabbable.transform.rotation;
+    //     primary.dualGrabInfo_.scale = grabbable.transform.localScale;
+
+    //     grabInfo_.isKinematic = primary.grabInfo_.isKinematic;
     // }
 }
 
