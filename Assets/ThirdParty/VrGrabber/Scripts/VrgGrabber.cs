@@ -163,9 +163,12 @@ public class VrgGrabber : MonoBehaviour
             {
                 var grabMat = grabInfo_.grabbable.transform.localToWorldMatrix;
                 //initGrabbableToGrabMat = grabbable.transform.worldToLocalMatrix * grabMat;
+                // grabMat = grabber.gripTransform.localToWorldMatrix * transMat;
                 //grabMat * grabInfo_.initGrabbableToGrabMat = grabbable.transform.localToWorldMatrix x grabbable.transform.worldToLocalMatrix * grabber.gripTransform.localToWorldMatrix * transMat;
-                //Grabbableのモデル変換行列 × Grabbableの逆モデル変換行列 × Grabberのモデル変換行列 * Grabberの平行移動行列 = Grabberのモデル変換行列 * Grabberの平行移動行列  
-                //同次座標系では、4列目に空間の位置を示すベクトル成分が入っている. Grabberのモデル変換行列もあるので、ここでは、Grabberから見た平行移動になる
+                //Grabbableのモデル変換行列 × Grabbableの逆モデル変換行列 × Grabberのモデル変換行列 * Grabberの平行移動行列 
+                //= Grabberのモデル変換行列 * z軸の平行移動行列
+                //同次座標系では、4列目に平行移動後のベクトル成分が入るので (ここでは、ワールド空間への平行移動 + オブジェクト空間での平行移動)
+                //GetPositionはワールド空間でGrabberに対して平行移動しているベクトルを返す
                 return (grabMat * grabInfo_.initGrabbableToGrabMat).GetPosition();
             }
             else if (targetHit_.transform)
