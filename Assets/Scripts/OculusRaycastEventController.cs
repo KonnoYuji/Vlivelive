@@ -82,7 +82,7 @@ public class OculusRaycastEventController : MonoBehaviour {
 		var eventDefinition = currentTarget.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;
 		if(eventDefinition != null)
 		{
-			eventDefinition.UnGaze();										
+			eventDefinition.UnGaze();												
 			OculusGoInput.Instance.TouchedPad -= eventDefinition.TouchedPad;
 	   		OculusGoInput.Instance.ClickedPad -= eventDefinition.ClickedPad;
 	   		OculusGoInput.Instance.UpFlicked -= eventDefinition.UpFlicked;

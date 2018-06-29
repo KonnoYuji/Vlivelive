@@ -139,8 +139,32 @@ public class VrgGrabber : MonoBehaviour
     bool isHoleEnd_ = false;
 #elif OCULUS_GO || (UNITY_EDITOR && UNITY_STANDALONE)
     bool isHolding = false;
+
+    public bool IsHolding 
+    {
+        get 
+        {
+            return isHolding;
+        }
+        set
+        {
+            isHolding = value;
+        }
+    }
     bool isMovingForward = false;
     bool isMovingBack = false;
+
+    bool isUpScaling = false;
+
+    bool isDownScaling = false;
+    
+    bool isRightRotating = false;
+
+    bool isLeftRotating = false;
+
+    float scalingRate = 0.01f;
+
+    Vector3 curerntScaling;
 
 #endif    
     Vector3 preRayDirection_;
@@ -191,6 +215,11 @@ public class VrgGrabber : MonoBehaviour
         get { return grabInfo_.grabbable != null; }
     }
 
+    public VrgGrabbable currentGrabbable
+    {
+        get { return grabInfo_.grabbable;}
+    }
+
     VrgGrabber opposite
     {
         get
@@ -239,40 +268,11 @@ public class VrgGrabber : MonoBehaviour
         }
     }
 
-    void OnTriggerEnter(Collider collider)
-    {
-        var grabbable =
-            collider.GetComponent<VrgGrabbable>() ??
-            collider.GetComponentInParent<VrgGrabbable>();
-        if (!grabbable) return;
-
-        CandidateInfo info;
-        if (!directGrabCandidates_.TryGetValue(collider, out info))
-        {
-            info = new CandidateInfo();
-            info.collider = collider;
-            info.grabbable = grabbable;
-            directGrabCandidates_.Add(collider, info);
-        }
-        info.refCount++;
-    }
-
-    void OnTriggerExit(Collider collider)
-    {
-        CandidateInfo info = null;
-        if (!directGrabCandidates_.TryGetValue(collider, out info)) return;
-
-        info.refCount--;
-        if (info.refCount <= 0)
-        {
-            directGrabCandidates_.Remove(collider);
-        }
-    }
-
     void UpdateTransform()
     {
 #if UNITY_EDITOR && UNITY_STANDALONE
 
+//VRGrabberのオブジェクトを常にコントローラーと合わせる
 #else        
         transform.localPosition = Device.instance.GetLocalPosition(side);
         transform.localRotation = Device.instance.GetLocalRotation(side);
@@ -298,6 +298,52 @@ public class VrgGrabber : MonoBehaviour
         {
             isHolding = !isHolding;
         }
+
+        if(isHolding && Input.GetMouseButton(1) && Input.GetKeyDown(KeyCode.W))
+        {            
+            if(!isUpScaling && !isDownScaling)
+            {
+                isUpScaling = true;                    
+            }                        
+        }                
+        
+        if(isHolding && Input.GetMouseButton(1) && Input.GetKeyDown(KeyCode.S))
+        {
+            if(!isUpScaling && !isDownScaling)
+            {
+                isDownScaling = true;                
+            }
+        }
+
+        if(isHolding && Input.GetKeyDown(KeyCode.W) && !isUpScaling)
+		{
+            //Debug.Log("W pressed");
+			if(!isMovingForward && !isMovingBack)
+            {
+                isMovingForward = true;
+            }
+		}
+
+
+        if(isHolding && Input.GetKeyDown(KeyCode.S) && !isDownScaling)
+		{
+            //Debug.Log("W pressed");
+			if(!isMovingForward && !isMovingBack)
+            {
+                isMovingBack = true;    
+            }
+		}
+
+        if(isHolding && Input.GetKeyDown(KeyCode.A))
+		{
+            isLeftRotating = true;    
+		}
+
+        if(isHolding && Input.GetKeyDown(KeyCode.D))
+		{
+            isRightRotating = true;            
+		}
+
 #endif                
     }
 
@@ -379,34 +425,7 @@ public class VrgGrabber : MonoBehaviour
         grabInfo_.id = grabbable.OnGrabbed(this);
     }
 
-    void DirectGrab()
-    {
-        if (isGrabbing || directGrabCandidates_.Count == 0) return;
-
-        VrgGrabbable grabbable = null;
-        float minDist = float.MaxValue;
-
-        var gripPos = gripTransform.position;
-        foreach (var kv in directGrabCandidates_)
-        {
-            var candidate = kv.Value;
-            var pos = candidate.collider.ClosestPoint(gripPos);
-            var dist = Vector3.Distance(gripPos, pos);
-
-            if (dist < minDist)
-            {
-                grabbable = candidate.grabbable;
-                minDist = dist;
-            }
-        }
-
-        if (grabbable)
-        {
-            Grab(grabbable, 0f);
-        }
-    }
-
-    void RemoteGrab()
+    public void RemoteGrab()
     {
         //VrGrabbableがアタッチされたスクリプトのみ対応
         if (isGrabbing) return;
@@ -577,21 +596,22 @@ public class VrgGrabber : MonoBehaviour
         //掴んだObjectの参照
         var grabbable = grabInfo_.grabbable;
 
-        float stickY = 0.0f;
+        if(isUpScaling)
+        {
+            StartCoroutine(ChangeScale());
+        }                
+        
+        if(isDownScaling)
+        {
+            StartCoroutine(ChangeScale());
+        }
 
-        if(Input.GetKeyDown(KeyCode.W))
-		{
-            //Debug.Log("W pressed");
-			if(!isMovingForward && !isMovingBack)
-            {
-                isMovingForward = true;
-                StartCoroutine(MoveFoward());    
-            }
-		}
+        float stickY = 0.0f;
 
         if(isMovingForward)
         {
            stickY = 1.0f;     
+           StartCoroutine(MoveFoward());    
            //Debug.Log("stickY is 1.0f");
         }
         else if(!isMovingBack)
@@ -599,19 +619,10 @@ public class VrgGrabber : MonoBehaviour
             stickY = 0.0f;
         }
 
-        if(Input.GetKeyDown(KeyCode.S))
-		{
-            //Debug.Log("W pressed");
-			if(!isMovingForward && !isMovingBack)
-            {
-                isMovingBack = true;
-                StartCoroutine(MoveBack());    
-            }
-		}
-
         if(isMovingBack)
         {
            stickY = -1.0f;     
+           StartCoroutine(MoveBack());
            //Debug.Log("stickY is 1.0f");
         }
         else if(!isMovingForward)
@@ -642,26 +653,28 @@ public class VrgGrabber : MonoBehaviour
             dist = Mathf.Lerp(grabInfo_.distance, actualDist, 0.05f);
         }
 
-        grabInfo_.distance = dist;
+        grabInfo_.distance = dist;        
 
         //Grabしているオブジェクトに座標変換するようの行列
         var mat = grabInfo_.gripToGrabbableMat;
         Quaternion rot = mat.GetRotation();
 
-        if(Input.GetKeyDown(KeyCode.A))
+        if(isLeftRotating)
 		{
-            rot = Quaternion.Euler(new Vector3(0, -30.0f, 0) + mat.GetRotation().eulerAngles);            
+            rot = Quaternion.Euler(new Vector3(0, -30.0f, 0) + mat.GetRotation().eulerAngles);
+            isLeftRotating = false;            
 		}
 
-        if(Input.GetKeyDown(KeyCode.D))
+        if(isRightRotating)
 		{
-            rot = Quaternion.Euler(new Vector3(0, 30.0f, 0) + mat.GetRotation().eulerAngles);            
+            rot = Quaternion.Euler(new Vector3(0, 30.0f, 0) + mat.GetRotation().eulerAngles);
+            isRightRotating = false;            
 		}
-        
+ 
         var pos = mat.GetPosition();
         //var rot = mat.GetRotation();
        
-        FixedUpdateGrabbingObjectTransform(pos, rot, grabbable.transform.localScale);
+        FixedUpdateGrabbingObjectTransform(pos, rot, (grabbable.transform.localScale + curerntScaling));
 
 #elif OCULUS_TOUCH  
         
@@ -766,7 +779,6 @@ public class VrgGrabber : MonoBehaviour
     {
         float FixedPassedTime = 0;        
 
-        Debug.Log("isMovingBack is true");
         while(FixedPassedTime < 0.5f)
         {
             FixedPassedTime += Time.fixedDeltaTime;
@@ -774,10 +786,71 @@ public class VrgGrabber : MonoBehaviour
         }
 
         isMovingBack = false;        
-        Debug.Log("isMovingBack is false");
     }
 
+    private IEnumerator ChangeScale()
+    {        
+        float FixedPassedTime = 0;
 
+        //Debug.Log("ChangeScale is Called");
+        while(FixedPassedTime < 0.2f)
+        {
+            FixedPassedTime += Time.fixedDeltaTime;
+            if(isUpScaling)
+            {
+                curerntScaling += new Vector3(scalingRate, scalingRate, scalingRate);                
+            }
+            else
+            {
+                curerntScaling -= new Vector3(scalingRate, scalingRate, scalingRate);
+            }
+            yield return new WaitForFixedUpdate();            
+        }
+
+        isUpScaling = false;
+        isDownScaling = false;
+
+        curerntScaling = Vector3.zero;
+    }
+
+    void FixedUpdateGrabbingObjectByDualHand()
+    {
+        if (!isPrimary) return;
+
+        var secondary = opposite;
+        Assert.IsNotNull(secondary);
+
+        var primaryGripPos = gripTransform.position;
+        var primaryGripRot = gripTransform.rotation;
+        var secondaryGripPos = secondary.gripTransform.position;
+        var secondaryGripRot = secondary.gripTransform.rotation;
+
+        var primaryMat = grabInfo_.gripToGrabbableMat;
+        var secondaryMat = secondary.grabInfo_.gripToGrabbableMat;
+        var primaryPos = primaryMat.GetPosition();
+        var secondaryPos = secondaryMat.GetPosition();
+
+        var center = (primaryPos + secondaryPos) / 2;
+        var dCenter = center - dualGrabInfo_.center;
+        var pos = dualGrabInfo_.pos + dCenter;
+
+        var primaryToSecondary = primaryGripPos - secondaryGripPos;
+        var currentDir = primaryToSecondary.normalized;
+        var initDir = dualGrabInfo_.primaryToSecondary.normalized;
+        var dRot = Quaternion.FromToRotation(initDir, currentDir);
+        var rot = dRot * dualGrabInfo_.rot;
+
+        var scale = dualGrabInfo_.scale;
+        if (grabInfo_.grabbable.isScalable)
+        {
+            var currentDistance = primaryToSecondary.magnitude;
+            var initDistance = dualGrabInfo_.primaryToSecondary.magnitude;
+            scale *= currentDistance / initDistance;
+        }
+
+        grabInfo_.smoothFilter = 0f;
+        FixedUpdateGrabbingObjectTransform(pos, rot, scale);
+    }
 //     void MoveWithFlickInput()
 //     {
 // #if UNITY_EDITOR && UNITY_STANDALONE
@@ -868,45 +941,6 @@ public class VrgGrabber : MonoBehaviour
 //         }      
 //     }
 
-        // void FixedUpdateGrabbingObjectByDualHand()
-    // {
-    //     if (!isPrimary) return;
-
-    //     var secondary = opposite;
-    //     Assert.IsNotNull(secondary);
-
-    //     var primaryGripPos = gripTransform.position;
-    //     var primaryGripRot = gripTransform.rotation;
-    //     var secondaryGripPos = secondary.gripTransform.position;
-    //     var secondaryGripRot = secondary.gripTransform.rotation;
-
-    //     var primaryMat = grabInfo_.gripToGrabbableMat;
-    //     var secondaryMat = secondary.grabInfo_.gripToGrabbableMat;
-    //     var primaryPos = primaryMat.GetPosition();
-    //     var secondaryPos = secondaryMat.GetPosition();
-
-    //     var center = (primaryPos + secondaryPos) / 2;
-    //     var dCenter = center - dualGrabInfo_.center;
-    //     var pos = dualGrabInfo_.pos + dCenter;
-
-    //     var primaryToSecondary = primaryGripPos - secondaryGripPos;
-    //     var currentDir = primaryToSecondary.normalized;
-    //     var initDir = dualGrabInfo_.primaryToSecondary.normalized;
-    //     var dRot = Quaternion.FromToRotation(initDir, currentDir);
-    //     var rot = dRot * dualGrabInfo_.rot;
-
-    //     var scale = dualGrabInfo_.scale;
-    //     if (grabInfo_.grabbable.isScalable)
-    //     {
-    //         var currentDistance = primaryToSecondary.magnitude;
-    //         var initDistance = dualGrabInfo_.primaryToSecondary.magnitude;
-    //         scale *= currentDistance / initDistance;
-    //     }
-
-    //     grabInfo_.smoothFilter = 0f;
-    //     FixedUpdateGrabbingObjectTransform(pos, rot, scale);
-    // }
-
     
     // void ReGrab()
     // {
@@ -938,6 +972,66 @@ public class VrgGrabber : MonoBehaviour
 
     //     grabInfo_.isKinematic = primary.grabInfo_.isKinematic;
     // }
+
+    
+    // void OnTriggerEnter(Collider collider)
+    // {
+    //     var grabbable =
+    //         collider.GetComponent<VrgGrabbable>() ??
+    //         collider.GetComponentInParent<VrgGrabbable>();
+    //     if (!grabbable) return;
+
+    //     CandidateInfo info;
+    //     if (!directGrabCandidates_.TryGetValue(collider, out info))
+    //     {
+    //         info = new CandidateInfo();
+    //         info.collider = collider;
+    //         info.grabbable = grabbable;
+    //         directGrabCandidates_.Add(collider, info);
+    //     }
+    //     info.refCount++;
+    // }
+
+    // void OnTriggerExit(Collider collider)
+    // {
+    //     CandidateInfo info = null;
+    //     if (!directGrabCandidates_.TryGetValue(collider, out info)) return;
+
+    //     info.refCount--;
+    //     if (info.refCount <= 0)
+    //     {
+    //         directGrabCandidates_.Remove(collider);
+    //     }
+    // }
+
+    
+    // void DirectGrab()
+    // {
+    //     if (isGrabbing || directGrabCandidates_.Count == 0) return;
+
+    //     VrgGrabbable grabbable = null;
+    //     float minDist = float.MaxValue;
+
+    //     var gripPos = gripTransform.position;
+    //     foreach (var kv in directGrabCandidates_)
+    //     {
+    //         var candidate = kv.Value;
+    //         var pos = candidate.collider.ClosestPoint(gripPos);
+    //         var dist = Vector3.Distance(gripPos, pos);
+
+    //         if (dist < minDist)
+    //         {
+    //             grabbable = candidate.grabbable;
+    //             minDist = dist;
+    //         }
+    //     }
+
+    //     if (grabbable)
+    //     {
+    //         Grab(grabbable, 0f);
+    //     }
+    // }
+
 }
 
 }

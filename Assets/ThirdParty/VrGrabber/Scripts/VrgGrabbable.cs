@@ -2,13 +2,23 @@
 using UnityEngine.XR;
 using UnityEngine.Events;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace VrGrabber
 {
 
 [RequireComponent(typeof(Rigidbody))]
-public class VrgGrabbable : MonoBehaviour 
+public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
 {
+	private float interval = 0f;
+	public float Interval
+	{
+		get
+		{
+			return interval;
+		}		
+	}
+    
     public bool isScalable = true;
     public bool avoidIntersection = false;
     public float maxSpeed = 10f;
@@ -83,6 +93,13 @@ public class VrgGrabbable : MonoBehaviour
         }
     }
 
+    private float gazedTime = 0;
+
+    public bool isWatchedFuncPanel = false;
+
+    [SerializeField]
+    private GameObject FunctionIcon;
+
     void Awake()
     {
         rigidbody_ = GetComponent<Rigidbody>();
@@ -96,6 +113,14 @@ public class VrgGrabbable : MonoBehaviour
         {
             onGrabMoved.Invoke();
         }
+
+        // if(!isWatchedFuncPanel)
+        // {
+        //     if(FunctionIcon.activeSelf)
+        //     {
+        //         FunctionIcon.SetActive(false);
+        //     }
+        // }
     }
 
     void FixedUpdate()
@@ -169,6 +194,61 @@ public class VrgGrabbable : MonoBehaviour
         */
         rigidbody.MoveRotation(dest);
     }
+
+    //機能アイコン表示までのカウントを開始
+	public void Gaze(){}
+
+    //機能アイコン表示までのカウントを終了 or 表示後ならばアイコンを消す 
+	public void UnGaze()
+    {       
+        gazedTime = 0;         
+    }
+
+	 public void TriggerEntered(){}
+
+
+    //0.5秒カウントダウン & ここでコントローラーとターゲットの間に機能アイコンを常に表示するようにする
+     public void CatchHittedInfo(RaycastHit info)
+     {
+         var grabber = grabbers.FirstOrDefault();
+        if(grabber)
+        {
+            var currentGrabbable = grabber.currentGrabbable;
+            if(currentGrabbable == this)
+            {
+                return;
+            }
+        }
+         if(!FunctionIcon)
+         {
+             return;
+         }
+         //Debug.LogFormat("gazeTime : {0}", gazedTime);
+         if(gazedTime > 0.5f)
+         {
+            if(!FunctionIcon.activeSelf)
+            {
+                FunctionIcon.SetActive(true);
+            }                
+            return;
+         }
+         gazedTime += Time.deltaTime;
+         //Debug.LogFormat("Added gazeTime : {0}", gazedTime);
+     }
+
+	 public void TouchedPad(){}
+
+	 public void ClickedPad(){}
+
+	 public void UpFlicked(){}
+
+	 public void DownFlicked(){}
+
+	 public void LeftFlicked(){}
+
+	 public void RightFlicked(){}
+
+	 public void GetUpTouchPad(){}
 }
 
 }
