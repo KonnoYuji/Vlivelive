@@ -114,6 +114,7 @@ public class TextPadEvent : MonoBehaviour, IOculusRaycastEventDefinition {
 
 	public void GetUpTouchPad(){}
 
+	public void GetNextHittedObj(RaycastHit nextObjInfo){}
 	
 	// public void AttachedEvents()
 	// {

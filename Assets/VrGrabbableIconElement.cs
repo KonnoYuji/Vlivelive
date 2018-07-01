@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using VrGrabber;
-using System.Collections;
 using System.Linq;
 public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefinition {
 
@@ -30,6 +29,8 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 	private Coroutine ChangeIconLargerRoutine = null;
 
 	private Coroutine ChangeIconSmallerRoutine = null;
+
+	public bool isWatchedGrabble = false;
 
 	private void Awake()
 	{
@@ -64,13 +65,12 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 			ChangeIconLargerRoutine = StartCoroutine(ChangeIconLarger());
 			return;
 		}
-
-		myGrabbable.isWatchedFuncPanel = true;
-		Debug.Log("isWatchedFuncPanel true");
 	}
 
 	public void UnGaze()
 	{
+		myGrabbable.isWatchedFuncPanel = false;
+
 		if(ChangeIconLargerRoutine != null)
 		{
 			StopCoroutine(ChangeIconLargerRoutine);
@@ -85,11 +85,13 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 		if(transform.parent.gameObject.activeSelf)
 		{
 			ChangeIconSmallerRoutine = StartCoroutine(ChangeIconSmaller());
-			return;
 		}		
 
-		myGrabbable.isWatchedFuncPanel = false;
-		Debug.Log("isWatchedFuncPanel true");
+		if(!isWatchedGrabble)
+		{
+			transform.parent.gameObject.SetActive(false);	
+						
+		}		
 	}
 
 	 public void TriggerEntered()
@@ -106,15 +108,12 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 			yield break;
 		}
 
-		int largerCalledNum = 0;
 		while(passedTime < sizeChangedTime)
 		{
 			passedTime += Time.deltaTime;
 			var nextScale = Vector3.Lerp(startScale, maxScale, passedTime*2);
 			this.GetComponent<RectTransform>().localScale = nextScale;	
-			//Debug.LogFormat("Larger Next Scale X : {0} Y : {1} Z : {2}", nextScale.x, nextScale.y, nextScale.z);
-			largerCalledNum++;
-			//Debug.LogFormat("LargerCalledNum : {0}", largerCalledNum);		
+			//Debug.LogFormat("Larger Next Scale X : {0} Y : {1} Z : {2}", nextScale.x, nextScale.y, nextScale.z);		
 			yield return null;
 		}	
 
@@ -130,15 +129,14 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 		{
 			yield break;
 		}
-		int smallerCalledNum = 0;
+
 		while(passedTime < sizeChangedTime)
 		{
 			passedTime += Time.deltaTime;
 			var nextScale = Vector3.Lerp(startScale, defaultScale, passedTime*2);
 			this.GetComponent<RectTransform>().localScale = nextScale;
 			//Debug.LogFormat("Smaller Next Scale X : {0} Y : {1} Z : {2}", nextScale.x, nextScale.y, nextScale.z);	
-			smallerCalledNum++;
-			//Debug.LogFormat("SmallerCalledNum : {0}", smallerCalledNum);
+
 			yield return null;
 		}
 
@@ -149,6 +147,7 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 	{
 		StopAllCoroutines();
 		this.GetComponent<RectTransform>().localScale = defaultScale;
+		isWatchedGrabble = false;
 	}
 	
 	protected virtual void OnClicked()
@@ -172,4 +171,17 @@ public class VrGrabbableIconElement : MonoBehaviour, IOculusRaycastEventDefiniti
 
 	 public void GetUpTouchPad(){}
 
+	public void GetNextHittedObj(RaycastHit nextObjInfo)
+	{
+		var obj = nextObjInfo.collider.gameObject;
+        var tempGrabbable = obj.GetComponent<VrgGrabbable>();
+        if(tempGrabbable == myGrabbable)
+        {
+            isWatchedGrabble = true;
+        }
+		else
+		{
+			isWatchedGrabble = false;
+		}		
+	}
 }

@@ -51,6 +51,9 @@ public class EraiserButton : MonoBehaviour, IOculusRaycastEventDefinition{
 	public void Gaze(){}
 
 	public void UnGaze(){}
+
+	public void GetNextHittedObj(RaycastHit nextObjInfo){}
+	
 	// private void CallChangeIsErasing()
 	// {
 	// 	Debug.Log("IsErasing is Changed");

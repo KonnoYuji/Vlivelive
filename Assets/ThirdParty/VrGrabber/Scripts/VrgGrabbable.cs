@@ -201,7 +201,16 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
     //機能アイコン表示までのカウントを終了 or 表示後ならばアイコンを消す 
 	public void UnGaze()
     {       
-        gazedTime = 0;         
+        gazedTime = 0;
+        if(!isWatchedFuncPanel)
+        {
+            var elements = GetComponentsInChildren<VrGrabbableIconElement>();
+            foreach(var element in elements)
+            {
+                element.isWatchedGrabble = false;
+            }
+            FunctionIcon.SetActive(false);
+        }
     }
 
 	 public void TriggerEntered(){}
@@ -223,7 +232,7 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
          {
              return;
          }
-         //Debug.LogFormat("gazeTime : {0}", gazedTime);
+         Debug.LogFormat("gazeTime : {0}", gazedTime);
          if(gazedTime > 0.5f)
          {
             if(!FunctionIcon.activeSelf)
@@ -233,7 +242,17 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
             return;
          }
          gazedTime += Time.deltaTime;
-         //Debug.LogFormat("Added gazeTime : {0}", gazedTime);
+         Debug.LogFormat("Added gazeTime : {0}", gazedTime);
+     }
+
+     public void GetNextHittedObj(RaycastHit nextObjInfo)
+     {
+         var obj = nextObjInfo.collider.gameObject;
+         var grabbleElement = obj.GetComponent<VrGrabbableIconElement>();
+         if(grabbleElement)
+         {
+             isWatchedFuncPanel = true;
+         }
      }
 
 	 public void TouchedPad(){}
@@ -248,7 +267,7 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
 
 	 public void RightFlicked(){}
 
-	 public void GetUpTouchPad(){}
+	 public void GetUpTouchPad(){}     
 }
 
 }

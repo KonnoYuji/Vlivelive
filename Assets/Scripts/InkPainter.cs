@@ -123,6 +123,8 @@ public class InkPainter : MonoBehaviour, IOculusRaycastEventDefinition {
 		}
 	 }
 
+	public void GetNextHittedObj(RaycastHit nextObjInfo){}
+	
 	// public void AttachedEvents()
 	// {
 	// 	OculusGoInput.Instance.TouchedPad += TouchEvent;

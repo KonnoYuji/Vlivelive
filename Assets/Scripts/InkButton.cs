@@ -51,6 +51,8 @@ public class InkButton : MonoBehaviour, IOculusRaycastEventDefinition {
 	public void Gaze(){}
 
 	public void UnGaze(){}	
+
+	public void GetNextHittedObj(RaycastHit nextObjInfo){}
 	
 	// public void AttachedEvents()
 	// {		

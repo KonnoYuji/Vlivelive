@@ -104,6 +104,9 @@ public class InkBehaviour : MonoBehaviour, IOculusRaycastEventDefinition {
 	{
 
 	}
+
+	public void GetNextHittedObj(RaycastHit nextObjInfo){}
+	
 	private void DestroyMyself()
 	{		
 		//OculusGoInput.Instance.TouchedPad -= DestroyMyself;

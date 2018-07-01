@@ -32,15 +32,18 @@ public class OculusRaycastEventController : MonoBehaviour {
 	public void CatchRayCastInfo(RaycastHit obj)
 	{
 		if(currentTarget != null)
-		{	
+		{		
+			var tempEventDefinition = currentTarget.transform.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;		
 			if(currentTarget != obj.collider.transform)
-			{				
+			{					
+				if(tempEventDefinition != null)
+				{					
+					tempEventDefinition.GetNextHittedObj(obj);
+				}							
 				DetachEvent();
 			}
 			else
-			{
-				//同じオブジェクトをキャストし続けてるときはキャスト情報を、オブジェクトに渡す
-				var tempEventDefinition = currentTarget.transform.GetComponent(typeof(IOculusRaycastEventDefinition)) as IOculusRaycastEventDefinition;
+			{								
 				if(tempEventDefinition != null)
 				{					
 					tempEventDefinition.Gaze();
