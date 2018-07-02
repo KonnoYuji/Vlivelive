@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Text;
 using UnityEngine.UI;
+using System;
 
 public class OculusGoControllerInfo : MonoBehaviour {
 
@@ -30,6 +31,13 @@ public class OculusGoControllerInfo : MonoBehaviour {
 
 	private bool isHighAcceraration = false;
 
+	//isHighAccerarationの値が変わったときのイベント
+	public Action<bool> OnChangedHighAcceration;
+
+	public Action<bool> OnChangedQuickReel;
+
+	public Action<bool> OnChangedQuickStretch;
+	
 	private bool quickReel = false;
 	
 	private bool quickStretch = false;
@@ -66,6 +74,10 @@ public class OculusGoControllerInfo : MonoBehaviour {
 		{
 			rotVel += "AngAcc over 100 : " + angAcc.x + '\n';		
 			isHighAcceraration = true;
+			if(OnChangedHighAcceration != null)
+			{
+				OnChangedHighAcceration(isHighAcceraration);
+			}
 		}
 
 		if(isHighAcceraration)
@@ -74,17 +86,6 @@ public class OculusGoControllerInfo : MonoBehaviour {
 			StartCoroutine(CheckQuickStretchMotion());
 		}
 		
-		// if(angAcc.x > 150 && ( Mathf.Abs(rot.x) <= 0.05f && Mathf.Abs(rot.x) >= 0))
-		// {
-		// 	rotVel += "AngAcc over 100 : " + angAcc.x + '\n';
-		// 	rotVel += "Horizon\n";			
-		// }
-		// else if(angAcc.x > 150 && ( Mathf.Abs(rot.x) <= 0.55f && Mathf.Abs(rot.x) >= 0.45f))
-		// {
-		// 	rotVel += "AngAcc over 100 : " + angAcc.x + '\n';
-		// 	rotVel += "Vertical\n";			
-		// }
-
 		// Vector3 pos = OVRInput.GetLocalControllerPosition(activeController);
 		// data.AppendFormat("Position: ({0:F2}, {1:F2}, {2:F2})\n", pos.x, pos.y, pos.z);
 
@@ -129,11 +130,20 @@ public class OculusGoControllerInfo : MonoBehaviour {
 		if((sita <= 20 && sita >= 0))
 		{
 			quickStretch = false;
+			if(OnChangedQuickStretch != null)
+			{
+				OnChangedQuickStretch(quickStretch);
+			}
 			quickReel  = true;
+			if(OnChangedQuickReel != null)
+			{
+				OnChangedQuickReel(quickReel);
+			}
 			Debug.Log("QuickReel is true");
 		}
 
-		isHighAcceraration = false;		
+		isHighAcceraration = false;
+		OnChangedHighAcceration(isHighAcceraration);		
 	}
 
 	private IEnumerator CheckQuickStretchMotion()
@@ -153,5 +163,6 @@ public class OculusGoControllerInfo : MonoBehaviour {
 		}
 
 		isHighAcceraration = false;
+		OnChangedHighAcceration(isHighAcceraration);
 	}
 }
