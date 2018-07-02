@@ -470,9 +470,30 @@ Prefab:
       propertyPath: m_FontData.m_FontSize
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 224440383709189242, guid: 5685b967d26f1244fb88b5750815e39c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 224466013250950392, guid: 5685b967d26f1244fb88b5750815e39c,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -22.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 224466013250950392, guid: 5685b967d26f1244fb88b5750815e39c,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5685b967d26f1244fb88b5750815e39c, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &97915521 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114114978974901990, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 97915520}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1001 &129419820
 Prefab:
   m_ObjectHideFlags: 0
@@ -699,6 +720,19 @@ Transform:
   m_PrefabParentObject: {fileID: 4554313434015654, guid: 0c07a8fef502e054d89b6a558257e736,
     type: 2}
   m_PrefabInternal: {fileID: 225218631}
+--- !u!114 &225218638
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 225218632}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8508abf22853982488d744be0b3e24ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiText: {fileID: 97915521}
+  rotVelocityText: {fileID: 640598829}
 --- !u!1 &339261022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1193,6 +1227,84 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 567947972}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &640598827
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 1153529678008998, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 640598828}
+  - component: {fileID: 640598830}
+  - component: {fileID: 640598829}
+  m_Layer: 5
+  m_Name: RotVelocityText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &640598828
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 224466013250950392, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640598827}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.19999999, y: 0.19999999, z: 0.19999999}
+  m_Children: []
+  m_Father: {fileID: 1856066423}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -50.700035, y: -85.3}
+  m_SizeDelta: {x: 100, y: 500}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &640598829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 114114978974901990, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640598827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 0
+    m_MaxSize: 89
+    m_Alignment: 0
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 
+--- !u!222 &640598830
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 222780495779397008, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 640598827}
 --- !u!1001 &724216489
 Prefab:
   m_ObjectHideFlags: 0
@@ -1740,6 +1852,11 @@ CanvasRenderer:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1794094959}
+--- !u!224 &1856066423 stripped
+RectTransform:
+  m_PrefabParentObject: {fileID: 224365692552663226, guid: 5685b967d26f1244fb88b5750815e39c,
+    type: 2}
+  m_PrefabInternal: {fileID: 97915520}
 --- !u!1 &1876233730
 GameObject:
   m_ObjectHideFlags: 0
