@@ -42,6 +42,11 @@ public class VrgOculusTouchDevice : IDevice
     {
         return OVRInput.Get(OVRInput.Axis2D.PrimaryThumbstick, GetOVRController(side));        
     }
+
+    public bool GetTriggerClicking(ControllerSide side)
+    {
+        return false;
+    }
     public bool GetTriggerClicked(ControllerSide side)
     {
         return false;

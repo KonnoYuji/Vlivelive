@@ -151,6 +151,9 @@ public class VrgGrabber : MonoBehaviour
             isHolding = value;
         }
     }
+
+    bool isGettingClicked = false;
+
     bool isMovingForward = false;
     bool isMovingBack = false;
 
@@ -287,11 +290,62 @@ public class VrgGrabber : MonoBehaviour
         isHoldStart_ = (holdInput_ >= grabBeginThreshold) && (preHoldInput < grabBeginThreshold);
         isHoleEnd_ = (holdInput_ <= grabEndThreshold) && (preHoldInput > grabEndThreshold);        
 #elif OCULUS_GO
-        var triggerClicked = Device.instance.GetTriggerClicked(side);
-        if(triggerClicked)
+        //var triggerClicked = Device.instance.GetTriggerClicked(side);
+        // if(triggerClicked)
+        // {
+        //     isHolding = !isHolding;
+        // }
+
+        if(!isGettingClicked)
         {
-            isHolding = !isHolding;
-        }        
+            StartCoroutine(GetClicked());
+        }
+
+        if(isHolding && Device.instance.GetTriggerClicking(side) && Device.instance.GetUpFlicked())
+        {            
+            if(!isUpScaling && !isDownScaling)
+            {
+                isUpScaling = true;                    
+            }                        
+        }                
+        
+        if(isHolding && Device.instance.GetTriggerClicking(side) && Device.instance.GetDownFlicked())
+        {
+            if(!isUpScaling && !isDownScaling)
+            {
+                isDownScaling = true;                
+            }
+        }
+
+        if(isHolding && Device.instance.GetUpFlicked() && !isUpScaling)
+		{
+            //Debug.Log("W pressed");
+			if(!isMovingForward && !isMovingBack)
+            {
+                isMovingForward = true;
+            }
+		}
+
+
+        if(isHolding && Device.instance.GetDownFlicked() && !isDownScaling)
+		{
+            //Debug.Log("W pressed");
+			if(!isMovingForward && !isMovingBack)
+            {
+                isMovingBack = true;    
+            }
+		}
+
+        if(isHolding && Device.instance.GetLeftFlicked())
+		{
+            isLeftRotating = true;    
+		}
+
+        if(isHolding && Device.instance.GetRightFlicked())
+		{
+            isRightRotating = true;            
+		}
+
 #elif UNITY_EDITOR && UNITY_STANDALONE
         var triggerClicked = Input.GetMouseButton(0);
         if(triggerClicked)
@@ -345,6 +399,18 @@ public class VrgGrabber : MonoBehaviour
 		}
 
 #endif                
+    }
+
+    private IEnumerator GetClicked()
+    {        
+        var clicked = Device.instance.GetClick(side);
+        if(clicked)
+        {
+            isGettingClicked = true;
+            isHolding = !isHolding;
+            yield return new WaitForSeconds(0.2f);            
+            isGettingClicked = false;
+        }                                
     }
 
     void UpdateGrab()
@@ -517,20 +583,22 @@ public class VrgGrabber : MonoBehaviour
         //掴んだObjectの参照
         var grabbable = grabInfo_.grabbable;
 
-        float stickY = 0.0f;
-
-        if(Device.instance.GetUpFlicked())
+        if(isUpScaling)
         {
-            if(!isMovingForward && !isMovingBack)
-            {
-                isMovingForward = true;
-                StartCoroutine(MoveFoward());    
-            }
+            StartCoroutine(ChangeScale());
         }                
+        
+        if(isDownScaling)
+        {
+            StartCoroutine(ChangeScale());
+        }
+
+        float stickY = 0.0f;
 
         if(isMovingForward)
         {
            stickY = 1.0f;     
+           StartCoroutine(MoveFoward());    
            //Debug.Log("stickY is 1.0f");
         }
         else if(!isMovingBack)
@@ -538,18 +606,10 @@ public class VrgGrabber : MonoBehaviour
             stickY = 0.0f;
         }
 
-        if(Device.instance.GetDownFlicked())
-        {
-            if(!isMovingForward && !isMovingBack)
-            {
-                isMovingBack = true;
-                StartCoroutine(MoveBack());    
-            }
-        }
-
         if(isMovingBack)
         {
            stickY = -1.0f;     
+           StartCoroutine(MoveBack());
            //Debug.Log("stickY is 1.0f");
         }
         else if(!isMovingForward)
@@ -580,16 +640,27 @@ public class VrgGrabber : MonoBehaviour
             dist = Mathf.Lerp(grabInfo_.distance, actualDist, 0.05f);
         }
 
+        grabInfo_.distance = dist;        
 
-        grabInfo_.distance = dist;
-
-        //Grabしているオブジェクトに座標変換するようの行列(Grabbableのモデル変換行列)      
+        //Grabしているオブジェクトに座標変換するようの行列
         var mat = grabInfo_.gripToGrabbableMat;
+        Quaternion rot = mat.GetRotation();
 
+        if(isLeftRotating)
+		{
+            rot = Quaternion.Euler(new Vector3(0, -30.0f, 0) + mat.GetRotation().eulerAngles);
+            isLeftRotating = false;            
+		}
+
+        if(isRightRotating)
+		{
+            rot = Quaternion.Euler(new Vector3(0, 30.0f, 0) + mat.GetRotation().eulerAngles);
+            isRightRotating = false;            
+		}
+ 
         var pos = mat.GetPosition();
-        var rot = mat.GetRotation();
        
-        FixedUpdateGrabbingObjectTransform(pos, rot, grabbable.transform.localScale);
+        FixedUpdateGrabbingObjectTransform(pos, rot, (grabbable.transform.localScale + curerntScaling));
 
 #elif UNITY_EDITOR && UNITY_STANDALONE
 
@@ -738,6 +809,10 @@ public class VrgGrabber : MonoBehaviour
         var v = (pos - grabbable.position) / Time.fixedDeltaTime;
         grabInfo_.velocity.Add(v);
 
+        if(scale.x <=0 || scale.y <=0 || scale.z <= 0)
+        {
+            scale = Vector3.zero;
+        }
         grabbable.scale = scale;
         grabbable.position = pos;
 

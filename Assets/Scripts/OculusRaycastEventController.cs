@@ -14,7 +14,7 @@ public class OculusRaycastEventController : MonoBehaviour {
 
 	private void Start()
 	{
-#if !UNITY_EDITOR && UNITY_ANDROID		
+#if UNITY_ANDROID		
 		if(hitObjGrabber == null)
 		{
 			hitObjGrabber = FindObjectOfType<VrgGrabber>();	

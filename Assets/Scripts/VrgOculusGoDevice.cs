@@ -31,6 +31,11 @@ public class VrgOculusGoDevice : IDevice {
         return OVRInput.GetDown(OVRInput.Button.PrimaryIndexTrigger, GetOVRController(side));
     }
 
+    public bool GetTriggerClicking(ControllerSide side)
+    {
+        return OVRInput.Get(OVRInput.Button.PrimaryIndexTrigger, GetOVRController(side));
+    }
+
     public bool GetHover(ControllerSide side) 
     {     
         return OVRInput.Get(OVRInput.Touch.PrimaryTouchpad, GetOVRController(side));

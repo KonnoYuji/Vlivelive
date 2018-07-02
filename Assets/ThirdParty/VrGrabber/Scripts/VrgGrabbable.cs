@@ -103,6 +103,11 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
     void Awake()
     {
         rigidbody_ = GetComponent<Rigidbody>();
+        onGrabbed.AddListener(()=>{
+            if(FunctionIcon.activeSelf)
+            {
+                FunctionIcon.SetActive(false);
+            }});
     }
 
     void Update()
@@ -113,14 +118,6 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
         {
             onGrabMoved.Invoke();
         }
-
-        // if(!isWatchedFuncPanel)
-        // {
-        //     if(FunctionIcon.activeSelf)
-        //     {
-        //         FunctionIcon.SetActive(false);
-        //     }
-        // }
     }
 
     void FixedUpdate()
@@ -232,7 +229,7 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
          {
              return;
          }
-         Debug.LogFormat("gazeTime : {0}", gazedTime);
+         //Debug.LogFormat("gazeTime : {0}", gazedTime);
          if(gazedTime > 0.5f)
          {
             if(!FunctionIcon.activeSelf)
@@ -242,7 +239,7 @@ public class VrgGrabbable : MonoBehaviour, IOculusRaycastEventDefinition
             return;
          }
          gazedTime += Time.deltaTime;
-         Debug.LogFormat("Added gazeTime : {0}", gazedTime);
+         //Debug.LogFormat("Added gazeTime : {0}", gazedTime);
      }
 
      public void GetNextHittedObj(RaycastHit nextObjInfo)

@@ -17,6 +17,8 @@ public interface IDevice
 
     bool GetTriggerClicked(ControllerSide side);
 
+    bool GetTriggerClicking(ControllerSide side);
+    
     bool GetUpFlicked();
 
     
